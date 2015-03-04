@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="IvanovWebsite" Class="DBCoreDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=srv63bits;Initial Catalog=IvanovWebsite;Persist Security Info=True;User ID=sa" SettingsObjectName="Core.Properties.Settings" SettingsPropertyName="IvanovWebsiteConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.tsp_VisitedDestinations" Method="tsp_VisitedDestinations">
+    <Parameter Name="iud" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="DestinationID" Parameter="destinationID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="Caption" Parameter="caption" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Picture" Parameter="picture" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="ShortDesc" Parameter="shortDesc" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="Lat" Parameter="lat" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Lng" Parameter="lng" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="IsPublished" Parameter="isPublished" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SaveOffer" Method="SaveOffer">
+    <Parameter Name="OfferTypeCode" Parameter="offerTypeCode" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LocationFromID" Parameter="locationFromID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LocationToID" Parameter="locationToID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StartDate" Parameter="startDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="EndDate" Parameter="endDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="StartFelxBeforeID" Parameter="startFelxBeforeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StartFelxAfterID" Parameter="startFelxAfterID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="EndFelxBeforeID" Parameter="endFelxBeforeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="EndFelxAfterID" Parameter="endFelxAfterID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IsOneWay" Parameter="isOneWay" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IsTwoWay" Parameter="isTwoWay" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="TravelersCode" Parameter="travelersCode" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AdultCount" Parameter="adultCount" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="ChildrenCount" Parameter="childrenCount" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="StudentCount" Parameter="studentCount" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="InvantCount" Parameter="invantCount" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="LuggageCount" Parameter="luggageCount" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="TransportID" Parameter="transportID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StayPlaceID" Parameter="stayPlaceID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FromWebsite" Parameter="fromWebsite" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="CarRental" Parameter="carRental" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="TotalPrice" Parameter="totalPrice" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PricePerPerson" Parameter="pricePerPerson" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CurrencyID" Parameter="currencyID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Fname" Parameter="fname" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Lname" Parameter="lname" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="NationalityID" Parameter="nationalityID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TimeToResearchID" Parameter="timeToResearchID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AddInfo" Parameter="addInfo" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ReceiveNewsletters" Parameter="receiveNewsletters" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="ReceiveCommercialInfo" Parameter="receiveCommercialInfo" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="AgreeTerms" Parameter="agreeTerms" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.tsp_LastOffers" Method="tsp_LastOffers">
+    <Parameter Name="iud" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="OfferID" Parameter="offerID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="Picture" Parameter="picture" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="ShortDesc" Parameter="shortDesc" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="PdfFile" Parameter="pdfFile" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="IsPublished" Parameter="isPublished" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetSingleLastOffer" Method="GetSingleLastOffer" IsComposable="true">
+    <Parameter Name="OfferID" Parameter="offerID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Xml.Linq.XElement" />
+  </Function>
+  <Function Name="dbo.List_LastOffers" Method="List_LastOffers" IsComposable="true">
+    <Parameter Name="IsPublished" Parameter="isPublished" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="List_LastOffersResult">
+      <Column Name="OfferID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Picture" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ShortDesc" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="PdfFile" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="IsPublished" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CRTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetSingleVisitedDestination" Method="GetSingleVisitedDestination" IsComposable="true">
+    <Parameter Name="DestinationID" Parameter="destinationID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Xml.Linq.XElement" />
+  </Function>
+  <Function Name="dbo.List_VisitedDestinations" Method="List_VisitedDestinations" IsComposable="true">
+    <Parameter Name="IsPublished" Parameter="isPublished" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="List_VisitedDestinationsResult">
+      <Column Name="DestinationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Caption" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Picture" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ShortDesc" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Lat" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Lng" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="IsPublished" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CRTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.List_Users" Method="List_Users" IsComposable="true">
+    <ElementType Name="List_UsersResult">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RoleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Fname" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Lname" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CRTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetAuthenticatedUser" Method="GetAuthenticatedUser" IsComposable="true">
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="NVarChar(500)" />
+    <Return Type="System.Xml.Linq.XElement" />
+  </Function>
+  <Function Name="dbo.tsp_Users" Method="tsp_Users">
+    <Parameter Name="iud" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="RoleID" Parameter="roleID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Fname" Parameter="fname" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Lname" Parameter="lname" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="IsActive" Parameter="isActive" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.List_Dictionaries" Method="List_Dictionaries" IsComposable="true">
+    <Parameter Name="Level" Parameter="level" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DictionaryCode" Parameter="dictionaryCode" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IsVisible" Parameter="isVisible" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="List_DictionariesResult">
+      <Column Name="DictionaryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Caption" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Caption1" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ParentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StringCode" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="IntCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DictionaryCode" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="DefVal" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Visible" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SortVal" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>
