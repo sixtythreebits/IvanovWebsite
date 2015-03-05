@@ -15,13 +15,22 @@
         <Columns>            
             <dx:GridViewDataTextColumn FieldName="Picture" Caption="Picture" Width="150px">
                 <DataItemTemplate>
-                    <img src="/uploads/<%#Eval("Picture") %>?height=100&width=100" />
+                    <img src="/uploads/<%#Eval("Picture") %>?height=54&width=80" />
                 </DataItemTemplate>
                 <EditItemTemplate>
-                    <img src="/uploads/<%#Eval("Picture") %>?height=100&width=100" />
+                    <img src="/uploads/<%#Eval("Picture") %>?height=54&width=80" />
                 </EditItemTemplate>
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataMemoColumn FieldName="ShortDesc" Caption="ShortDesc" Width="500px">
+            <dx:GridViewDataTextColumn FieldName="Caption" Caption="Caption" Width="200px">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="Location" Caption="Location" Width="100px">
+            </dx:GridViewDataTextColumn>            
+            <dx:GridViewDataSpinEditColumn FieldName="UsersCount" Caption="User Count" Width="80px">
+                <PropertiesSpinEdit AllowMouseWheel="false">
+                    <SpinButtons ShowIncrementButtons="false"></SpinButtons>
+                </PropertiesSpinEdit>
+            </dx:GridViewDataSpinEditColumn>
+            <dx:GridViewDataMemoColumn FieldName="ShortDesc" Caption="ShortDesc" Width="300px">
             </dx:GridViewDataMemoColumn>
             <dx:GridViewDataTextColumn FieldName="PdfFile" Caption="Pdf" Width="100px">
                 <DataItemTemplate>
@@ -49,17 +58,23 @@
         <DeleteParameters>
             <asp:Parameter Name="iud" Type="Byte" DefaultValue="2" />
             <asp:Parameter Name="ID" Type="Int32" />
+            <asp:Parameter Name="Caption" Type="String" />
+            <asp:Parameter Name="Location" Type="String" />
             <asp:Parameter Name="Picture" Type="String" />
             <asp:Parameter Name="ShortDesc" Type="String" />
             <asp:Parameter Name="PdfFile" Type="String" />
+            <asp:Parameter Name="UsersCount" Type="Int32" />
             <asp:Parameter Name="IsPublished" Type="Boolean" />
         </DeleteParameters>        
         <UpdateParameters>
             <asp:Parameter Name="iud" Type="Byte" DefaultValue="1" />
             <asp:Parameter Name="ID" Type="Int32" />
+            <asp:Parameter Name="Caption" Type="String" />
+            <asp:Parameter Name="Location" Type="String" />
             <asp:Parameter Name="Picture" Type="String" />
             <asp:Parameter Name="ShortDesc" Type="String" />
             <asp:Parameter Name="PdfFile" Type="String" />
+            <asp:Parameter Name="UsersCount" Type="Int32" />
             <asp:Parameter Name="IsPublished" Type="Boolean" />
         </UpdateParameters>
         <SelectParameters>
@@ -70,16 +85,28 @@
     <dx:ASPxPopupControl ID="NewOfferPopup" runat="server" CloseAction="CloseButton" Modal="True"
         PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ClientInstanceName="NewOfferPopup"
         HeaderText="New Last Offer" AllowDragging="False" PopupAnimationType="None" MinWidth="450px"
-        MinHeight="350px">
+        MinHeight="450px">
         <ContentCollection>
         <dx:PopupControlContentControl runat="server">
             <div class="col-lg-12">
                 <div class="form-group">
-                    <label>Short Text</label>
-                    <asp:TextBox ID="ShortDescriptionTextBox" runat="server" TextMode="MultiLine" Rows="3" CssClass="form-control"></asp:TextBox>                    
+                    <label>Caption</label>
+                    <asp:TextBox ID="CaptionTextBox" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
                 <div class="form-group">
-                    <label>Upload Picture</label>
+                    <label>Location</label>
+                    <asp:TextBox ID="LocationTextBox" runat="server" CssClass="form-control"></asp:TextBox>
+                </div>
+                <div class="form-group">
+                    <label>User Count</label>
+                    <asp:TextBox ID="UsersCountTextBox" runat="server" CssClass="form-control"></asp:TextBox>
+                </div>
+                <div class="form-group">
+                    <label>Short Text</label>
+                    <asp:TextBox ID="ShortDescriptionTextBox" runat="server" TextMode="MultiLine" Rows="3" CssClass="form-control"></asp:TextBox>                    
+                </div>                
+                <div class="form-group">
+                    <label>Upload Picture (320 x 223)</label>
                     <asp:FileUpload ID="PictureUploader" runat="server" />
                 </div>
                 <div class="form-group">

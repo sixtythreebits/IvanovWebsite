@@ -110,24 +110,10 @@ namespace Core.DB
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.tsp_LastOffers")]
-		public int tsp_LastOffers([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="TinyInt")] System.Nullable<byte> iud, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="OfferID", DbType="Int")] ref System.Nullable<int> offerID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Picture", DbType="NVarChar(200)")] string picture, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ShortDesc", DbType="NVarChar(500)")] string shortDesc, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PdfFile", DbType="NVarChar(200)")] string pdfFile, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IsPublished", DbType="Bit")] System.Nullable<bool> isPublished)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iud, offerID, picture, shortDesc, pdfFile, isPublished);
-			offerID = ((System.Nullable<int>)(result.GetParameterValue(1)));
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetSingleLastOffer", IsComposable=true)]
 		public System.Xml.Linq.XElement GetSingleLastOffer([global::System.Data.Linq.Mapping.ParameterAttribute(Name="OfferID", DbType="Int")] System.Nullable<int> offerID)
 		{
 			return ((System.Xml.Linq.XElement)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), offerID).ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.List_LastOffers", IsComposable=true)]
-		public IQueryable<List_LastOffersResult> List_LastOffers([global::System.Data.Linq.Mapping.ParameterAttribute(Name="IsPublished", DbType="Bit")] System.Nullable<bool> isPublished)
-		{
-			return this.CreateMethodCallQuery<List_LastOffersResult>(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), isPublished);
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetSingleVisitedDestination", IsComposable=true)]
@@ -167,121 +153,19 @@ namespace Core.DB
 		{
 			return this.CreateMethodCallQuery<List_DictionariesResult>(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), level, dictionaryCode, isVisible);
 		}
-	}
-	
-	public partial class List_LastOffersResult
-	{
 		
-		private int _OfferID;
-		
-		private string _Picture;
-		
-		private string _ShortDesc;
-		
-		private string _PdfFile;
-		
-		private bool _IsPublished;
-		
-		private System.DateTime _CRTime;
-		
-		public List_LastOffersResult()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.List_LastOffers", IsComposable=true)]
+		public IQueryable<List_LastOffersResult> List_LastOffers([global::System.Data.Linq.Mapping.ParameterAttribute(Name="IsPublished", DbType="Bit")] System.Nullable<bool> isPublished)
 		{
+			return this.CreateMethodCallQuery<List_LastOffersResult>(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), isPublished);
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OfferID", DbType="Int NOT NULL")]
-		public int OfferID
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.tsp_LastOffers")]
+		public int tsp_LastOffers([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="TinyInt")] System.Nullable<byte> iud, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="OfferID", DbType="Int")] ref System.Nullable<int> offerID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Caption", DbType="NVarChar(50)")] string caption, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Location", DbType="NVarChar(20)")] string location, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ShortDesc", DbType="NVarChar(500)")] string shortDesc, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Picture", DbType="NVarChar(200)")] string picture, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PdfFile", DbType="NVarChar(200)")] string pdfFile, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UsersCount", DbType="Int")] System.Nullable<int> usersCount, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IsPublished", DbType="Bit")] System.Nullable<bool> isPublished)
 		{
-			get
-			{
-				return this._OfferID;
-			}
-			set
-			{
-				if ((this._OfferID != value))
-				{
-					this._OfferID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Picture", DbType="NVarChar(200)")]
-		public string Picture
-		{
-			get
-			{
-				return this._Picture;
-			}
-			set
-			{
-				if ((this._Picture != value))
-				{
-					this._Picture = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShortDesc", DbType="NVarChar(500)")]
-		public string ShortDesc
-		{
-			get
-			{
-				return this._ShortDesc;
-			}
-			set
-			{
-				if ((this._ShortDesc != value))
-				{
-					this._ShortDesc = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PdfFile", DbType="NVarChar(200)")]
-		public string PdfFile
-		{
-			get
-			{
-				return this._PdfFile;
-			}
-			set
-			{
-				if ((this._PdfFile != value))
-				{
-					this._PdfFile = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsPublished", DbType="Bit NOT NULL")]
-		public bool IsPublished
-		{
-			get
-			{
-				return this._IsPublished;
-			}
-			set
-			{
-				if ((this._IsPublished != value))
-				{
-					this._IsPublished = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CRTime", DbType="DateTime NOT NULL")]
-		public System.DateTime CRTime
-		{
-			get
-			{
-				return this._CRTime;
-			}
-			set
-			{
-				if ((this._CRTime != value))
-				{
-					this._CRTime = value;
-				}
-			}
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iud, offerID, caption, location, shortDesc, picture, pdfFile, usersCount, isPublished);
+			offerID = ((System.Nullable<int>)(result.GetParameterValue(1)));
+			return ((int)(result.ReturnValue));
 		}
 	}
 	
@@ -772,6 +656,176 @@ namespace Core.DB
 				if ((this._SortVal != value))
 				{
 					this._SortVal = value;
+				}
+			}
+		}
+	}
+	
+	public partial class List_LastOffersResult
+	{
+		
+		private int _OfferID;
+		
+		private string _Caption;
+		
+		private string _Location;
+		
+		private string _ShortDesc;
+		
+		private string _Picture;
+		
+		private string _PdfFile;
+		
+		private System.Nullable<int> _UsersCount;
+		
+		private bool _IsPublished;
+		
+		private System.DateTime _CRTime;
+		
+		public List_LastOffersResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OfferID", DbType="Int NOT NULL")]
+		public int OfferID
+		{
+			get
+			{
+				return this._OfferID;
+			}
+			set
+			{
+				if ((this._OfferID != value))
+				{
+					this._OfferID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Caption", DbType="NVarChar(50)")]
+		public string Caption
+		{
+			get
+			{
+				return this._Caption;
+			}
+			set
+			{
+				if ((this._Caption != value))
+				{
+					this._Caption = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Location", DbType="NVarChar(20)")]
+		public string Location
+		{
+			get
+			{
+				return this._Location;
+			}
+			set
+			{
+				if ((this._Location != value))
+				{
+					this._Location = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShortDesc", DbType="NVarChar(500)")]
+		public string ShortDesc
+		{
+			get
+			{
+				return this._ShortDesc;
+			}
+			set
+			{
+				if ((this._ShortDesc != value))
+				{
+					this._ShortDesc = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Picture", DbType="NVarChar(200)")]
+		public string Picture
+		{
+			get
+			{
+				return this._Picture;
+			}
+			set
+			{
+				if ((this._Picture != value))
+				{
+					this._Picture = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PdfFile", DbType="NVarChar(200)")]
+		public string PdfFile
+		{
+			get
+			{
+				return this._PdfFile;
+			}
+			set
+			{
+				if ((this._PdfFile != value))
+				{
+					this._PdfFile = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsersCount", DbType="Int")]
+		public System.Nullable<int> UsersCount
+		{
+			get
+			{
+				return this._UsersCount;
+			}
+			set
+			{
+				if ((this._UsersCount != value))
+				{
+					this._UsersCount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsPublished", DbType="Bit NOT NULL")]
+		public bool IsPublished
+		{
+			get
+			{
+				return this._IsPublished;
+			}
+			set
+			{
+				if ((this._IsPublished != value))
+				{
+					this._IsPublished = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CRTime", DbType="DateTime NOT NULL")]
+		public System.DateTime CRTime
+		{
+			get
+			{
+				return this._CRTime;
+			}
+			set
+			{
+				if ((this._CRTime != value))
+				{
+					this._CRTime = value;
 				}
 			}
 		}

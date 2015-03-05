@@ -32,6 +32,9 @@ namespace IvanovWebsite.admin
         {
             string Picture = null;
             string PdfFile = null;
+            int UsersCount;
+
+            int.TryParse(UsersCountTextBox.Text, out UsersCount);
 
             if (PictureUploader.HasFile)
             {
@@ -46,9 +49,13 @@ namespace IvanovWebsite.admin
             var R = new OfferRepository();
             R.TSP_LastOffer(
                 iud: 0,
+                Caption: CaptionTextBox.Text,
+                Location: LocationTextBox.Text,
                 ShortDesc: ShortDescriptionTextBox.Text,
                 Picture: Picture,
-                PdfFile: PdfFile
+                PdfFile: PdfFile,
+                UsersCount: UsersCount,
+                IsPublished: IsPublishedCheckBox.Checked
             );
             if (R.IsError)
             {

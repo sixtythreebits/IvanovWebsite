@@ -47,29 +47,9 @@
     <Parameter Name="AgreeTerms" Parameter="agreeTerms" Type="System.Boolean" DbType="Bit" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.tsp_LastOffers" Method="tsp_LastOffers">
-    <Parameter Name="iud" Type="System.Byte" DbType="TinyInt" />
-    <Parameter Name="OfferID" Parameter="offerID" Type="System.Int32" DbType="Int" Direction="InOut" />
-    <Parameter Name="Picture" Parameter="picture" Type="System.String" DbType="NVarChar(200)" />
-    <Parameter Name="ShortDesc" Parameter="shortDesc" Type="System.String" DbType="NVarChar(500)" />
-    <Parameter Name="PdfFile" Parameter="pdfFile" Type="System.String" DbType="NVarChar(200)" />
-    <Parameter Name="IsPublished" Parameter="isPublished" Type="System.Boolean" DbType="Bit" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="dbo.GetSingleLastOffer" Method="GetSingleLastOffer" IsComposable="true">
     <Parameter Name="OfferID" Parameter="offerID" Type="System.Int32" DbType="Int" />
     <Return Type="System.Xml.Linq.XElement" />
-  </Function>
-  <Function Name="dbo.List_LastOffers" Method="List_LastOffers" IsComposable="true">
-    <Parameter Name="IsPublished" Parameter="isPublished" Type="System.Boolean" DbType="Bit" />
-    <ElementType Name="List_LastOffersResult">
-      <Column Name="OfferID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Picture" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="ShortDesc" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="PdfFile" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="IsPublished" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="CRTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-    </ElementType>
   </Function>
   <Function Name="dbo.GetSingleVisitedDestination" Method="GetSingleVisitedDestination" IsComposable="true">
     <Parameter Name="DestinationID" Parameter="destinationID" Type="System.Int32" DbType="Int" />
@@ -132,5 +112,31 @@
       <Column Name="Visible" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="SortVal" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
+  </Function>
+  <Function Name="dbo.List_LastOffers" Method="List_LastOffers" IsComposable="true">
+    <Parameter Name="IsPublished" Parameter="isPublished" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="List_LastOffersResult">
+      <Column Name="OfferID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Caption" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ShortDesc" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Picture" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PdfFile" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="UsersCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsPublished" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CRTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.tsp_LastOffers" Method="tsp_LastOffers">
+    <Parameter Name="iud" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="OfferID" Parameter="offerID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="Caption" Parameter="caption" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Location" Parameter="location" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="ShortDesc" Parameter="shortDesc" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="Picture" Parameter="picture" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="PdfFile" Parameter="pdfFile" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="UsersCount" Parameter="usersCount" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IsPublished" Parameter="isPublished" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
   </Function>
 </Database>

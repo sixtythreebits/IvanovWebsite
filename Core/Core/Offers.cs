@@ -43,9 +43,12 @@ namespace Core
                     .Select(o => new LastOffer
                     {
                         ID = o.OfferID,
+                        Caption = o.Caption,
+                        Location = o.Location,
                         ShortDesc = o.ShortDesc,
                         Picture = o.Picture,
                         PdfFile = o.PdfFile,
+                        UsersCount = o.UsersCount,
                         IsPublished = o.IsPublished,
                         CRTime = o.CRTime
                     }).ToList();
@@ -58,19 +61,19 @@ namespace Core
             }
         }
 
-        public void TSP_LastOffer(byte? iud = null, int? ID = null, string Picture = null, string ShortDesc = null, string PdfFile = null, bool? IsPublished = null)
+        public void TSP_LastOffer(byte? iud = null, int? ID = null, string Caption = null, string Location = null, string Picture = null, string ShortDesc = null, string PdfFile = null, int? UsersCount = null, bool? IsPublished = null)
         {
             try
             {
                 using (var db = ConnectionFactory.GetDBCoreDataContext())
                 {
-                    db.tsp_LastOffers(iud, ref ID, Picture, ShortDesc, PdfFile, IsPublished);
+                    db.tsp_LastOffers(iud, ref ID, Caption, Location, ShortDesc, Picture, PdfFile, UsersCount, IsPublished);
                 }
             }
             catch (Exception ex)
             {
                 IsError = true;
-                string.Format("TSP_LastOffer(iud = {0}, ID = {1}, Picture = {2}, ShortDesc = {3}, PdfFile = {4}, IsPublished = {5}) - {6}", iud, ID, Picture, ShortDesc, PdfFile, IsPublished, ex.Message).LogString();
+                string.Format("TSP_LastOffer(iud = {0}, ID = {1}, Caption = {2}, Location = {3}, Picture = {4}, ShortDesc = {5}, PdfFile = {6}, UsersCount = {7}, IsPublished = {8}) - {9}", iud, ID, Caption, Location, Picture, ShortDesc, PdfFile, UsersCount, IsPublished, ex.Message).LogString();
             }
         }
     }
@@ -79,9 +82,12 @@ namespace Core
     public class LastOffer
     {
         public int? ID { set; get; }
+        public string Caption { set; get; }
+        public string Location { set; get; }
         public string Picture { set; get; }
         public string ShortDesc { set; get; }
         public string PdfFile { set; get; }
+        public int? UsersCount { set; get; }
         public bool IsPublished { set;get; }
         public DateTime? CRTime { set; get; }
     }

@@ -16,7 +16,7 @@ namespace IvanovWebsite.admin.UserControls
 
         public bool ShowError
         {
-            set { SuccessPlaceHolder.Visible = value; }
+            set { ErrorPlaceHolder.Visible = value; }
         }
 
         protected void Page_Load(object sender, EventArgs e)

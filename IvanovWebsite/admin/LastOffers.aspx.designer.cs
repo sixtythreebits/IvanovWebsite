@@ -40,6 +40,33 @@ namespace IvanovWebsite.admin {
         protected global::DevExpress.Web.ASPxPopupControl.ASPxPopupControl NewOfferPopup;
         
         /// <summary>
+        /// CaptionTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox CaptionTextBox;
+        
+        /// <summary>
+        /// LocationTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox LocationTextBox;
+        
+        /// <summary>
+        /// UsersCountTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox UsersCountTextBox;
+        
+        /// <summary>
         /// ShortDescriptionTextBox control.
         /// </summary>
         /// <remarks>
