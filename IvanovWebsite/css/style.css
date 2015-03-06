@@ -1090,3 +1090,32 @@ ul.col2 li:last-child,
     color:#0f83ff;
 } 
 /* ---------- /map ---------- */
+
+
+/* ---------- static page ---------- */
+.static {
+    max-width:980px;
+    min-height:200px;
+    margin:60px auto;
+}
+.static h1{
+    color:#0f83ff;
+    font-size:30px;
+	font-weight:bold;
+	line-height:50px;
+	text-align:center;
+	position:relative;
+}
+.static article {
+    padding:0 40px;
+}
+.static p{
+    margin:20px 0;
+}
+.static a{
+    color:#0f83ff;
+}
+.static a:hover {
+    text-decoration: none;
+}
+/* ---------- /static page ---------- */
