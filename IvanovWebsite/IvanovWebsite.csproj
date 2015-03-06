@@ -227,6 +227,8 @@
     <Content Include="images\icons\form\single.png" />
     <Content Include="images\icons\form\train.png" />
     <Content Include="images\icons\in.png" />
+    <Content Include="images\icons\pin.png" />
+    <Content Include="images\icons\pin_current.png" />
     <Content Include="images\icons\radio_checkbox.png" />
     <Content Include="images\icons\tw.png" />
     <Content Include="images\icons\user.png" />
@@ -295,6 +297,7 @@
     <Content Include="App_Themes\DevEx\Parameters.config" />
     <Content Include="Master.Master" />
     <None Include="Properties\PublishProfiles\hq63bits.pubxml" />
+    <None Include="Properties\PublishProfiles\test.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
