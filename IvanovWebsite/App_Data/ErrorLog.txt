@@ -1,1 +1,12 @@
 ﻿
+
+------------------------------------
+http://localhost:19133/OfferSubmit.aspx?OfferType=check - 05-Mar-15 19:50:35
+Save(OfferTypeCode = 2, LocationFromID = 39, LocationToID = 41, @StartDate = , @EndDate = , StartFelxBeforeID = 44, StartFelxAfterID = 52, EndFelxBeforeID = 44, EndFelxAfterID = 52, IsOneWay = False, IsTwoWay = False, TravelersCode = 1, AdultCount = 1, ChildrenCount = , StudentCount = 1, InvantCount = , LuggageCount = 1, TransportCode = 1, StayPlaceCode = 4, FromWebsite = google.com, CarRental = True, TotalPrice = 300, PricePerPerson = , CurrencyID = 26, Fname = Emma, Lname = Watson, Email = emma@63bits.com, NationalityID = 22, TimeToResearchID = 37, AddInfo = asdasd, ReceiveNewsletters = True, ReceiveCommercialInfo = True, AgreeTerms = True) - SQL: Cannot insert the value NULL into column 'ChildrenCount', table 'IvanovWebsite.dbo.Offers'; column does not allow nulls. INSERT fails.
+ErrorProcedure - SaveOffer
+ErrorLine - 48
+Severity - 16
+State - 2
+
+------------------------------------
+

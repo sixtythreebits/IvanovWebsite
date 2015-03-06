@@ -17,17 +17,7 @@ $(function(){
 		return false;
 	});
 	
-	//select
-	$("span.select").each(function () {
-        var Text = $(this).children("select").children("option:selected").text()
-        Text = Text.length > 40 ? Text.substring(0, 37) + " ..." : Text;
-        $(this).children("span").text(Text);
-    });
-
-    $("span.select select").change(function () {
-        var Text = $(this).children("option:selected").text();
-        Text = Text.length > 40 ? Text.substring(0, 37) + " ..." : Text;
-        $(this).parent().children("span").text(Text);
-    });
+	
+	
 	
 });

@@ -7,13 +7,20 @@ namespace Core
 {
     public class DictionaryRepository 
     {
+
         public static List<DictionaryItem> ListDictionary(int? Level = null, int? DictionaryCode = null, bool? IsVisible = null)
+        {
+            return ListDictionary(Level, DictionaryCode, IsVisible, false, null);
+        }
+
+        public static List<DictionaryItem> ListDictionary(int? Level = null, int? DictionaryCode = null, bool? IsVisible = null, bool WithNullValue = false, string NullValueText = null)
         {
             try
             {
                 using (var db = ConnectionFactory.GetDBCoreDataContext())
                 {
-                    return db.List_Dictionaries(Level, DictionaryCode, IsVisible)
+                    var list = db.List_Dictionaries(Level, DictionaryCode, IsVisible)
+                    .OrderBy(d=>d.SortVal).ThenBy(d=>d.Caption)
                     .ToList()
                     .Select(d => new DictionaryItem
                     {
@@ -28,6 +35,13 @@ namespace Core
                         IsVisible = d.Visible == true,
                         SortVal = d.SortVal
                     }).ToList();
+
+                    if (WithNullValue)
+                    {
+                        list.Insert(0, new DictionaryItem { ID = null, Caption = NullValueText });
+                    }
+
+                    return list;
                 }
             }
             catch(Exception ex)

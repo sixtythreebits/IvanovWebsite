@@ -43,6 +43,34 @@ namespace Core.Utilities
                    Regex.Replace(source, @"[^A-Za-z0-9_\.~]+", "_");
         }
 
+        public static bool? ToBoolean(this string input)
+        {
+            bool val;
+            if (bool.TryParse(input, out val)) return val;
+            return null;
+        }
+
+        public static byte? ToByte(this string number)
+        {
+            byte val;
+            if (byte.TryParse(number, out val)) return val;
+            return null;
+        }
+
+        public static DateTime? ToDateTime(this string date)
+        {
+            DateTime val;
+            if (DateTime.TryParse(date, out val)) return val;
+            return null;
+        }
+
+        public static int? ToInt(this string number)
+        {
+            int val;
+            if (int.TryParse(number, out val)) return val;
+            return null;
+        }
+
     }
 
     public static class ObjectExtensions

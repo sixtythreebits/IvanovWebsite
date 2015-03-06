@@ -210,7 +210,7 @@
         <asp:Repeater ID="LastDestinationsRepeater" runat="server" ViewStateMode="Disabled" ItemType="Core.Destination">
             <ItemTemplate>
             <li>
-                <a href="#">
+                <a href="/map/<%#Item.ID %>/">
                     <span class="img">
                         <img src="<%#AppSettings.UploadFileHttpPath+Item.Picture %>" alt="picture" />
                         <span><b>Прочети още</b></span>

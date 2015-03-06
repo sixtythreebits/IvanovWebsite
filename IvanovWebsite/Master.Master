@@ -21,8 +21,8 @@
             <p>
             	Flightfox is a marketplace of flight experts who find you the <br/>best flights, guaranteed!
             </p>
-            <a href="#" class="blue">Провери оферта</a>
-            <a href="#" class="magenta">Нова оферта</a>
+            <a href="/offer/check/#form-container" class="blue">Провери оферта</a>
+            <a href="/offer/new/#form-container" class="magenta">Нова оферта</a>
         </div> 
     </header>
     <form id="form1" runat="server">    
@@ -32,13 +32,13 @@
     <footer>
     	<span class="social">
         	<a href="#">
-            	<img src="images/icons/fb.png" alt="facebook" />
+            	<img src="/images/icons/fb.png" alt="facebook" />
             </a>
             <a href="#">
-            	<img src="images/icons/tw.png" alt="twitter" />
+            	<img src="/images/icons/tw.png" alt="twitter" />
             </a>
             <a href="#">
-            	<img src="images/icons/in.png" alt="linkedin" />
+            	<img src="/images/icons/in.png" alt="linkedin" />
             </a>
         </span>
         

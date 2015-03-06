@@ -11,42 +11,6 @@
     <Parameter Name="IsPublished" Parameter="isPublished" Type="System.Boolean" DbType="Bit" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.SaveOffer" Method="SaveOffer">
-    <Parameter Name="OfferTypeCode" Parameter="offerTypeCode" Type="System.Int32" DbType="Int" />
-    <Parameter Name="LocationFromID" Parameter="locationFromID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="LocationToID" Parameter="locationToID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="StartDate" Parameter="startDate" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="EndDate" Parameter="endDate" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="StartFelxBeforeID" Parameter="startFelxBeforeID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="StartFelxAfterID" Parameter="startFelxAfterID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="EndFelxBeforeID" Parameter="endFelxBeforeID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="EndFelxAfterID" Parameter="endFelxAfterID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="IsOneWay" Parameter="isOneWay" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="IsTwoWay" Parameter="isTwoWay" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="TravelersCode" Parameter="travelersCode" Type="System.Int32" DbType="Int" />
-    <Parameter Name="AdultCount" Parameter="adultCount" Type="System.Byte" DbType="TinyInt" />
-    <Parameter Name="ChildrenCount" Parameter="childrenCount" Type="System.Byte" DbType="TinyInt" />
-    <Parameter Name="StudentCount" Parameter="studentCount" Type="System.Byte" DbType="TinyInt" />
-    <Parameter Name="InvantCount" Parameter="invantCount" Type="System.Byte" DbType="TinyInt" />
-    <Parameter Name="LuggageCount" Parameter="luggageCount" Type="System.Byte" DbType="TinyInt" />
-    <Parameter Name="TransportID" Parameter="transportID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="StayPlaceID" Parameter="stayPlaceID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="FromWebsite" Parameter="fromWebsite" Type="System.String" DbType="NVarChar(500)" />
-    <Parameter Name="CarRental" Parameter="carRental" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="TotalPrice" Parameter="totalPrice" Type="System.Int32" DbType="Int" />
-    <Parameter Name="PricePerPerson" Parameter="pricePerPerson" Type="System.Int32" DbType="Int" />
-    <Parameter Name="CurrencyID" Parameter="currencyID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Fname" Parameter="fname" Type="System.String" DbType="NVarChar(20)" />
-    <Parameter Name="Lname" Parameter="lname" Type="System.String" DbType="NVarChar(20)" />
-    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="NationalityID" Parameter="nationalityID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="TimeToResearchID" Parameter="timeToResearchID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="AddInfo" Parameter="addInfo" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="ReceiveNewsletters" Parameter="receiveNewsletters" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="ReceiveCommercialInfo" Parameter="receiveCommercialInfo" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="AgreeTerms" Parameter="agreeTerms" Type="System.Boolean" DbType="Bit" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="dbo.GetSingleLastOffer" Method="GetSingleLastOffer" IsComposable="true">
     <Parameter Name="OfferID" Parameter="offerID" Type="System.Int32" DbType="Int" />
     <Return Type="System.Xml.Linq.XElement" />
@@ -137,6 +101,42 @@
     <Parameter Name="PdfFile" Parameter="pdfFile" Type="System.String" DbType="NVarChar(200)" />
     <Parameter Name="UsersCount" Parameter="usersCount" Type="System.Int32" DbType="Int" />
     <Parameter Name="IsPublished" Parameter="isPublished" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SaveOffer" Method="SaveOffer">
+    <Parameter Name="OfferTypeCode" Parameter="offerTypeCode" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LocationFromID" Parameter="locationFromID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LocationToID" Parameter="locationToID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StartDate" Parameter="startDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="EndDate" Parameter="endDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="StartFelxBeforeID" Parameter="startFelxBeforeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StartFelxAfterID" Parameter="startFelxAfterID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="EndFelxBeforeID" Parameter="endFelxBeforeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="EndFelxAfterID" Parameter="endFelxAfterID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IsOneWay" Parameter="isOneWay" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IsTwoWay" Parameter="isTwoWay" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="TravelersCode" Parameter="travelersCode" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AdultCount" Parameter="adultCount" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="ChildrenCount" Parameter="childrenCount" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="StudentCount" Parameter="studentCount" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="InvantCount" Parameter="invantCount" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="LuggageCount" Parameter="luggageCount" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="TransportCode" Parameter="transportCode" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StayPlaceCode" Parameter="stayPlaceCode" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FromWebsite" Parameter="fromWebsite" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="CarRental" Parameter="carRental" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="TotalPrice" Parameter="totalPrice" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PricePerPerson" Parameter="pricePerPerson" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CurrencyID" Parameter="currencyID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Fname" Parameter="fname" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Lname" Parameter="lname" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="NationalityID" Parameter="nationalityID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TimeToResearchID" Parameter="timeToResearchID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AddInfo" Parameter="addInfo" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ReceiveNewsletters" Parameter="receiveNewsletters" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="ReceiveCommercialInfo" Parameter="receiveCommercialInfo" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="AgreeTerms" Parameter="agreeTerms" Type="System.Boolean" DbType="Bit" />
     <Return Type="System.Int32" />
   </Function>
 </Database>
