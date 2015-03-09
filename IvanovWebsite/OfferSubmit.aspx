@@ -70,7 +70,7 @@
                     </span>
                 </li>
                 <li>
-                	<label>Дата на тръгване</label>
+                	<label>Дата на връщане</label>
                     <div class="cal" id="to">
                     </div>
                     <asp:HiddenField ID="HFDateTo" runat="server" ClientIDMode="Static" />
@@ -148,6 +148,7 @@
                     <span class="select">
                         <span></span>
                          <asp:DropDownList ID="AdultsCountCombo" runat="server" ClientIDMode="Static">
+                            <asp:ListItem Text="0" Value="0"></asp:ListItem>
                             <asp:ListItem Text="1" Value="1"></asp:ListItem>
                             <asp:ListItem Text="2" Value="2"></asp:ListItem>
                             <asp:ListItem Text="3" Value="3"></asp:ListItem>
@@ -160,13 +161,14 @@
                             <asp:ListItem Text="10" Value="10"></asp:ListItem>
                         </asp:DropDownList>
                     </span>
-                    <label>Adults</label>
+                    <label>Възрастни</label>
                 </span>
                 
                 <span>
                     <span class="select">
                         <span></span>                        
                         <asp:DropDownList ID="LuggageCountCombo" runat="server" ClientIDMode="Static">
+                            <asp:ListItem Text="0" Value="0"></asp:ListItem>
                             <asp:ListItem Text="1" Value="1"></asp:ListItem>
                             <asp:ListItem Text="2" Value="2"></asp:ListItem>
                             <asp:ListItem Text="3" Value="3"></asp:ListItem>
@@ -186,6 +188,7 @@
                     <span class="select">
                         <span></span>
                         <asp:DropDownList ID="StudentsCountCombo" runat="server" ClientIDMode="Static">
+                            <asp:ListItem Text="0" Value="0"></asp:ListItem>
                             <asp:ListItem Text="1" Value="1"></asp:ListItem>
                             <asp:ListItem Text="2" Value="2"></asp:ListItem>
                             <asp:ListItem Text="3" Value="3"></asp:ListItem>
@@ -198,7 +201,7 @@
                             <asp:ListItem Text="10" Value="10"></asp:ListItem>
                         </asp:DropDownList>
                     </span>
-                    <label>Students</label>
+                    <label>Студенти</label>
                 </span>
             </div>               
         </div>
@@ -209,6 +212,7 @@
                     <span class="select">
                         <span></span>
                          <asp:DropDownList ID="AdultsCountCombo1" runat="server" ClientIDMode="Static">
+                            <asp:ListItem Text="0" Value="0"></asp:ListItem>
                             <asp:ListItem Text="1" Value="1"></asp:ListItem>
                             <asp:ListItem Text="2" Value="2"></asp:ListItem>
                             <asp:ListItem Text="3" Value="3"></asp:ListItem>
@@ -221,13 +225,14 @@
                             <asp:ListItem Text="10" Value="10"></asp:ListItem>
                         </asp:DropDownList>
                     </span>
-                    <label>Adults</label>
+                    <label>Възрастни</label>
                 </span>
                 
                 <span>
                     <span class="select">
                         <span></span>
                          <asp:DropDownList ID="ChildrenCountCombo" runat="server" ClientIDMode="Static">
+                            <asp:ListItem Text="0" Value="0"></asp:ListItem>
                             <asp:ListItem Text="1" Value="1"></asp:ListItem>
                             <asp:ListItem Text="2" Value="2"></asp:ListItem>
                             <asp:ListItem Text="3" Value="3"></asp:ListItem>
@@ -240,13 +245,14 @@
                             <asp:ListItem Text="10" Value="10"></asp:ListItem>
                         </asp:DropDownList>
                     </span>
-                    <label>Children -12</label>
+                    <label>Деца до 12г</label>
                 </span>
                 
                 <span>
                     <span class="select">
                         <span></span>
                          <asp:DropDownList ID="LuggageCountCombo1" runat="server" ClientIDMode="Static">
+                            <asp:ListItem Text="0" Value="0"></asp:ListItem>
                             <asp:ListItem Text="1" Value="1"></asp:ListItem>
                             <asp:ListItem Text="2" Value="2"></asp:ListItem>
                             <asp:ListItem Text="3" Value="3"></asp:ListItem>
@@ -266,6 +272,7 @@
                     <span class="select">
                         <span></span>
                          <asp:DropDownList ID="StudentsCountCombo1" runat="server" ClientIDMode="Static">
+                            <asp:ListItem Text="0" Value="0"></asp:ListItem>
                             <asp:ListItem Text="1" Value="1"></asp:ListItem>
                             <asp:ListItem Text="2" Value="2"></asp:ListItem>
                             <asp:ListItem Text="3" Value="3"></asp:ListItem>
@@ -278,13 +285,14 @@
                             <asp:ListItem Text="10" Value="10"></asp:ListItem>
                         </asp:DropDownList>
                     </span>
-                    <label>Students</label>
+                    <label>Студенти</label>
                 </span>
                 
                 <span>
                     <span class="select">
                         <span></span>
                          <asp:DropDownList ID="InfantCountCombo" runat="server" ClientIDMode="Static">
+                            <asp:ListItem Text="0" Value="0"></asp:ListItem>
                             <asp:ListItem Text="1" Value="1"></asp:ListItem>
                             <asp:ListItem Text="2" Value="2"></asp:ListItem>
                             <asp:ListItem Text="3" Value="3"></asp:ListItem>
@@ -297,7 +305,7 @@
                             <asp:ListItem Text="10" Value="10"></asp:ListItem>
                         </asp:DropDownList>
                     </span>
-                    <label>Infant -2</label>
+                    <label>Бебета до 2г</label>
                 </span>
             </div>
         </div>
@@ -593,13 +601,15 @@ For more information regarding our privacy policy, please click <a href="#">here
 
 
         $("#from").datepicker({
-            onSelect: function (dateText) {
-                $("#HFDateFrom").val(dateText);
+            onSelect: function (dateText) {                
+                var part = dateText.split("/");
+                $("#HFDateFrom").val(part[2] + "-" + part[0] + "-" + part[1]);
             }
         });
         $("#to").datepicker({
-            onSelect: function (dateText) {
-                $("#HFDateTo").val(dateText);
+            onSelect: function (dateText) {                
+                var part = dateText.split("/");
+                $("#HFDateTo").val(part[2] + "-" + part[0] + "-" + part[1]);
             }
         });
 

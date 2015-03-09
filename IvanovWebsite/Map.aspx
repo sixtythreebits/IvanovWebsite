@@ -4,8 +4,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <div id="map" class="map"></div>
-<asp:HiddenField ID="HFCurrentLat" runat="server" ClientIDMode="Static" />
-<asp:HiddenField ID="HFCurrentLng" runat="server" ClientIDMode="Static"  />   
+
+<asp:HiddenField ID="HFCurrentMarker" runat="server" ClientIDMode="Static" />
 <asp:HiddenField ID="HFMarkers" runat="server" ClientIDMode="Static" />
 <section class="item-container">
     <asp:Repeater ID="ItemsRepeater" runat="server" ViewStateMode="Disabled" ItemType="Core.Destination">
@@ -26,22 +26,18 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptsPlaceHolder" runat="server">
 <script>
-    var CurrentLat = $("#HFCurrentLat").val();    
-    var CurrentLng = $("#HFCurrentLng").val();
+    var CurrentMarkerData = $("#HFCurrentMarker").val();    
     var LastInfoWindow = null;
 
-    var CurrentMarkerLatLng = null;
+    var CurrentMarkerJson = null;
 
-    if (CurrentLat.length > 0 && CurrentLng.length > 0) {
-        CurrentMarkerLatLng = new google.maps.LatLng(CurrentLat, CurrentLng);
+    if (CurrentMarkerData.length) {
+        CurrentMarkerJson = JSON.parse(CurrentMarkerData);        
     }
-    else {
-        CurrentLat = "52.908746";
-        CurrentLng = "23.854072";
-    }
+    
 
     function initialize() {
-        MapCenter = new google.maps.LatLng(CurrentLat,CurrentLng);
+        MapCenter = CurrentMarkerJson == null ? new google.maps.LatLng(52.908746, 23.854072) : new google.maps.LatLng(CurrentMarkerJson.lat, CurrentMarkerJson.lng);
             
         map = new google.maps.Map(document.getElementById("map"), {
             zoom: 4,
@@ -54,34 +50,34 @@
                 position: new google.maps.LatLng(item.lat,item.lng),
                 map: map
             });
-
+            
             google.maps.event.addListener(Marker, "click", function (event) {
                 
                 if (LastInfoWindow != null) {
                     LastInfoWindow.close();
                 }
                 LastInfoWindow = new google.maps.InfoWindow({
-                    content: $("#MapWindow").html()
+                    content: '<div class="item map-item"><figure><img src="' + item.image + '" /></figure><article><span>' + item.text + '</span><a href="/offer/new/#form-container" class="link">Inquery Price</a></article></div>'
                 });
                 LastInfoWindow.open(map, Marker);
             });
 
         });
 
-        if (CurrentMarkerLatLng != null) {
+        if (CurrentMarkerJson != null) {
             var m = new google.maps.Marker({
-                position: CurrentMarkerLatLng,
+                position: new google.maps.LatLng(CurrentMarkerJson.lat, CurrentMarkerJson.lng),
                 map: map,
                 icon: "/images/icons/pin_current.png"
             });
-
+            
             google.maps.event.addListener(m, "click", function (event) {
 
                 if (LastInfoWindow != null) {
                     LastInfoWindow.close();
                 }
                 LastInfoWindow = new google.maps.InfoWindow({
-                    content: $("#MapWindow").html()
+                    content: '<div class="item map-item"><figure><img src="' + CurrentMarkerJson.image + '" /></figure><article><span>' + CurrentMarkerJson.text + '</span><a href="/offer/new/#form-container" class="link">Inquery Price</a></article></div>'
                 });
                 LastInfoWindow.open(map, m);
             });
@@ -89,13 +85,4 @@
     }
     google.maps.event.addDomListener(window, 'load', initialize);
 </script>
-<template id="MapWindow">
-  <div class="item map-item">
-      <figure><img src="/uploads/img2_871f029b.jpg?width=160&height=111" /></figure>
-      <article>
-          <span>Some text goes hereSome text goes hereSome text goes hereSome text goes hereSome text goes here</span>
-          <a href="#" class="link">Inquery Price</a>
-      </article>
-  </div>
-</template>
 </asp:Content>

@@ -1,12 +1,357 @@
 ﻿
 
 ------------------------------------
-http://localhost:19133/OfferSubmit.aspx?OfferType=check - 05-Mar-15 19:50:35
-Save(OfferTypeCode = 2, LocationFromID = 39, LocationToID = 41, @StartDate = , @EndDate = , StartFelxBeforeID = 44, StartFelxAfterID = 52, EndFelxBeforeID = 44, EndFelxAfterID = 52, IsOneWay = False, IsTwoWay = False, TravelersCode = 1, AdultCount = 1, ChildrenCount = , StudentCount = 1, InvantCount = , LuggageCount = 1, TransportCode = 1, StayPlaceCode = 4, FromWebsite = google.com, CarRental = True, TotalPrice = 300, PricePerPerson = , CurrencyID = 26, Fname = Emma, Lname = Watson, Email = emma@63bits.com, NationalityID = 22, TimeToResearchID = 37, AddInfo = asdasd, ReceiveNewsletters = True, ReceiveCommercialInfo = True, AgreeTerms = True) - SQL: Cannot insert the value NULL into column 'ChildrenCount', table 'IvanovWebsite.dbo.Offers'; column does not allow nulls. INSERT fails.
-ErrorProcedure - SaveOffer
-ErrorLine - 48
-Severity - 16
-State - 2
+http://localhost:19133/Default.aspx - 06-Mar-15 16:11:28
+guid
+------------------------------------
 
+
+
+------------------------------------
+http://localhost:19133/Default.aspx - 06-Mar-15 16:11:29
+pubDate
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/Default.aspx - 06-Mar-15 16:11:29
+{http://www.w3.org/2005/Atom}updated
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/Default.aspx - 06-Mar-15 16:11:29
+title
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/Default.aspx - 06-Mar-15 16:11:29
+description
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/Default.aspx - 06-Mar-15 16:11:29
+link
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/Default.aspx - 06-Mar-15 16:11:29
+author
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/Default.aspx - 06-Mar-15 16:11:29
+{http://search.yahoo.com/mrss/}thumbnail
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/Default.aspx - 06-Mar-15 16:11:29
+{http://purl.org/syndication/thread/1.0}total
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/Default.aspx - 06-Mar-15 16:11:29
+guid
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/Default.aspx - 06-Mar-15 16:11:29
+pubDate
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/Default.aspx - 06-Mar-15 16:11:29
+{http://www.w3.org/2005/Atom}updated
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/Default.aspx - 06-Mar-15 16:11:29
+title
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/Default.aspx - 06-Mar-15 16:11:29
+description
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/Default.aspx - 06-Mar-15 16:11:29
+link
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/Default.aspx - 06-Mar-15 16:11:29
+author
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/Default.aspx - 06-Mar-15 16:11:29
+{http://purl.org/syndication/thread/1.0}total
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:11:30
+guid
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:11:31
+pubDate
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:11:31
+{http://www.w3.org/2005/Atom}updated
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:11:31
+title
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:11:31
+description
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:11:31
+link
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:11:31
+author
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:11:31
+{http://search.yahoo.com/mrss/}thumbnail
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:11:31
+{http://purl.org/syndication/thread/1.0}total
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:11:31
+guid
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:11:31
+pubDate
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:11:31
+{http://www.w3.org/2005/Atom}updated
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:11:31
+title
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:11:31
+description
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:11:31
+link
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:11:31
+author
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:11:31
+{http://purl.org/syndication/thread/1.0}total
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:12:08
+guid
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:12:08
+pubDate
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:12:08
+{http://www.w3.org/2005/Atom}updated
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:12:08
+title
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:12:08
+description
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:12:08
+link
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:12:08
+author
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:12:08
+{http://search.yahoo.com/mrss/}thumbnail
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:12:08
+{http://purl.org/syndication/thread/1.0}total
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:12:08
+guid
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:12:08
+pubDate
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:12:08
+{http://www.w3.org/2005/Atom}updated
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:12:08
+title
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:12:08
+description
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:12:08
+link
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:12:08
+author
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 06-Mar-15 16:12:08
+{http://purl.org/syndication/thread/1.0}total
 ------------------------------------
 

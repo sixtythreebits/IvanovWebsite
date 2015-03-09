@@ -65,11 +65,14 @@
                         </li>
                         <li>
                             <a href="LastOffers.aspx"><i class="fa fa-file fa-fw"></i> Last Offers</a>
-                        </li>
+                        </li>                        
                         <li>
                             <a href="VisitedDestinations.aspx"><i class="fa fa-map-marker fa-fw"></i>Visited Dest.</a>
                         </li>
                         </asp:PlaceHolder>
+                        <li>
+                            <a href="Offers.aspx"><i class="fa fa-list fa-fw"></i> Client Submited Offers</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

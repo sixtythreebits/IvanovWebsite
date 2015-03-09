@@ -1,8 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="IvanovWebsite.Default" %>
 <%@ Import Namespace="Core.Utilities" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-<script src="/js/jquery.parallax-1.1.3.js"></script>
-<script src="/js/js.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
@@ -152,7 +150,7 @@
                     <a href="#">
                         <span class="img">
                             <img src="<%#AppSettings.UploadFileHttpPath+Item.Picture %>" alt="picture" />
-                            <span><b>Прочети още</b></span>
+                            <span><b>Виж офертата</b></span>
                         </span>
                         <span class="text">
                             <strong><%# Item.Caption %></strong>
@@ -213,7 +211,7 @@
                 <a href="/map/<%#Item.ID %>/">
                     <span class="img">
                         <img src="<%#AppSettings.UploadFileHttpPath+Item.Picture %>" alt="picture" />
-                        <span><b>Прочети още</b></span>
+                        <span><b>Виж подробности</b></span>
                     </span>
                     <span class="text">
                         <strong><%# Item.Caption %></strong>                        
@@ -225,14 +223,14 @@
     </ul>
 </section>
     
-<section class="container">
+<section class="container blog-container hidden">
     <h3>Последни Статии</h3>
     <ul class="items col3">
         <li>
-            <a href="#">
+            <a href="#" target="_blank">
                 <span class="img">
                     <img src="/images/0/img1.jpg" alt="" />
-                    <span><b>Прочети още</b></span>
+                    <span><b>Прочети</b></span>
                 </span>
                 <span class="text">
                     <strong>Най-добрите дестинации за 2014</strong>
@@ -240,34 +238,55 @@
                     <i class="comments">133</i>
                 </span>
             </a>
-        </li>
-        <li>
-            <a href="#">
-                <span class="img">
-                    <img src="/images/0/img2.jpg" alt="" />
-                    <span><b>Прочети още</b></span>
-                </span>
-                <span class="text">
-                    <strong>Луксозни хотели в Париж</strong>
-                    <span>30.01.2015г.</span>
-                    <i class="comments">133</i>
-                </span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <span class="img">
-                    <img src="/images/0/img3.jpg" alt="" />
-                    <span><b>Прочети още</b></span>
-                </span>
-                <span class="text">
-                    <strong>Най-слънчевите курорти</strong>
-                    <span>30.01.2015г.</span>
-                    <i class="comments">133</i>
-                </span>
-            </a>
-        </li>
+        </li>        
     </ul>
 </section>
     
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="ScriptsPlaceHolder" runat="server">
+<script>
+    $(function () {
+
+        $('.tabs nav a').click(function () {
+            $('.tabs nav a').removeClass('active');
+            $(this).addClass('active');
+
+
+            var activeNav = $(this).attr('data-tab-nav');
+            var current = $('.tabs').find($('.tab[data-tab-content=' + activeNav + ']'));
+
+            $('.tabs .tab').removeClass('show');
+            current.addClass('show');
+
+            return false;
+        });
+
+        $.ajax({
+            url: document.URL,
+            type: "POST",
+            data: { action: "blog" },
+            dataType: "text",
+            success: function (res) {
+                
+                var ul = $(".blog-container ul")
+                var Template = $(ul.html().toString());                
+                ul.html("");
+                $(".blog-container").removeClass("hidden");
+
+                $(JSON.parse(res)).each(function (index,item) {                    
+                    var li = Template.clone();
+                    li.find("a").attr("href", item.Url);
+                    li.find("img").attr("src", item.Picture);
+                    li.find("strong").text(item.Caption);
+                    li.find(".text span").text(item.Date);
+                    li.find(".comments").text(item.CommentsCount);                    
+                    ul.append(li);
+                });
+            },
+            error: function () {
+                
+            }
+        });
+    });
+</script>
 </asp:Content>

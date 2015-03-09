@@ -6,6 +6,15 @@ using System.Xml.Serialization;
 
 namespace Core.Utilities
 {
+    public class BlogItem
+    {
+        public string Caption { set; get; }
+        public string Picture { set; get; }
+        public string Date { set; get; }
+        public string Url { set; get; }
+        public int CommentsCount { set; get; }
+    }
+
     public class Utility
     {
         
@@ -22,6 +31,11 @@ namespace Core.Utilities
             {
                 File.AppendAllText(LogFile, string.Format("\r\n\r\n------------------------------------\r\n{0} - {1}\r\n{2}\r\n------------------------------------\r\n\r\n", WebPage, DateTime.Now, StringToLog));
             }
+        }
+
+        public static string Shorten(this string str, int SymbolCount)
+        {
+            return (string.IsNullOrEmpty(str) || str.Length <= SymbolCount) ? str : str.Substring(0, SymbolCount) + " ...";
         }
 
         public static string ToAZ09Dash(this string source, bool GuidInlcuded = false, bool Shorten = false)

@@ -78,11 +78,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="About.aspx" />
     <Content Include="admin\Admin.Master" />
     <Content Include="admin\fonts\fontawesome-webfont.eot" />
     <Content Include="admin\fonts\fontawesome-webfont.ttf" />
     <Content Include="admin\fonts\fontawesome-webfont.woff" />
     <Content Include="admin\fonts\FontAwesome.otf" />
+    <Content Include="admin\Offers.aspx" />
     <Content Include="admin\UserControls\SuccessErrorControl.ascx" />
     <Content Include="admin\Users.aspx" />
     <Content Include="admin\VisitedDestinations.aspx" />
@@ -187,6 +189,7 @@
     <Content Include="css\fonts.css" />
     <Content Include="css\style.css" />
     <Content Include="Default.aspx" />
+    <Content Include="Faq.aspx" />
     <Content Include="images\0\header.jpg" />
     <Content Include="images\0\img1.jpg" />
     <Content Include="images\0\img2.jpg" />
@@ -233,9 +236,8 @@
     <Content Include="images\icons\tw.png" />
     <Content Include="images\icons\user.png" />
     <Content Include="images\logo.png" />
+    <Content Include="Jobs.aspx" />
     <Content Include="js\jquery-ui.min.js" />
-    <Content Include="js\jquery.parallax-1.1.3.js" />
-    <Content Include="js\js.js" />
     <Content Include="js\numericInput.min.js" />
     <Content Include="Map.aspx" />
     <Content Include="OfferSubmit.aspx" />
@@ -296,8 +298,9 @@
     <Content Include="App_Themes\DevEx\ASPxValidationSummary.skin" />
     <Content Include="App_Themes\DevEx\Parameters.config" />
     <Content Include="Master.Master" />
+    <Content Include="Terms.aspx" />
+    <Content Include="XMLFile1.xml" />
     <None Include="Properties\PublishProfiles\hq63bits.pubxml" />
-    <None Include="Properties\PublishProfiles\test.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -325,6 +328,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -352,6 +362,13 @@
     </Compile>
     <Compile Include="admin\login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Offers.aspx.cs">
+      <DependentUpon>Offers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Offers.aspx.designer.cs">
+      <DependentUpon>Offers.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\UserControls\SuccessErrorControl.ascx.cs">
       <DependentUpon>SuccessErrorControl.ascx</DependentUpon>
@@ -388,8 +405,22 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Faq.aspx.cs">
+      <DependentUpon>Faq.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Faq.aspx.designer.cs">
+      <DependentUpon>Faq.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Jobs.aspx.cs">
+      <DependentUpon>Jobs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Jobs.aspx.designer.cs">
+      <DependentUpon>Jobs.aspx</DependentUpon>
     </Compile>
     <Compile Include="logout.aspx.cs">
       <DependentUpon>logout.aspx</DependentUpon>
@@ -430,6 +461,13 @@
       <DependentUpon>Poligon.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Terms.aspx.cs">
+      <DependentUpon>Terms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Terms.aspx.designer.cs">
+      <DependentUpon>Terms.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="fonts\" />

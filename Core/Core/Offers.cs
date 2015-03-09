@@ -61,6 +61,22 @@ namespace Core
             }
         }
 
+        public static List<List_SubmitedOffersResult> ListSubmitedOffers()
+        {
+            try
+            {
+                using (var db = ConnectionFactory.GetDBCoreDataContext())
+                {
+                    return db.List_SubmitedOffers().OrderByDescending(o => o.CRTime).ToList();
+                }
+            }
+            catch(Exception ex)
+            {
+                string.Format("ListSubmitedOffers() - {0}",ex.Message).LogString();
+                return null;
+            }
+        }
+
         public void Save(int? OfferTypeCode, int? LocationFromID, int? LocationToID, DateTime? StartDate, DateTime? EndDate, int? StartFelxBeforeID, int? StartFelxAfterID, int? EndFelxBeforeID, int? EndFelxAfterID, bool? IsOneWay, bool? IsTwoWay, int? TravelersCode, byte? AdultCount, byte? ChildrenCount, byte? StudentCount, byte? InvantCount, byte? LuggageCount, int? TransportCode, int? StayPlaceCode, string FromWebsite, bool? CarRental, int? TotalPrice, int? PricePerPerson, int? CurrencyID, string Fname, string Lname, string Email, int? NationalityID, int? TimeToResearchID, string AddInfo, bool? ReceiveNewsletters, bool? ReceiveCommercialInfo, bool? AgreeTerms)
         {
             try

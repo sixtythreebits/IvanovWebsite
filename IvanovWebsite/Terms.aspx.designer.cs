@@ -10,7 +10,7 @@
 namespace IvanovWebsite {
     
     
-    public partial class Contact {
+    public partial class Terms {
         
         /// <summary>
         /// Master property.

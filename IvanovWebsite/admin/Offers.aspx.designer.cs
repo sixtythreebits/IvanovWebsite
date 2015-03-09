@@ -7,36 +7,39 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace IvanovWebsite {
+namespace IvanovWebsite.admin {
     
     
-    public partial class Map {
+    public partial class Offers {
         
         /// <summary>
-        /// HFCurrentMarker control.
+        /// OffersGrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HFCurrentMarker;
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView OffersGrid;
         
         /// <summary>
-        /// HFMarkers control.
+        /// OffersDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HFMarkers;
+        protected global::System.Web.UI.WebControls.ObjectDataSource OffersDataSource;
         
         /// <summary>
-        /// ItemsRepeater control.
+        /// Master property.
         /// </summary>
         /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// Auto-generated property.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater ItemsRepeater;
+        public new IvanovWebsite.admin.Admin Master {
+            get {
+                return ((IvanovWebsite.admin.Admin)(base.Master));
+            }
+        }
     }
 }
