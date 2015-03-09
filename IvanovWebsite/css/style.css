@@ -75,7 +75,6 @@ header .img{
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	background-attachment: fixed !important;
 }
 
 header div{
