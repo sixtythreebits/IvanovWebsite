@@ -190,6 +190,10 @@
     <Content Include="css\style.css" />
     <Content Include="Default.aspx" />
     <Content Include="Faq.aspx" />
+    <Content Include="images\0\about1.jpg" />
+    <Content Include="images\0\about2.jpg" />
+    <Content Include="images\0\about3.jpg" />
+    <Content Include="images\0\about4.jpg" />
     <Content Include="images\0\header.jpg" />
     <Content Include="images\0\img1.jpg" />
     <Content Include="images\0\img2.jpg" />
@@ -236,6 +240,7 @@
     <Content Include="images\icons\tw.png" />
     <Content Include="images\icons\user.png" />
     <Content Include="images\logo.png" />
+    <Content Include="images\travel2.png" />
     <Content Include="Jobs.aspx" />
     <Content Include="js\jquery-ui.min.js" />
     <Content Include="js\numericInput.min.js" />
