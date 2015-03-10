@@ -1119,6 +1119,35 @@ ul.col2 li:last-child,
 .static a:hover {
     text-decoration: none;
 }
+
+.static figure img{
+    display:block;
+    margin:0 auto;
+}
+
+.static .img-right{
+    position:relative;
+    max-width:600px;
+    margin:0 auto 40px;
+    padding-right:115px;
+}
+.static .img-right figure{
+    position:absolute;
+    top:15px;
+    right:0;
+
+    width:80px;
+    height:80px;
+    border-radius:100%;
+    overflow:hidden;
+}
+.static .img-right h4{
+    font-size:18px;
+    color:#373c40;
+}
+.static .img-right p{
+    color:#7f7f81;
+}
 /* ---------- /static page ---------- */
 .hidden {
     display:none;
