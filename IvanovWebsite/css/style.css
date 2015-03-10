@@ -570,6 +570,9 @@ footer .bottom{
 	display:block;
 	margin-bottom:15px;
 }
+.form .row.hidden{
+    display:none;
+}
 .form .row:last-child{
 	margin-bottom:0;
 }
@@ -593,8 +596,7 @@ footer .bottom{
 .form .select{
 	height:35px;
 }
-.form textarea{
-	height:97px;
+.form textarea{	
 	padding:12px;
 	resize:vertical;
 }
@@ -1120,4 +1122,11 @@ ul.col2 li:last-child,
 /* ---------- /static page ---------- */
 .hidden {
     display:none;
+}
+.disabled {
+    opacity: 0.3;
+    filter: alpha(opacity=30);
+}
+.center{
+    text-align:center;
 }

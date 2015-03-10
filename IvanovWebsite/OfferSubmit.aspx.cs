@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Core;
 using Core.Utilities;
+using System.Text;
 
 namespace IvanovWebsite
 {
@@ -46,26 +47,32 @@ namespace IvanovWebsite
             {
                 var R = new OfferRepository();
                 var OfferTypeCode = OfferType == "check" ? 2 : 1;
-                var TravelersCode = Request.Form["TransportGroup"].ToInt();
+                var TravelersCode = Request.Form["PeopleGroup"].ToInt();
 
-                var AdultsCount = TravelersCode == 1 ? AdultsCountCombo.SelectedValue.ToByte() : (TravelersCode == 3 ? AdultsCountCombo1.SelectedValue.ToByte() : null);
-                var StudentsCount = TravelersCode == 1 ? StudentsCountCombo.SelectedValue.ToByte() : (TravelersCode == 3 ? StudentsCountCombo1.SelectedValue.ToByte() : null);
-                var LuggageCount = TravelersCode == 1 ? LuggageCountCombo.SelectedValue.ToByte() : (TravelersCode == 3 ? LuggageCountCombo1.SelectedValue.ToByte() : null);
-                var ChildrenCount = TravelersCode == 3 ? ChildrenCountCombo.SelectedValue.ToByte() : null;
-                var InvantCount = TravelersCode == 3 ? InfantCountCombo.SelectedValue.ToByte() : null;
+                var AdultsCount = (TravelersCode == 1 || TravelersCode == 2) ? AdultsCountCombo.SelectedValue.ToByte() : ((TravelersCode == 3 || TravelersCode == 4) ? AdultsCountCombo1.SelectedValue.ToByte() : null);
+                var StudentsCount = (TravelersCode == 1 || TravelersCode == 2) ? StudentsCountCombo.SelectedValue.ToByte() : ((TravelersCode == 3 || TravelersCode == 4) ? StudentsCountCombo1.SelectedValue.ToByte() : null);
+                var LuggageCount = (TravelersCode == 1 || TravelersCode == 2) ? LuggageCountCombo.SelectedValue.ToByte() : ((TravelersCode == 3 || TravelersCode == 4) ? LuggageCountCombo1.SelectedValue.ToByte() : null);
+                var ChildrenCount = (TravelersCode == 3 || TravelersCode == 4) ? ChildrenCountCombo.SelectedValue.ToByte() : null;
+                var InvantCount = (TravelersCode == 3 || TravelersCode == 4) ? InfantCountCombo.SelectedValue.ToByte() : null;
+
+
 
                 R.Save(
                     OfferTypeCode: OfferTypeCode,
-                    LocationFromID: FromLocationCombo.SelectedValue.ToInt(),
-                    LocationToID: ToLocationCombo.SelectedValue.ToInt(),
+                    //LocationFromID: FromLocationCombo.SelectedValue.ToInt(),
+                    //LocationToID: ToLocationCombo.SelectedValue.ToInt(),
+                    LocationFromID: null,
+                    LocationToID: null,
+                    LocationFrom: FromLocationTextBox.Text,
+                    LocationTo: ToLocationTextBox.Text,
                     StartDate: HFDateFrom.Value.ToDateTime(),
-                    EndDate: HFDateTo.Value.ToDateTime(),
+                    EndDate: IsOneWayRadio.Checked ? null : HFDateTo.Value.ToDateTime(),
                     StartFelxBeforeID: FlexDaysStartBeforeCombo.SelectedValue.ToInt(),
                     StartFelxAfterID: FlexDaysStartAfterCombo.SelectedValue.ToInt(),
-                    EndFelxBeforeID: FlexDaysEndBeforeCombo.SelectedValue.ToInt(),
-                    EndFelxAfterID: FlexDaysEndAfterCombo.SelectedValue.ToInt(),
-                    IsOneWay: IsOneWayCheckBox.Checked,
-                    IsTwoWay: IsTwoWayCheckbox.Checked,
+                    EndFelxBeforeID: IsOneWayRadio.Checked ? null : FlexDaysEndBeforeCombo.SelectedValue.ToInt(),
+                    EndFelxAfterID: IsOneWayRadio.Checked ? null : FlexDaysEndAfterCombo.SelectedValue.ToInt(),
+                    IsOneWay: IsOneWayRadio.Checked,
+                    IsTwoWay: IsTwoWayRadio.Checked,
                     TravelersCode: TravelersCode,
                     AdultCount: AdultsCount,
                     ChildrenCount: ChildrenCount,
@@ -73,9 +80,12 @@ namespace IvanovWebsite
                     InvantCount: InvantCount,
                     LuggageCount: LuggageCount,
                     TransportCode: Request.Form["TransportGroup"].ToInt(),
+                    Transport: GetTransportString(),
+                    TransportWebsite: TransportPriceRefererTextBox.Text,
                     StayPlaceCode: Request.Form["StayPlaceGroup"].ToInt(),
                     FromWebsite: RefererWebsiteTextBox.Text,
                     CarRental: CarRentYesRadio.Checked,
+                    CarRentCompany: CarRentCompanyTextBox.Text,
                     TotalPrice: MaxPriceTextBox.Text.ToInt(),
                     PricePerPerson: MaxPricePerPersonTextBox.Text.ToInt(),
                     CurrencyID: CurrenciesMaxPriceCombo.SelectedValue.ToInt(),
@@ -103,6 +113,32 @@ namespace IvanovWebsite
             {
                 AgreeToTermsPlaceHolder.Visible = true;
             }
+        }
+
+        string GetTransportString()
+        {
+            var sb = new StringBuilder();
+            if (TransportPlaneCheckbox.Checked)
+            {
+                sb.Append("Самолет,");
+            }
+
+            if (TransportTrainCheckbox.Checked)
+            {
+                sb.Append("Влак,");
+            }
+
+            if (TransportBusCheckbox.Checked)
+            {
+                sb.Append("Автобус,");
+            }
+
+            if (TransportFerryCheckbox.Checked)
+            {
+                sb.Append("Ферибот");
+            }
+
+            return sb.ToString().TrimEnd(',');
         }
     }
 }

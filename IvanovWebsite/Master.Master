@@ -44,7 +44,7 @@
         
         <ul>
         	<li>
-            	<a href="/about/">About</a>
+            	<a href="/about/">За нас</a>
             </li>
             <li>
             	<a href="http://bezposoka.blogspot.com/" target="_blank">Blog</a>
@@ -53,13 +53,13 @@
             	<a href="/faq/">FAQ</a>
             </li>
             <li>
-            	<a href="/terms/">Terms</a>
+            	<a href="/terms/">Общи условия</a>
             </li>
             <li>
-            	<a href="/jobs/">Jobs</a>
+            	<a href="/jobs/">Работа</a>
             </li>
             <li>
-            	<a href="/contact/">Contact</a>
+            	<a href="/contact/">Контакти</a>
             </li>
         </ul>
         

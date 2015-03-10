@@ -11,7 +11,7 @@ namespace IvanovWebsite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Master.PageTitle = "Contact";
+            Master.PageTitle = "Контакти";
         }
     }
 }

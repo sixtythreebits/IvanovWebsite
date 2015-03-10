@@ -34,11 +34,15 @@
             </dx:GridViewDataTextColumn>                        
             <dx:GridViewDataTextColumn FieldName="Transport" Width="70px">
             </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="TransportWebsite" Width="150px" Caption="Transport Website">
+            </dx:GridViewDataTextColumn>
             <dx:GridViewDataTextColumn FieldName="StayPlace" Width="70px">
             </dx:GridViewDataTextColumn>
             <dx:GridViewDataCheckColumn FieldName="CarRental" Caption="Car Rent" Width="70px">
             </dx:GridViewDataCheckColumn>            
-            <dx:GridViewDataTextColumn FieldName="FromWebsite" Caption="Website" Width="100px">
+            <dx:GridViewDataCheckColumn FieldName="CarRentalCompany" Caption="Car Rent Company" Width="150px">
+            </dx:GridViewDataCheckColumn>            
+            <dx:GridViewDataTextColumn FieldName="FromWebsite" Caption="Price Website" Width="150px">
                  <DataItemTemplate>
                      <a href="<%#Eval("FromWebsite") %>" target="_blank"><%#Eval("FromWebsite") %></a>
                  </DataItemTemplate>

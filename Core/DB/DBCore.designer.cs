@@ -128,11 +128,20 @@ namespace Core.DB
 			return ((int)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteOffer")]
+		public int DeleteOffer([global::System.Data.Linq.Mapping.ParameterAttribute(Name="OfferID", DbType="Int")] System.Nullable<int> offerID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), offerID);
+			return ((int)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SaveOffer")]
 		public int SaveOffer(
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="OfferTypeCode", DbType="Int")] System.Nullable<int> offerTypeCode, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LocationFromID", DbType="Int")] System.Nullable<int> locationFromID, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LocationToID", DbType="Int")] System.Nullable<int> locationToID, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LocationFrom", DbType="NVarChar(100)")] string locationFrom, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LocationTo", DbType="NVarChar(100)")] string locationTo, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="StartDate", DbType="Date")] System.Nullable<System.DateTime> startDate, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="EndDate", DbType="Date")] System.Nullable<System.DateTime> endDate, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="StartFelxBeforeID", DbType="Int")] System.Nullable<int> startFelxBeforeID, 
@@ -148,9 +157,12 @@ namespace Core.DB
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvantCount", DbType="TinyInt")] System.Nullable<byte> invantCount, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LuggageCount", DbType="TinyInt")] System.Nullable<byte> luggageCount, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TransportCode", DbType="Int")] System.Nullable<int> transportCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Transport", DbType="NVarChar(500)")] string transport, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TransportWebsite", DbType="NVarChar(500)")] string transportWebsite, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="StayPlaceCode", DbType="Int")] System.Nullable<int> stayPlaceCode, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="FromWebsite", DbType="NVarChar(500)")] string fromWebsite, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CarRental", DbType="Bit")] System.Nullable<bool> carRental, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CarRentCompany", DbType="NVarChar(100)")] string carRentCompany, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalPrice", DbType="Int")] System.Nullable<int> totalPrice, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PricePerPerson", DbType="Int")] System.Nullable<int> pricePerPerson, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CurrencyID", DbType="Int")] System.Nullable<int> currencyID, 
@@ -164,7 +176,7 @@ namespace Core.DB
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ReceiveCommercialInfo", DbType="Bit")] System.Nullable<bool> receiveCommercialInfo, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AgreeTerms", DbType="Bit")] System.Nullable<bool> agreeTerms)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), offerTypeCode, locationFromID, locationToID, startDate, endDate, startFelxBeforeID, startFelxAfterID, endFelxBeforeID, endFelxAfterID, isOneWay, isTwoWay, travelersCode, adultCount, childrenCount, studentCount, invantCount, luggageCount, transportCode, stayPlaceCode, fromWebsite, carRental, totalPrice, pricePerPerson, currencyID, fname, lname, email, nationalityID, timeToResearchID, addInfo, receiveNewsletters, receiveCommercialInfo, agreeTerms);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), offerTypeCode, locationFromID, locationToID, locationFrom, locationTo, startDate, endDate, startFelxBeforeID, startFelxAfterID, endFelxBeforeID, endFelxAfterID, isOneWay, isTwoWay, travelersCode, adultCount, childrenCount, studentCount, invantCount, luggageCount, transportCode, transport, transportWebsite, stayPlaceCode, fromWebsite, carRental, carRentCompany, totalPrice, pricePerPerson, currencyID, fname, lname, email, nationalityID, timeToResearchID, addInfo, receiveNewsletters, receiveCommercialInfo, agreeTerms);
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -172,13 +184,6 @@ namespace Core.DB
 		public IQueryable<List_SubmitedOffersResult> List_SubmitedOffers()
 		{
 			return this.CreateMethodCallQuery<List_SubmitedOffersResult>(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteOffer")]
-		public int DeleteOffer([global::System.Data.Linq.Mapping.ParameterAttribute(Name="OfferID", DbType="Int")] System.Nullable<int> offerID)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), offerID);
-			return ((int)(result.ReturnValue));
 		}
 	}
 	
@@ -885,6 +890,8 @@ namespace Core.DB
 		
 		private string _Transport;
 		
+		private string _TransportWebsite;
+		
 		private string _StayPlace;
 		
 		private string _FromWebsite;
@@ -1209,7 +1216,7 @@ namespace Core.DB
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Transport", DbType="NVarChar(200)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Transport", DbType="NVarChar(500)")]
 		public string Transport
 		{
 			get
@@ -1221,6 +1228,22 @@ namespace Core.DB
 				if ((this._Transport != value))
 				{
 					this._Transport = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransportWebsite", DbType="NVarChar(500)")]
+		public string TransportWebsite
+		{
+			get
+			{
+				return this._TransportWebsite;
+			}
+			set
+			{
+				if ((this._TransportWebsite != value))
+				{
+					this._TransportWebsite = value;
 				}
 			}
 		}

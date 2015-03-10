@@ -31,22 +31,22 @@ namespace IvanovWebsite {
         protected global::System.Web.UI.WebControls.PlaceHolder FormPlaceHolder;
         
         /// <summary>
-        /// FromLocationCombo control.
+        /// FromLocationTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList FromLocationCombo;
+        protected global::System.Web.UI.WebControls.TextBox FromLocationTextBox;
         
         /// <summary>
-        /// ToLocationCombo control.
+        /// ToLocationTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ToLocationCombo;
+        protected global::System.Web.UI.WebControls.TextBox ToLocationTextBox;
         
         /// <summary>
         /// LocationsDataSource control.
@@ -85,13 +85,13 @@ namespace IvanovWebsite {
         protected global::System.Web.UI.WebControls.DropDownList FlexDaysStartAfterCombo;
         
         /// <summary>
-        /// IsOneWayCheckBox control.
+        /// IsOneWayRadio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox IsOneWayCheckBox;
+        protected global::System.Web.UI.WebControls.RadioButton IsOneWayRadio;
         
         /// <summary>
         /// HFDateTo control.
@@ -121,13 +121,13 @@ namespace IvanovWebsite {
         protected global::System.Web.UI.WebControls.DropDownList FlexDaysEndAfterCombo;
         
         /// <summary>
-        /// IsTwoWayCheckbox control.
+        /// IsTwoWayRadio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox IsTwoWayCheckbox;
+        protected global::System.Web.UI.WebControls.RadioButton IsTwoWayRadio;
         
         /// <summary>
         /// FelxDaysBeforeDataSource control.
@@ -220,6 +220,51 @@ namespace IvanovWebsite {
         protected global::System.Web.UI.WebControls.DropDownList InfantCountCombo;
         
         /// <summary>
+        /// TransportPlaneCheckbox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox TransportPlaneCheckbox;
+        
+        /// <summary>
+        /// TransportTrainCheckbox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox TransportTrainCheckbox;
+        
+        /// <summary>
+        /// TransportBusCheckbox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox TransportBusCheckbox;
+        
+        /// <summary>
+        /// TransportFerryCheckbox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox TransportFerryCheckbox;
+        
+        /// <summary>
+        /// TransportPriceRefererTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TransportPriceRefererTextBox;
+        
+        /// <summary>
         /// RefererWebsitePlaceHolder control.
         /// </summary>
         /// <remarks>
@@ -254,6 +299,15 @@ namespace IvanovWebsite {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton CarRentNoRadio;
+        
+        /// <summary>
+        /// CarRentCompanyTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox CarRentCompanyTextBox;
         
         /// <summary>
         /// MaxPriceTextBox control.

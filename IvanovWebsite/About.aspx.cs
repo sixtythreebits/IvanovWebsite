@@ -6,7 +6,7 @@ namespace IvanovWebsite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Master.PageTitle = "About";
+            Master.PageTitle = "За нас";
         }
     }
 }

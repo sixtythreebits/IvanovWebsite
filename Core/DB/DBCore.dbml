@@ -103,10 +103,16 @@
     <Parameter Name="IsPublished" Parameter="isPublished" Type="System.Boolean" DbType="Bit" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.DeleteOffer" Method="DeleteOffer">
+    <Parameter Name="OfferID" Parameter="offerID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
   <Function Name="dbo.SaveOffer" Method="SaveOffer">
     <Parameter Name="OfferTypeCode" Parameter="offerTypeCode" Type="System.Int32" DbType="Int" />
     <Parameter Name="LocationFromID" Parameter="locationFromID" Type="System.Int32" DbType="Int" />
     <Parameter Name="LocationToID" Parameter="locationToID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LocationFrom" Parameter="locationFrom" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="LocationTo" Parameter="locationTo" Type="System.String" DbType="NVarChar(100)" />
     <Parameter Name="StartDate" Parameter="startDate" Type="System.DateTime" DbType="Date" />
     <Parameter Name="EndDate" Parameter="endDate" Type="System.DateTime" DbType="Date" />
     <Parameter Name="StartFelxBeforeID" Parameter="startFelxBeforeID" Type="System.Int32" DbType="Int" />
@@ -122,9 +128,12 @@
     <Parameter Name="InvantCount" Parameter="invantCount" Type="System.Byte" DbType="TinyInt" />
     <Parameter Name="LuggageCount" Parameter="luggageCount" Type="System.Byte" DbType="TinyInt" />
     <Parameter Name="TransportCode" Parameter="transportCode" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Transport" Parameter="transport" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="TransportWebsite" Parameter="transportWebsite" Type="System.String" DbType="NVarChar(500)" />
     <Parameter Name="StayPlaceCode" Parameter="stayPlaceCode" Type="System.Int32" DbType="Int" />
     <Parameter Name="FromWebsite" Parameter="fromWebsite" Type="System.String" DbType="NVarChar(500)" />
     <Parameter Name="CarRental" Parameter="carRental" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="CarRentCompany" Parameter="carRentCompany" Type="System.String" DbType="NVarChar(100)" />
     <Parameter Name="TotalPrice" Parameter="totalPrice" Type="System.Int32" DbType="Int" />
     <Parameter Name="PricePerPerson" Parameter="pricePerPerson" Type="System.Int32" DbType="Int" />
     <Parameter Name="CurrencyID" Parameter="currencyID" Type="System.Int32" DbType="Int" />
@@ -159,7 +168,8 @@
       <Column Name="StudentCount" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
       <Column Name="InvantCount" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
       <Column Name="LuggageCount" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="Transport" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Transport" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="TransportWebsite" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="StayPlace" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="FromWebsite" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="CarRental" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
@@ -177,9 +187,5 @@
       <Column Name="AgreeTerms" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CRTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </ElementType>
-  </Function>
-  <Function Name="dbo.DeleteOffer" Method="DeleteOffer">
-    <Parameter Name="OfferID" Parameter="offerID" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
   </Function>
 </Database>

@@ -17,10 +17,12 @@
             
             <span class="row size1 align-middle">
                 <label>От къде искате да тръгнете?</label>
+                <%--
                 <span class="select">
-                    <span></span>
+                    <span></span>                    
                     <asp:DropDownList ID="FromLocationCombo" runat="server" DataSourceID="LocationsDataSource" DataTextField="Caption" DataValueField="ID" ClientIDMode="Static"></asp:DropDownList>
-                </span>
+                </span>--%>
+                <asp:TextBox ID="FromLocationTextBox" runat="server" ClientIDMode="Static" MaxLength="50"></asp:TextBox>
             </span>
         </fieldset>
         
@@ -29,10 +31,11 @@
             
             <span class="row size1 align-middle">
                 <label>От къде искате да тръгнете?</label>
-                <span class="select">
-                    <span></span>
+                <%--<span class="select">
+                    <span></span>                    
                     <asp:DropDownList ID="ToLocationCombo" runat="server" DataSourceID="LocationsDataSource" DataTextField="Caption" DataValueField="ID" ClientIDMode="Static"></asp:DropDownList>
-                </span>
+                </span>--%>
+                <asp:TextBox ID="ToLocationTextBox" runat="server" ClientIDMode="Static" MaxLength="50"></asp:TextBox>
             </span>
         </fieldset>
         <asp:ObjectDataSource ID="LocationsDataSource" runat="server" TypeName="Core.DictionaryRepository" SelectMethod="ListDictionary" CacheDuration="3600">
@@ -62,14 +65,15 @@
                             <asp:DropDownList ID="FlexDaysStartAfterCombo" runat="server" DataSourceID="FelxDaysAfterDataSource" DataTextField="Caption" DataValueField="ID" ClientIDMode="Static"></asp:DropDownList>
                         </span>
                     </span>
-                    <span class="checkbox">
+                    <span class="radio">
                         <label>
-                            <asp:CheckBox ID="IsOneWayCheckBox" runat="server" ClientIDMode="Static" />
+                            <asp:RadioButton ID="IsOneWayRadio" runat="server" ClientIDMode="Static" GroupName="Ways" />
+                            <%--<asp:CheckBox ID="IsOneWayCheckBox" runat="server" ClientIDMode="Static" />--%>
                             <span>Однопосочен</span>
                         </label>
                     </span>
                 </li>
-                <li>
+                <li id="TwoWayLi">
                 	<label>Дата на връщане</label>
                     <div class="cal" id="to">
                     </div>
@@ -86,9 +90,10 @@
                         </span>
                     </span>
                     
-                    <span class="checkbox">
+                    <span class="radio">
                         <label>
-                            <asp:CheckBox ID="IsTwoWayCheckbox" runat="server" ClientIDMode="Static" />
+                            <asp:RadioButton ID="IsTwoWayRadio" runat="server" ClientIDMode="Static" GroupName="Ways" />
+                            <%--<asp:CheckBox ID="IsTwoWayCheckbox" runat="server" ClientIDMode="Static" />--%>
                             <span>Двупосочен</span>
                         </label>
                     </span>
@@ -123,7 +128,7 @@
                     <span><img src="/images/icons/form/single.png" alt="" /></span>
                     <b>Самостоятелно</b>
                 </label>
-                <label>
+                <label data-show="single">
                 	<input type="radio" name="PeopleGroup" value="2" />
                     <span><img src="/images/icons/form/couple.png" alt="" /></span>
                     <b>Двойка</b>
@@ -133,7 +138,7 @@
                     <span><img src="/images/icons/form/family.png" alt="" /></span>
                     <b>Семейство</b>
                 </label>
-                <label>
+                <label data-show="family">
                 	<input type="radio" name="PeopleGroup" value="4" />
                     <span><img src="/images/icons/form/group.png" alt="" /></span>
                     <b>Група</b>
@@ -324,28 +329,31 @@
             </span>
             
             <span class="row radio-icon">
-            	<label>                    
-                	<input type="radio" name="TransportGroup" value="1" />
+            	<label>                                    	
+                    <asp:CheckBox ID="TransportPlaneCheckbox" runat="server" />
                     <span><img src="/images/icons/form/plane.png" alt="" /></span>
                     <b>Самолет</b>
                 </label>
-                <label>
-                	<input type="radio" name="TransportGroup" value="2" />
+                <label>                	
+                    <asp:CheckBox ID="TransportTrainCheckbox" runat="server" />
                     <span><img src="/images/icons/form/train.png" alt="" /></span>
                     <b>Влак</b>
                 </label>
-                <label>
-                	<input type="radio" name="TransportGroup" value="3" />
+                <label>                	
+                    <asp:CheckBox ID="TransportBusCheckbox" runat="server" />
                     <span><img src="/images/icons/form/bus.png" alt="" /></span>
                     <b>Автобус</b>
                 </label>
-                <label>
-                	<input type="radio" name="TransportGroup" value="4" />
+                <label>                	
+                    <asp:CheckBox ID="TransportFerryCheckbox" runat="server" />
                     <span><img src="/images/icons/form/ferry.png" alt="" /></span>
                     <b>Ферибот</b>
                 </label>
             </span>
-            
+            <span class="row size1 align-middle">
+                <label>От къде е получена цената?</label>
+                <asp:TextBox ID="TransportPriceRefererTextBox" runat="server" MaxLength="100"></asp:TextBox>                
+            </span>
         </fieldset>
         
         <fieldset>
@@ -414,6 +422,10 @@
                         <span>Не</span>
                     </label>
                 </span>
+            </span>
+            <span id="CarRentCompanySpan" class="row size1 align-middle hidden">
+                <label>Калі ласка, увядзіце кампаніі імя</label>
+                <asp:TextBox ID="CarRentCompanyTextBox" runat="server" ClientIDMode="Static" MaxLength="100"></asp:TextBox>                
             </span>
         </fieldset>     
         
@@ -511,7 +523,7 @@
             
             <p>Моля да ни предоставите повече информация за вашето пътуване - какво искате да правите? Искате да посетите определени места? Искате или не искате да използвате дадена авиокомпания? Въобще всичко, което може да ни помогне да направим по-доброто предложение</p>            
             <span class="row">
-                <asp:TextBox ID="AddInfoTextBox" runat="server" ClientIDMode="Static" placeholder="Please tell us anything extra you would like to add.."></asp:TextBox>            	
+                <asp:TextBox ID="AddInfoTextBox" runat="server" ClientIDMode="Static" TextMode="MultiLine" Rows="5" placeholder="Please tell us anything extra you would like to add.."></asp:TextBox>            	
             </span>
             
             <span class="row checkbox list">                
@@ -612,8 +624,30 @@ For more information regarding our privacy policy, please click <a href="#">here
                 $("#HFDateTo").val(part[2] + "-" + part[0] + "-" + part[1]);
             }
         });
+        
 
         $("#MaxPriceTextBox,#MaxPricePerPersonTextBox").numericInput({ allowNegative: false, allowFloat: false });
+
+        $("#IsOneWayRadio").click(function () {
+            $("#TwoWayLi #to").datepicker("option", "disabled", true);
+            $("#TwoWayLi select").attr("disabled", "disabled");
+            $("#TwoWayLi #to").addClass("disabled");
+            $("#TwoWayLi .row.col2").addClass("disabled");
+        });
+
+        $("#IsTwoWayRadio").click(function () {
+            $("#to").datepicker("option", "disabled", false);
+            $("#TwoWayLi select").removeAttr("disabled", "disabled");
+            $("#to").removeClass("disabled");
+            $("#TwoWayLi .row.col2").removeClass("disabled");
+        });
+
+        $("#CarRentYesRadio").click(function () {
+            $("#CarRentCompanySpan").slideDown(100);
+        });
+        $("#CarRentNoRadio").click(function () {
+            $("#CarRentCompanySpan").slideUp(100);
+        });
     });
 </script>
 </asp:PlaceHolder>
