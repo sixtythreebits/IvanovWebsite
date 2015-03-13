@@ -10,7 +10,7 @@
 namespace IvanovWebsite {
     
     
-    public partial class OfferSubmit {
+    public partial class OfferEdit {
         
         /// <summary>
         /// SuccessPlaceHolder control.

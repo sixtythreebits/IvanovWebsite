@@ -114,12 +114,6 @@ namespace Core.DB
 			return this.CreateMethodCallQuery<List_DictionariesResult>(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), level, dictionaryCode, isVisible);
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.List_LastOffers", IsComposable=true)]
-		public IQueryable<List_LastOffersResult> List_LastOffers([global::System.Data.Linq.Mapping.ParameterAttribute(Name="IsPublished", DbType="Bit")] System.Nullable<bool> isPublished)
-		{
-			return this.CreateMethodCallQuery<List_LastOffersResult>(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), isPublished);
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.tsp_LastOffers")]
 		public int tsp_LastOffers([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="TinyInt")] System.Nullable<byte> iud, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="OfferID", DbType="Int")] ref System.Nullable<int> offerID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Caption", DbType="NVarChar(50)")] string caption, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Location", DbType="NVarChar(20)")] string location, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ShortDesc", DbType="NVarChar(500)")] string shortDesc, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Picture", DbType="NVarChar(200)")] string picture, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PdfFile", DbType="NVarChar(200)")] string pdfFile, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UsersCount", DbType="Int")] System.Nullable<int> usersCount, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IsPublished", DbType="Bit")] System.Nullable<bool> isPublished)
 		{
@@ -133,6 +127,18 @@ namespace Core.DB
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), offerID);
 			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.List_LastOffers", IsComposable=true)]
+		public IQueryable<List_LastOffersResult> List_LastOffers([global::System.Data.Linq.Mapping.ParameterAttribute(Name="IsPublished", DbType="Bit")] System.Nullable<bool> isPublished)
+		{
+			return this.CreateMethodCallQuery<List_LastOffersResult>(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), isPublished);
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.List_SubmitedOffers", IsComposable=true)]
+		public IQueryable<List_SubmitedOffersResult> List_SubmitedOffers()
+		{
+			return this.CreateMethodCallQuery<List_SubmitedOffersResult>(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SaveOffer")]
@@ -160,6 +166,7 @@ namespace Core.DB
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Transport", DbType="NVarChar(500)")] string transport, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TransportWebsite", DbType="NVarChar(500)")] string transportWebsite, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="StayPlaceCode", DbType="Int")] System.Nullable<int> stayPlaceCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="StayPlace", DbType="NVarChar(500)")] string stayPlace, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="FromWebsite", DbType="NVarChar(500)")] string fromWebsite, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CarRental", DbType="Bit")] System.Nullable<bool> carRental, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CarRentCompany", DbType="NVarChar(100)")] string carRentCompany, 
@@ -174,16 +181,12 @@ namespace Core.DB
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AddInfo", DbType="NVarChar(MAX)")] string addInfo, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ReceiveNewsletters", DbType="Bit")] System.Nullable<bool> receiveNewsletters, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ReceiveCommercialInfo", DbType="Bit")] System.Nullable<bool> receiveCommercialInfo, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AgreeTerms", DbType="Bit")] System.Nullable<bool> agreeTerms)
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AgreeTerms", DbType="Bit")] System.Nullable<bool> agreeTerms, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="OfferID", DbType="Int")] ref System.Nullable<int> offerID)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), offerTypeCode, locationFromID, locationToID, locationFrom, locationTo, startDate, endDate, startFelxBeforeID, startFelxAfterID, endFelxBeforeID, endFelxAfterID, isOneWay, isTwoWay, travelersCode, adultCount, childrenCount, studentCount, invantCount, luggageCount, transportCode, transport, transportWebsite, stayPlaceCode, fromWebsite, carRental, carRentCompany, totalPrice, pricePerPerson, currencyID, fname, lname, email, nationalityID, timeToResearchID, addInfo, receiveNewsletters, receiveCommercialInfo, agreeTerms);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), offerTypeCode, locationFromID, locationToID, locationFrom, locationTo, startDate, endDate, startFelxBeforeID, startFelxAfterID, endFelxBeforeID, endFelxAfterID, isOneWay, isTwoWay, travelersCode, adultCount, childrenCount, studentCount, invantCount, luggageCount, transportCode, transport, transportWebsite, stayPlaceCode, stayPlace, fromWebsite, carRental, carRentCompany, totalPrice, pricePerPerson, currencyID, fname, lname, email, nationalityID, timeToResearchID, addInfo, receiveNewsletters, receiveCommercialInfo, agreeTerms, offerID);
+			offerID = ((System.Nullable<int>)(result.GetParameterValue(39)));
 			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.List_SubmitedOffers", IsComposable=true)]
-		public IQueryable<List_SubmitedOffersResult> List_SubmitedOffers()
-		{
-			return this.CreateMethodCallQuery<List_SubmitedOffersResult>(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 		}
 	}
 	
@@ -898,6 +901,8 @@ namespace Core.DB
 		
 		private bool _CarRental;
 		
+		private string _CarRentCompany;
+		
 		private System.Nullable<int> _TotalPrice;
 		
 		private System.Nullable<int> _PricePerPerson;
@@ -960,7 +965,7 @@ namespace Core.DB
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationFrom", DbType="NVarChar(200)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationFrom", DbType="NVarChar(100)")]
 		public string LocationFrom
 		{
 			get
@@ -976,7 +981,7 @@ namespace Core.DB
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationTo", DbType="NVarChar(200)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationTo", DbType="NVarChar(100)")]
 		public string LocationTo
 		{
 			get
@@ -1248,7 +1253,7 @@ namespace Core.DB
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StayPlace", DbType="NVarChar(200)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StayPlace", DbType="NVarChar(500)")]
 		public string StayPlace
 		{
 			get
@@ -1292,6 +1297,22 @@ namespace Core.DB
 				if ((this._CarRental != value))
 				{
 					this._CarRental = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CarRentCompany", DbType="NVarChar(100)")]
+		public string CarRentCompany
+		{
+			get
+			{
+				return this._CarRentCompany;
+			}
+			set
+			{
+				if ((this._CarRentCompany != value))
+				{
+					this._CarRentCompany = value;
 				}
 			}
 		}

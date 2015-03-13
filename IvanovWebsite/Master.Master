@@ -21,8 +21,8 @@
             <p>
             	Flightfox is a marketplace of flight experts who find you the <br/>best flights, guaranteed!
             </p>
-            <a href="/offer/check/#form-container" class="blue">Провери оферта</a>
-            <a href="/offer/new/#form-container" class="magenta">Нова оферта</a>
+            <a href="/offer/check/" class="blue">Провери оферта</a>
+            <a href="/offer/new/" class="magenta">Нова оферта</a>
         </div> 
     </header>
     <form id="form1" runat="server">    
@@ -67,7 +67,12 @@
         	© 2015 Bezposoka. Всички права запазени.
         </div>
     </footer>
+    <asp:PlaceHolder ID="ScrollPlaceHolder" runat="server" ViewStateMode="Disabled">
+    <script>
+        $("html, body").animate({ scrollTop: 707 }, 0);
+    </script>
+    </asp:PlaceHolder>
     <asp:ContentPlaceHolder ID="ScriptsPlaceHolder" runat="server">       
-    </asp:ContentPlaceHolder>    
+    </asp:ContentPlaceHolder>        
 </body>
 </html>

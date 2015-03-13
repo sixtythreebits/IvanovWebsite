@@ -23,6 +23,8 @@ namespace IvanovWebsite
             {
                 ParseBlogFeed();
             }
+
+            Master.DisableScroll = true;
         }
 
         void InitLastOffers()
@@ -45,7 +47,9 @@ namespace IvanovWebsite
                 using (var client = new WebClient())
                 {
                     string reply = client.DownloadString("http://feeds.feedburner.com/Bezposoka");
+                    
                     var x = XElement.Parse(reply);
+                    //System.IO.File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + "XMLFile1.xml", reply);
                     var Items = x.Element("channel").Elements("item").Take(3);
 
                     var BlogItemList = new List<BlogItem>();
@@ -58,7 +62,7 @@ namespace IvanovWebsite
                             if (e.Name.ToString().Contains("title")) { BlogItem.Caption = e.Value; }
                             if (e.Name.ToString().Contains("pubDate")) { BlogItem.Date = DateTime.Parse(e.Value).ToString("MMM dd, yyyy"); }
                             if (e.Name.ToString().Contains("link")) { BlogItem.Url = e.Value; }
-                            if (e.Name.ToString().Contains("thumbnail")) { BlogItem.Picture = e.Attribute("url").Value; }
+                            if (e.Name.ToString().Contains("thumbnail")) { BlogItem.Picture = e.Attribute("url").Value.Replace("s72-c", "s1600"); }
                             if (e.Name.ToString().Contains("total")) { BlogItem.CommentsCount = int.Parse(e.Value); }
                         });
                         BlogItemList.Add(BlogItem);

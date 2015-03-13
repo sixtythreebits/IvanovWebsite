@@ -7,7 +7,7 @@ using System.Text;
 
 namespace IvanovWebsite
 {
-    public partial class OfferSubmit : System.Web.UI.Page
+    public partial class OfferEdit : System.Web.UI.Page
     {
         string OfferType;
         protected void Page_Load(object sender, EventArgs e)
@@ -102,7 +102,7 @@ namespace IvanovWebsite
                     ReceiveCommercialInfo: ReceiveCommercialInfoCheckbox.Checked,
                     AgreeTerms: AgreeTermsOfUseCheckbox.Checked
                 );
-                if (R.IsError && OfferID>0)
+                if (R.IsError && OfferID > 0)
                 {
                     ErrorPlaceHolder.Visible = true;
                 }

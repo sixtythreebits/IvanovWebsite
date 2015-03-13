@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/Admin.Master" AutoEventWireup="true" CodeBehind="Offers.aspx.cs" Inherits="IvanovWebsite.admin.Offers" Theme="DevEx" %>
 <%@ MasterType VirtualPath="~/admin/Admin.Master" %>
-<%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dx" %>
-<%@ Register assembly="DevExpress.Web.v14.1, Version=14.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -40,7 +40,7 @@
             </dx:GridViewDataTextColumn>
             <dx:GridViewDataCheckColumn FieldName="CarRental" Caption="Car Rent" Width="70px">
             </dx:GridViewDataCheckColumn>            
-            <dx:GridViewDataCheckColumn FieldName="CarRentalCompany" Caption="Car Rent Company" Width="150px">
+            <dx:GridViewDataCheckColumn FieldName="CarRentCompany" Caption="Car Rent Company" Width="150px">
             </dx:GridViewDataCheckColumn>            
             <dx:GridViewDataTextColumn FieldName="FromWebsite" Caption="Price Website" Width="150px">
                  <DataItemTemplate>
@@ -68,10 +68,15 @@
             </dx:GridViewDataCheckColumn>
             <dx:GridViewDataDateColumn FieldName="CRTime" Caption="Date" Width="120px">
                 <PropertiesDateEdit DisplayFormatString="MMM dd, yyyy"></PropertiesDateEdit>
-            </dx:GridViewDataDateColumn>
-            <dx:GridViewDataColumn FieldName="AddInfo"></dx:GridViewDataColumn>
+            </dx:GridViewDataDateColumn>            
         </Columns>
+        <Templates>
+            <DetailRow>
+                <%#Eval("AddInfo") %>
+            </DetailRow>
+        </Templates>        
         <Settings HorizontalScrollBarMode="Auto" />
+        <SettingsDetail ShowDetailRow="true" ShowDetailButtons="true" />
     </dx:ASPxGridView>
     <asp:ObjectDataSource ID="OffersDataSource" TypeName="Core.OfferRepository" SelectMethod="ListSubmitedOffers" runat="server"></asp:ObjectDataSource>
 </div>    

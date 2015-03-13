@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="OfferSubmit.aspx.cs" Inherits="IvanovWebsite.OfferSubmit" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="OfferEdit.aspx.cs" Inherits="IvanovWebsite.OfferEdit" %>
 <%@ MasterType VirtualPath="~/Master.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="/js/jquery-ui.min.js"></script>

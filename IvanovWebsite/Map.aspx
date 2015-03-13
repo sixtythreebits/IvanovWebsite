@@ -3,6 +3,8 @@
 <script src="//maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<br /><br />
+<h1>Дестинации</h1>
 <div id="map" class="map"></div>
 
 <asp:HiddenField ID="HFCurrentMarker" runat="server" ClientIDMode="Static" />
@@ -22,6 +24,22 @@
             </div>
         </ItemTemplate>
     </asp:Repeater>    
+    <div class="paging">
+        <ul>
+            <asp:Repeater ID="PagerRepeater" runat="server">
+                <ItemTemplate>
+                    <li>
+                        <asp:PlaceHolder ID="ActivePlaceHolder" runat="server" ViewStateMode="Disabled" Visible='<%#Container.ItemIndex+1==PageNum %>'>
+                            <a class="active"><%#Container.ItemIndex + 1 %></a>
+                        </asp:PlaceHolder>
+                        <asp:PlaceHolder ID="ItemPlaceHolder" runat="server" Visible='<%#(Container.ItemIndex+1)!=PageNum %>'>
+                            <a href="<%# CurrentID == null ? string.Format("/map/?page={0}",Container.ItemIndex + 1) : string.Format("/map/{0}/?page={1}",CurrentID,Container.ItemIndex + 1)%>"><%#Container.ItemIndex + 1 %></a>
+                        </asp:PlaceHolder>
+                    </li>
+                </ItemTemplate>
+            </asp:Repeater>
+        </ul>
+    </div>
 </section>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptsPlaceHolder" runat="server">

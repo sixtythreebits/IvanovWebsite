@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="IvanovWebsite.Default" %>
+<%@ MasterType VirtualPath="~/Master.Master" %>
 <%@ Import Namespace="Core.Utilities" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

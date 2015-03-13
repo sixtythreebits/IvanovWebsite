@@ -19,7 +19,7 @@ namespace IvanovWebsite.admin {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView.ASPxGridView DestinationsGrid;
+        protected global::DevExpress.Web.ASPxGridView DestinationsGrid;
         
         /// <summary>
         /// DestinationsDataSource control.
@@ -37,7 +37,7 @@ namespace IvanovWebsite.admin {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxPopupControl.ASPxPopupControl NewOfferPopup;
+        protected global::DevExpress.Web.ASPxPopupControl NewOfferPopup;
         
         /// <summary>
         /// CaptionTextBox control.

@@ -77,20 +77,6 @@
       <Column Name="SortVal" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.List_LastOffers" Method="List_LastOffers" IsComposable="true">
-    <Parameter Name="IsPublished" Parameter="isPublished" Type="System.Boolean" DbType="Bit" />
-    <ElementType Name="List_LastOffersResult">
-      <Column Name="OfferID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Caption" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Location" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="ShortDesc" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="Picture" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="PdfFile" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="UsersCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="IsPublished" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="CRTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.tsp_LastOffers" Method="tsp_LastOffers">
     <Parameter Name="iud" Type="System.Byte" DbType="TinyInt" />
     <Parameter Name="OfferID" Parameter="offerID" Type="System.Int32" DbType="Int" Direction="InOut" />
@@ -106,6 +92,61 @@
   <Function Name="dbo.DeleteOffer" Method="DeleteOffer">
     <Parameter Name="OfferID" Parameter="offerID" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.List_LastOffers" Method="List_LastOffers" IsComposable="true">
+    <Parameter Name="IsPublished" Parameter="isPublished" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="List_LastOffersResult">
+      <Column Name="OfferID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Caption" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ShortDesc" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Picture" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PdfFile" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="UsersCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsPublished" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CRTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.List_SubmitedOffers" Method="List_SubmitedOffers" IsComposable="true">
+    <ElementType Name="List_SubmitedOffersResult">
+      <Column Name="OfferID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OfferType" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="LocationFrom" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LocationTo" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="StartFelxBefore" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="StartFelxAfter" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="EndFelxBefore" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="EndFelxAfter" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="IsOneWay" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsTwoWay" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Travelers" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="AdultCount" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="ChildrenCount" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="StudentCount" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="InvantCount" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="LuggageCount" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Transport" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="TransportWebsite" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="StayPlace" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="FromWebsite" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="CarRental" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CarRentCompany" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TotalPrice" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PricePerPerson" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Currency" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Fname" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Lname" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Nationality" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="TimeToResearch" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="AddInfo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ReceiveNewsletters" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ReceiveCommercialInfo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AgreeTerms" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CRTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
   </Function>
   <Function Name="dbo.SaveOffer" Method="SaveOffer">
     <Parameter Name="OfferTypeCode" Parameter="offerTypeCode" Type="System.Int32" DbType="Int" />
@@ -131,6 +172,7 @@
     <Parameter Name="Transport" Parameter="transport" Type="System.String" DbType="NVarChar(500)" />
     <Parameter Name="TransportWebsite" Parameter="transportWebsite" Type="System.String" DbType="NVarChar(500)" />
     <Parameter Name="StayPlaceCode" Parameter="stayPlaceCode" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StayPlace" Parameter="stayPlace" Type="System.String" DbType="NVarChar(500)" />
     <Parameter Name="FromWebsite" Parameter="fromWebsite" Type="System.String" DbType="NVarChar(500)" />
     <Parameter Name="CarRental" Parameter="carRental" Type="System.Boolean" DbType="Bit" />
     <Parameter Name="CarRentCompany" Parameter="carRentCompany" Type="System.String" DbType="NVarChar(100)" />
@@ -146,46 +188,7 @@
     <Parameter Name="ReceiveNewsletters" Parameter="receiveNewsletters" Type="System.Boolean" DbType="Bit" />
     <Parameter Name="ReceiveCommercialInfo" Parameter="receiveCommercialInfo" Type="System.Boolean" DbType="Bit" />
     <Parameter Name="AgreeTerms" Parameter="agreeTerms" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="OfferID" Parameter="offerID" Type="System.Int32" DbType="Int" Direction="InOut" />
     <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.List_SubmitedOffers" Method="List_SubmitedOffers" IsComposable="true">
-    <ElementType Name="List_SubmitedOffersResult">
-      <Column Name="OfferID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="OfferType" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="LocationFrom" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="LocationTo" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="StartDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="EndDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="StartFelxBefore" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="StartFelxAfter" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="EndFelxBefore" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="EndFelxAfter" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="IsOneWay" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="IsTwoWay" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="Travelers" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="AdultCount" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="ChildrenCount" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="StudentCount" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="InvantCount" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="LuggageCount" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="Transport" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="TransportWebsite" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="StayPlace" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="FromWebsite" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="CarRental" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="TotalPrice" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PricePerPerson" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Currency" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="Fname" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="Lname" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Nationality" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="TimeToResearch" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="AddInfo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ReceiveNewsletters" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="ReceiveCommercialInfo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="AgreeTerms" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="CRTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-    </ElementType>
   </Function>
 </Database>

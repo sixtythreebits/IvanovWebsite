@@ -124,6 +124,23 @@ header div a:after,
 	background:url(../images/icons/arrow_duble_r.png) center no-repeat;
 	border-radius:5px;
 }
+.btn.arrow-l{
+    padding:0 0 0 45px;
+}
+.btn.arrow-l:after
+{
+    right:auto;
+    left:0;
+    background-image:url(../images/icons/arrow_duble_l.png);
+}
+.btn.stop
+{
+    padding:0 !important;
+}
+.btn.stop:after
+{
+    display:none;    
+}
 
 header div a.blue,
 .btn.blue{
@@ -528,8 +545,18 @@ footer .bottom{
 	background:#fff;
 	border:1px solid #efeeee;
 	border-radius:8px;
-	
+    position:relative;	
 	padding:60px 60px;
+    overflow:visible;
+}
+
+.container.form > h1
+{
+    position:absolute;
+    left:0;
+    top:-70px;
+    width:100%;
+    text-align:center;
 }
 
 .form *{
@@ -1099,7 +1126,7 @@ ul.col2 li:last-child,
     min-height:200px;
     margin:60px auto;
 }
-.static h1{
+h1{
     color:#0f83ff;
     font-size:30px;
 	font-weight:bold;
@@ -1158,4 +1185,32 @@ ul.col2 li:last-child,
 }
 .center{
     text-align:center;
+}
+
+
+.paging {
+    float: left;
+    text-align: center;
+    width: 100%;
+    margin-top:15px;
+}
+.paging ul {
+    list-style: outside none none;
+}
+.paging li {
+    display: inline-block;
+}
+.paging a {
+    color: #024ab7;
+    display: block;
+    font-family: Helvetica,Arial;
+    font-size: 14px;
+    line-height: 22px;
+    margin: 0 2px;
+    padding: 0 5px;
+    text-decoration: none;
+}
+.paging a.active {
+    background: none repeat scroll 0 0 #024ab7;
+    color: #fff;
 }

@@ -8,6 +8,11 @@ namespace IvanovWebsite
 {
     public partial class Map : System.Web.UI.Page
     {
+        public int? CurrentID = null;
+        public int PageNum = 1;
+        int ItemsPerPage = 5;
+        int PageCount = 0;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             InitStartUp();
@@ -17,7 +22,8 @@ namespace IvanovWebsite
         {
             var list = DestinationRepository.ListVisitedDestinations(true);
             Destination Current = null;
-            var CurrentID = Request.QueryString["id"].ToInt();
+            CurrentID = Request.QueryString["id"].ToInt();
+
             if (CurrentID > 0)
             {
                 Current = list.Where(d => d.ID == CurrentID).FirstOrDefault();
@@ -31,8 +37,23 @@ namespace IvanovWebsite
                 HFMarkers.Value = JsonConvert.SerializeObject(list.Select(i => new { lat = i.Lat, lng = i.Lng, text = i.ShortDesc.Shorten(100), image = string.Format("/uploads/{0}?width=160&height=111", i.Picture) }), Formatting.None);
             }
 
-            ItemsRepeater.DataSource = list;
+
+            PageCount = (int)Math.Ceiling((decimal)list.Count / (decimal)ItemsPerPage);
+            
+            InitPager();
+
+            ItemsRepeater.DataSource = list.Skip((PageNum - 1) * ItemsPerPage).Take(ItemsPerPage);
             ItemsRepeater.DataBind();
+        }
+
+        void InitPager()
+        {
+            var x = Request.QueryString["page"].ToInt();
+            PageNum = x.HasValue ? x.Value : 1;
+            PageNum = PageNum > 1 ? PageNum : 1;
+
+            PagerRepeater.DataSource = Enumerable.Range(1, PageCount);
+            PagerRepeater.DataBind();
         }
     }
 }

@@ -11,6 +11,14 @@ namespace IvanovWebsite
     {
         public string PageTitle { set; get; }
 
+        public bool DisableScroll
+        {
+            set
+            {
+                ScrollPlaceHolder.Visible = false;
+            }
+        }
+
         protected void Page_Init(object sender, EventArgs e)
         {
             PageTitle = "Bezposoka";

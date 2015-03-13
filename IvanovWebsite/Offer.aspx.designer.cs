@@ -10,214 +10,124 @@
 namespace IvanovWebsite {
     
     
-    public partial class OfferSubmit {
+    public partial class Offer {
         
         /// <summary>
-        /// SuccessPlaceHolder control.
+        /// FromLocationLiteral control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder SuccessPlaceHolder;
+        protected global::System.Web.UI.WebControls.Literal FromLocationLiteral;
         
         /// <summary>
-        /// FormPlaceHolder control.
+        /// ToLocationLiteral control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder FormPlaceHolder;
+        protected global::System.Web.UI.WebControls.Literal ToLocationLiteral;
         
         /// <summary>
-        /// FromLocationTextBox control.
+        /// DateFromLiteral control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox FromLocationTextBox;
+        protected global::System.Web.UI.WebControls.Literal DateFromLiteral;
         
         /// <summary>
-        /// ToLocationTextBox control.
+        /// DateToLiteral control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ToLocationTextBox;
+        protected global::System.Web.UI.WebControls.Literal DateToLiteral;
         
         /// <summary>
-        /// LocationsDataSource control.
+        /// AloneRadio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource LocationsDataSource;
+        protected global::System.Web.UI.WebControls.RadioButton AloneRadio;
         
         /// <summary>
-        /// HFDateFrom control.
+        /// CoupleRadio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HFDateFrom;
+        protected global::System.Web.UI.WebControls.RadioButton CoupleRadio;
         
         /// <summary>
-        /// FlexDaysStartBeforeCombo control.
+        /// FamilyRadio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList FlexDaysStartBeforeCombo;
+        protected global::System.Web.UI.WebControls.RadioButton FamilyRadio;
         
         /// <summary>
-        /// FlexDaysStartAfterCombo control.
+        /// PeopleGroupRadio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList FlexDaysStartAfterCombo;
+        protected global::System.Web.UI.WebControls.RadioButton PeopleGroupRadio;
         
         /// <summary>
-        /// IsOneWayRadio control.
+        /// AdultCountPlaceHolder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton IsOneWayRadio;
+        protected global::System.Web.UI.WebControls.PlaceHolder AdultCountPlaceHolder;
         
         /// <summary>
-        /// HFDateTo control.
+        /// InvanvtCountPlaceHolder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HFDateTo;
+        protected global::System.Web.UI.WebControls.PlaceHolder InvanvtCountPlaceHolder;
         
         /// <summary>
-        /// FlexDaysEndBeforeCombo control.
+        /// LuggageCountPlaceHolder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList FlexDaysEndBeforeCombo;
+        protected global::System.Web.UI.WebControls.PlaceHolder LuggageCountPlaceHolder;
         
         /// <summary>
-        /// FlexDaysEndAfterCombo control.
+        /// StudentsCountPlaceHolder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList FlexDaysEndAfterCombo;
+        protected global::System.Web.UI.WebControls.PlaceHolder StudentsCountPlaceHolder;
         
         /// <summary>
-        /// IsTwoWayRadio control.
+        /// ChildrenCountPlaceHolder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton IsTwoWayRadio;
-        
-        /// <summary>
-        /// FelxDaysBeforeDataSource control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource FelxDaysBeforeDataSource;
-        
-        /// <summary>
-        /// FelxDaysAfterDataSource control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource FelxDaysAfterDataSource;
-        
-        /// <summary>
-        /// AdultsCountCombo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList AdultsCountCombo;
-        
-        /// <summary>
-        /// LuggageCountCombo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList LuggageCountCombo;
-        
-        /// <summary>
-        /// StudentsCountCombo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList StudentsCountCombo;
-        
-        /// <summary>
-        /// AdultsCountCombo1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList AdultsCountCombo1;
-        
-        /// <summary>
-        /// ChildrenCountCombo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ChildrenCountCombo;
-        
-        /// <summary>
-        /// LuggageCountCombo1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList LuggageCountCombo1;
-        
-        /// <summary>
-        /// StudentsCountCombo1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList StudentsCountCombo1;
-        
-        /// <summary>
-        /// InfantCountCombo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList InfantCountCombo;
+        protected global::System.Web.UI.WebControls.PlaceHolder ChildrenCountPlaceHolder;
         
         /// <summary>
         /// TransportPlaneCheckbox control.
@@ -310,15 +220,6 @@ namespace IvanovWebsite {
         protected global::System.Web.UI.WebControls.CheckBox ApartmentCheckBox;
         
         /// <summary>
-        /// RefererWebsitePlaceHolder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder RefererWebsitePlaceHolder;
-        
-        /// <summary>
         /// RefererWebsiteTextBox control.
         /// </summary>
         /// <remarks>
@@ -362,15 +263,6 @@ namespace IvanovWebsite {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox MaxPriceTextBox;
-        
-        /// <summary>
-        /// CurrenciesMaxPriceCombo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList CurrenciesMaxPriceCombo;
         
         /// <summary>
         /// MaxPricePerPersonPlaceHolder control.
@@ -427,42 +319,6 @@ namespace IvanovWebsite {
         protected global::System.Web.UI.WebControls.TextBox EmailTextBox;
         
         /// <summary>
-        /// NationalityCombo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList NationalityCombo;
-        
-        /// <summary>
-        /// NationalityDataSource control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource NationalityDataSource;
-        
-        /// <summary>
-        /// ResearchTimeCombo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ResearchTimeCombo;
-        
-        /// <summary>
-        /// ResearchTimeDataSource control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ResearchTimeDataSource;
-        
-        /// <summary>
         /// AddInfoTextBox control.
         /// </summary>
         /// <remarks>
@@ -497,62 +353,5 @@ namespace IvanovWebsite {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox AgreeTermsOfUseCheckbox;
-        
-        /// <summary>
-        /// SaveButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton SaveButton;
-        
-        /// <summary>
-        /// FormScriptsPlaceHolder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder FormScriptsPlaceHolder;
-        
-        /// <summary>
-        /// ErrorPlaceHolder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder ErrorPlaceHolder;
-        
-        /// <summary>
-        /// AgreeToTermsPlaceHolder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder AgreeToTermsPlaceHolder;
-        
-        /// <summary>
-        /// AllRequiredPlaceHolder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder AllRequiredPlaceHolder;
-        
-        /// <summary>
-        /// Master property.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated property.
-        /// </remarks>
-        public new IvanovWebsite.Master Master {
-            get {
-                return ((IvanovWebsite.Master)(base.Master));
-            }
-        }
     }
 }

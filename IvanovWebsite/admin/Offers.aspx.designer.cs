@@ -19,7 +19,7 @@ namespace IvanovWebsite.admin {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView.ASPxGridView OffersGrid;
+        protected global::DevExpress.Web.ASPxGridView OffersGrid;
         
         /// <summary>
         /// OffersDataSource control.
