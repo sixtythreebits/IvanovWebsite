@@ -4,6 +4,7 @@ using System.Linq;
 using Core;
 using Core.Utilities;
 using System.Text;
+using System.Xml.Linq;
 
 namespace IvanovWebsite
 {
@@ -13,18 +14,6 @@ namespace IvanovWebsite
         protected void Page_Load(object sender, EventArgs e)
         {
             InitStartUp();
-            CheckSession();
-        }
-
-        void CheckSession()
-        {
-            if (Session["Success"] != null)
-            {
-                Session.Remove("Success");
-                FormPlaceHolder.Visible = false;
-                FormScriptsPlaceHolder.Visible = false;
-                SuccessPlaceHolder.Visible = true;
-            }
         }
 
         void InitStartUp()
@@ -49,22 +38,18 @@ namespace IvanovWebsite
             {
                 var R = new OfferRepository();
                 var OfferTypeCode = OfferType == "check" ? 2 : 1;
-                var TravelersCode = Request.Form["PeopleGroup"].ToInt();
+                var TravelersCode = GetSelectedTravelerCode();
 
-                var AdultsCount = (TravelersCode == 1 || TravelersCode == 2) ? AdultsCountCombo.SelectedValue.ToByte() : ((TravelersCode == 3 || TravelersCode == 4) ? AdultsCountCombo1.SelectedValue.ToByte() : null);
-                var StudentsCount = (TravelersCode == 1 || TravelersCode == 2) ? StudentsCountCombo.SelectedValue.ToByte() : ((TravelersCode == 3 || TravelersCode == 4) ? StudentsCountCombo1.SelectedValue.ToByte() : null);
-                var LuggageCount = (TravelersCode == 1 || TravelersCode == 2) ? LuggageCountCombo.SelectedValue.ToByte() : ((TravelersCode == 3 || TravelersCode == 4) ? LuggageCountCombo1.SelectedValue.ToByte() : null);
-                var ChildrenCount = (TravelersCode == 3 || TravelersCode == 4) ? ChildrenCountCombo.SelectedValue.ToByte() : null;
-                var InvantCount = (TravelersCode == 3 || TravelersCode == 4) ? InfantCountCombo.SelectedValue.ToByte() : null;
+                var AdultsCount = AdultsCountCombo.SelectedValue.ToByte();
+                var StudentsCount = StudentsCountCombo.SelectedValue.ToByte();
+                var LuggageCount = LuggageCountCombo.SelectedValue.ToByte();
+                var ChildrenCount = ChildrenCountCombo.SelectedValue.ToByte();
+                var InvantCount = InfantCountCombo.SelectedValue.ToByte();
 
 
 
                 var OfferID = R.Save(
-                    OfferTypeCode: OfferTypeCode,
-                    //LocationFromID: FromLocationCombo.SelectedValue.ToInt(),
-                    //LocationToID: ToLocationCombo.SelectedValue.ToInt(),
-                    LocationFromID: null,
-                    LocationToID: null,
+                    OfferTypeCode: OfferTypeCode,                    
                     LocationFrom: FromLocationTextBox.Text,
                     LocationTo: ToLocationTextBox.Text,
                     StartDate: HFDateFrom.Value.ToDateTime(),
@@ -80,12 +65,10 @@ namespace IvanovWebsite
                     ChildrenCount: ChildrenCount,
                     StudentCount: StudentsCount,
                     InvantCount: InvantCount,
-                    LuggageCount: LuggageCount,
-                    TransportCode: Request.Form["TransportGroup"].ToInt(),
-                    Transport: GetTransportString(),
-                    TransportWebsite: TransportPriceRefererTextBox.Text,
-                    StayPlaceCode: Request.Form["StayPlaceGroup"].ToInt(),
-                    StayPlace: GetStayPlaceString(),
+                    LuggageCount: LuggageCount,                    
+                    Transport: GetTransportXml(),
+                    TransportWebsite: TransportPriceRefererTextBox.Text,                    
+                    StayPlace: GetStayPlaceXml(),
                     FromWebsite: RefererWebsiteTextBox.Text,
                     CarRental: CarRentYesRadio.Checked,
                     CarRentCompany: CarRentCompanyTextBox.Text,
@@ -110,7 +93,7 @@ namespace IvanovWebsite
                 {
                     //Session["Success"] = true;
                     //Response.Redirect(string.Format("/offer/{0}/", OfferType));
-                    Response.Redirect(string.Format("/offer/{0}/", OfferID));
+                    Response.Redirect(string.Format("/offer/review/{0}/", OfferID));
                 }
             }
         }
@@ -122,7 +105,7 @@ namespace IvanovWebsite
                 string.IsNullOrWhiteSpace(ToLocationTextBox.Text) ||
                 HFDateFrom.Value.ToDateTime() == null ||
                 (IsOneWayRadio.Checked == false && HFDateTo.Value.ToDateTime() == null) ||
-                Request.Form["PeopleGroup"].ToInt() == null ||                                
+                GetSelectedTravelerCode() == null ||                                
                 string.IsNullOrWhiteSpace(MaxPriceTextBox.Text) ||
                 string.IsNullOrWhiteSpace(FnameTextBox.Text) ||
                 string.IsNullOrWhiteSpace(LnameTextBox.Text) ||
@@ -142,61 +125,87 @@ namespace IvanovWebsite
             return true;
         }
 
-        string GetTransportString()
+        XElement GetTransportXml()
         {
-            var sb = new StringBuilder();
+            var x = new XElement("data");
+            
             if (TransportPlaneCheckbox.Checked)
             {
-                sb.Append("Самолет,");
+                x.Add(new XElement("item", new XElement("id", 1)));
             }
 
             if (TransportTrainCheckbox.Checked)
             {
-                sb.Append("Влак,");
+                x.Add(new XElement("item", new XElement("id", 2)));
             }
 
             if (TransportBusCheckbox.Checked)
             {
-                sb.Append("Автобус,");
+                x.Add(new XElement("item", new XElement("id", 3)));
             }
 
             if (TransportFerryCheckbox.Checked)
             {
-                sb.Append("Ферибот");
+                x.Add(new XElement("item", new XElement("id", 4)));
             }
 
-            return sb.ToString().TrimEnd(',');
+            return x;
         }
 
-        string GetStayPlaceString()
+        XElement GetStayPlaceXml()
         {
-            var sb = new StringBuilder();
+            var x = new XElement("data");
+
             if (CampingCheckBox.Checked)
             {
-                sb.Append("Къмпинг,");
+                x.Add(new XElement("item", new XElement("id", 1)));
             }
 
             if (HostelCheckBox.Checked)
             {
-                sb.Append("Хостел,");
+                x.Add(new XElement("item", new XElement("id", 2)));
             }
 
             if (Hotel23CheckBox.Checked)
             {
-                sb.Append("Хотел 2-3,");
+                x.Add(new XElement("item", new XElement("id", 3)));
             }
 
             if (Hotel45CheckBox.Checked)
             {
-                sb.Append("Хотел 4-5");
+                x.Add(new XElement("item", new XElement("id", 4)));
             }
 
             if (ApartmentCheckBox.Checked)
             {
-                sb.Append("Студио / Апартамент");
+                x.Add(new XElement("item", new XElement("id", 5)));
             }
 
-            return sb.ToString().TrimEnd(',');
+            return x;
+        }
+
+        public int? GetSelectedTravelerCode()
+        {
+            if (AloneRadio.Checked)
+            {
+                return 1;
+            }
+            else if (CoupleRadio.Checked)
+            {
+                return 2;
+            }
+            else if (FamilyRadio.Checked)
+            {
+                return 3;
+            }
+            else if (PeopleGroupRadio.Checked)
+            {
+                return 4;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

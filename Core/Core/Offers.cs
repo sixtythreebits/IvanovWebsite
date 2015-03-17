@@ -4,12 +4,30 @@ using System.Linq;
 using Core.DB;
 using Core.Utilities;
 using System.Xml.Serialization;
+using System.Xml.Linq;
 
 namespace Core
 {
     public class OfferRepository
     {
         public bool IsError { set; get; }
+
+        public void DeleteOffer(int? ID)
+        {
+            try
+            {
+                using (var db = ConnectionFactory.GetDBCoreDataContext())
+                {
+                    db.DeleteOffer(ID);
+                }
+            }
+            catch (Exception ex)
+            {
+                IsError = true;
+                string.Format("DeleteOffer(ID = {0}) - {1}", ID, ex.Message);
+            }
+
+        }
 
         public static LastOffer GetSingleLastOffer(int? ID)
         {
@@ -30,6 +48,30 @@ namespace Core
             }
 
             return null;
+        }
+
+        public static Offer GetSingleOffer(int? ID)
+        {
+            try
+            {
+                using (var db = ConnectionFactory.GetDBCoreDataContext())
+                {
+                    var x = db.GetSingleOffer(ID);
+                    if (x == null)
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        return x.ToString().DeserializeTo<Offer>();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                string.Format("GetSingleOffer(ID = {0}) - {1}", ID, ex.Message).LogString();
+                return null;                
+            }
         }
 
         public static List<LastOffer> ListLastOffers(bool? IsPublished = null)
@@ -77,24 +119,40 @@ namespace Core
             }
         }
 
-        public int? Save(int? OfferTypeCode, int? LocationFromID, int? LocationToID, string LocationFrom, string LocationTo, DateTime? StartDate, DateTime? EndDate, int? StartFelxBeforeID, int? StartFelxAfterID, int? EndFelxBeforeID, int? EndFelxAfterID, bool? IsOneWay, bool? IsTwoWay, int? TravelersCode, byte? AdultCount, byte? ChildrenCount, byte? StudentCount, byte? InvantCount, byte? LuggageCount, int? TransportCode, string Transport, string TransportWebsite, int? StayPlaceCode, string StayPlace, string FromWebsite, bool? CarRental, string CarRentCompany, int? TotalPrice, int? PricePerPerson, int? CurrencyID, string Fname, string Lname, string Email, int? NationalityID, int? TimeToResearchID, string AddInfo, bool? ReceiveNewsletters, bool? ReceiveCommercialInfo, bool? AgreeTerms)
+        public int? Save(int? OfferTypeCode, string LocationFrom, string LocationTo, DateTime? StartDate, DateTime? EndDate, int? StartFelxBeforeID, int? StartFelxAfterID, int? EndFelxBeforeID, int? EndFelxAfterID, bool? IsOneWay, bool? IsTwoWay, int? TravelersCode, byte? AdultCount, byte? ChildrenCount, byte? StudentCount, byte? InvantCount, byte? LuggageCount, XElement Transport, string TransportWebsite, XElement StayPlace, string FromWebsite, bool? CarRental, string CarRentCompany, int? TotalPrice, int? PricePerPerson, int? CurrencyID, string Fname, string Lname, string Email, int? NationalityID, int? TimeToResearchID, string AddInfo, bool? ReceiveNewsletters, bool? ReceiveCommercialInfo, bool? AgreeTerms)
         {
             try
             {
                 using (var db = ConnectionFactory.GetDBCoreDataContext())
                 {
                     int? OfferID = null;
-                    db.SaveOffer(OfferTypeCode, LocationFromID, LocationToID, LocationFrom, LocationTo, StartDate, EndDate, StartFelxBeforeID, StartFelxAfterID, EndFelxBeforeID, EndFelxAfterID, IsOneWay, IsTwoWay, TravelersCode, AdultCount, ChildrenCount, StudentCount, InvantCount, LuggageCount, TransportCode, Transport, TransportWebsite, StayPlaceCode, StayPlace, FromWebsite, CarRental, CarRentCompany, TotalPrice, PricePerPerson, CurrencyID, Fname, Lname, Email, NationalityID, TimeToResearchID, AddInfo, ReceiveNewsletters, ReceiveCommercialInfo, AgreeTerms, ref OfferID);
+                    db.SaveOffer(OfferTypeCode, LocationFrom, LocationTo, StartDate, EndDate, StartFelxBeforeID, StartFelxAfterID, EndFelxBeforeID, EndFelxAfterID, IsOneWay, IsTwoWay, TravelersCode, AdultCount, ChildrenCount, StudentCount, InvantCount, LuggageCount, Transport, TransportWebsite, StayPlace, FromWebsite, CarRental, CarRentCompany, TotalPrice, PricePerPerson, CurrencyID, Fname, Lname, Email, NationalityID, TimeToResearchID, AddInfo, ReceiveNewsletters, ReceiveCommercialInfo, AgreeTerms, ref OfferID);
                     return OfferID;
                 }
             }
             catch (Exception ex)
             {
                 IsError = true;
-                string.Format("Save(OfferTypeCode = {0}, LocationFromID = {1}, LocationToID = {2}, LocationFrom = {3}, LocationTo = {4}, StartDate = {5}, EndDate = {6}, StartFelxBeforeID = {7}, StartFelxAfterID = {8}, EndFelxBeforeID = {9}, EndFelxAfterID = {10}, IsOneWay = {11}, IsTwoWay = {12}, TravelersCode = {13}, AdultCount = {14}, ChildrenCount = {15}, StudentCount = {16}, InvantCount = {17}, LuggageCount = {18}, TransportCode = {19}, Transport = {20}, TransportWebsite = {21}, StayPlaceCode = {22}, StayPlace = {23}, FromWebsite = {24}, CarRental = {25}, CarRentCompany = {26}, TotalPrice = {27}, PricePerPerson = {28}, CurrencyID = {29}, Fname = {30}, Lname = {31}, Email = {32}, NationalityID = {33}, TimeToResearchID = {34}, AddInfo = {35}, ReceiveNewsletters = {36}, ReceiveCommercialInfo = {37}, AgreeTerms = {38}) - {39}", OfferTypeCode, LocationFromID, LocationToID, LocationFrom, LocationTo, StartDate, EndDate, StartFelxBeforeID, StartFelxAfterID, EndFelxBeforeID, EndFelxAfterID, IsOneWay, IsTwoWay, TravelersCode, AdultCount, ChildrenCount, StudentCount, InvantCount, LuggageCount, TransportCode, Transport, TransportWebsite, StayPlaceCode, StayPlace, FromWebsite, CarRental, CarRentCompany, TotalPrice, PricePerPerson, CurrencyID, Fname, Lname, Email, NationalityID, TimeToResearchID, AddInfo, ReceiveNewsletters, ReceiveCommercialInfo, AgreeTerms,ex.Message);                
+                string.Format("Save(OfferTypeCode = {0}, LocationFrom = {1}, LocationTo = {2}, StartDate = {3}, EndDate = {4}, StartFelxBeforeID = {5}, StartFelxAfterID = {6}, EndFelxBeforeID = {7}, EndFelxAfterID = {8}, IsOneWay = {9}, IsTwoWay = {10}, TravelersCode = {11}, AdultCount = {12}, ChildrenCount = {13}, StudentCount = {14}, InvantCount = {15}, LuggageCount = {16}, Transport = {17}, TransportWebsite = {18}, StayPlace = {19}, FromWebsite = {20}, CarRental = {21}, CarRentCompany = {22}, TotalPrice = {23}, PricePerPerson = {24}, CurrencyID = {25}, Fname = {26}, Lname = {27}, Email = {28}, NationalityID = {29}, TimeToResearchID = {30}, AddInfo = {31}, ReceiveNewsletters = {32}, ReceiveCommercialInfo = {33}, AgreeTerms = {34}) - {35}", OfferTypeCode, LocationFrom, LocationTo, StartDate, EndDate, StartFelxBeforeID, StartFelxAfterID, EndFelxBeforeID, EndFelxAfterID, IsOneWay, IsTwoWay, TravelersCode, AdultCount, ChildrenCount, StudentCount, InvantCount, LuggageCount, Transport, TransportWebsite, StayPlace, FromWebsite, CarRental, CarRentCompany, TotalPrice, PricePerPerson, CurrencyID, Fname, Lname, Email, NationalityID, TimeToResearchID, AddInfo, ReceiveNewsletters, ReceiveCommercialInfo, AgreeTerms,ex.Message);
             }
 
             return null;
+        }
+
+        public void Update(int? OfferID,int? OfferTypeCode, string LocationFrom, string LocationTo, DateTime? StartDate, DateTime? EndDate, int? StartFelxBeforeID, int? StartFelxAfterID, int? EndFelxBeforeID, int? EndFelxAfterID, bool? IsOneWay, bool? IsTwoWay, int? TravelersCode, byte? AdultCount, byte? ChildrenCount, byte? StudentCount, byte? InvantCount, byte? LuggageCount, XElement Transport, string TransportWebsite, XElement StayPlace, string FromWebsite, bool? CarRental, string CarRentCompany, int? TotalPrice, int? PricePerPerson, int? CurrencyID, string Fname, string Lname, string Email, int? NationalityID, int? TimeToResearchID, string AddInfo, bool? ReceiveNewsletters, bool? ReceiveCommercialInfo, bool? AgreeTerms)
+        {
+            try
+            {
+                using (var db = ConnectionFactory.GetDBCoreDataContext())
+                {                    
+                    db.UpdateOffer(OfferID,OfferTypeCode, LocationFrom, LocationTo, StartDate, EndDate, StartFelxBeforeID, StartFelxAfterID, EndFelxBeforeID, EndFelxAfterID, IsOneWay, IsTwoWay, TravelersCode, AdultCount, ChildrenCount, StudentCount, InvantCount, LuggageCount, Transport, TransportWebsite, StayPlace, FromWebsite, CarRental, CarRentCompany, TotalPrice, PricePerPerson, CurrencyID, Fname, Lname, Email, NationalityID, TimeToResearchID, AddInfo, ReceiveNewsletters, ReceiveCommercialInfo, AgreeTerms);                    
+                }
+            }
+            catch (Exception ex)
+            {
+                IsError = true;
+                string.Format("Update(OfferID = {0}, OfferTypeCode = {1}, LocationFrom = {2}, LocationTo = {3}, StartDate = {4}, EndDate = {5}, StartFelxBeforeID = {6}, StartFelxAfterID = {7}, EndFelxBeforeID = {8}, EndFelxAfterID = {9}, IsOneWay = {10}, IsTwoWay = {11}, TravelersCode = {12}, AdultCount = {13}, ChildrenCount = {14}, StudentCount = {15}, InvantCount = {16}, LuggageCount = {17}, Transport = {18}, TransportWebsite = {19}, StayPlace = {20}, FromWebsite = {21}, CarRental = {22}, CarRentCompany = {23}, TotalPrice = {24}, PricePerPerson = {25}, CurrencyID = {26}, Fname = {27}, Lname = {28}, Email = {29}, NationalityID = {30}, TimeToResearchID = {31}, AddInfo = {32}, ReceiveNewsletters = {33}, ReceiveCommercialInfo = {34}, AgreeTerms = {35}) - {36}", OfferID, OfferTypeCode, LocationFrom, LocationTo, StartDate, EndDate, StartFelxBeforeID, StartFelxAfterID, EndFelxBeforeID, EndFelxAfterID, IsOneWay, IsTwoWay, TravelersCode, AdultCount, ChildrenCount, StudentCount, InvantCount, LuggageCount, Transport, TransportWebsite, StayPlace, FromWebsite, CarRental, CarRentCompany, TotalPrice, PricePerPerson, CurrencyID, Fname, Lname, Email, NationalityID, TimeToResearchID, AddInfo, ReceiveNewsletters, ReceiveCommercialInfo, AgreeTerms, ex.Message);
+            }            
         }
 
         public void TSP_LastOffer(byte? iud = null, int? ID = null, string Caption = null, string Location = null, string Picture = null, string ShortDesc = null, string PdfFile = null, int? UsersCount = null, bool? IsPublished = null)
@@ -126,5 +184,61 @@ namespace Core
         public int? UsersCount { set; get; }
         public bool IsPublished { set;get; }
         public DateTime? CRTime { set; get; }
+    }
+
+    public class Offer
+    {
+        #region Properties
+        public int ID { set; get; }
+        public int? OfferTypeID { set; get; }
+        public int? OfferTypeCode { set; get; }
+        public string OfferType { set; get; }
+        public string LocationFrom{ set; get; }
+        public string LocationTo { set; get; }
+        public DateTime? StartDate { set; get; }
+        public DateTime? EndDate { set; get; }
+        public int? StartFelxBeforeID { set; get; }
+        public string StartFelxBefore { set; get; }
+        public int? StartFelxAfterID { set; get; }
+        public string StartFelxAfter { set; get; }
+        public int? EndFelxBeforeID { set; get; }
+        public string EndFelxBefore { set; get; }
+        public int? EndFelxAfterID { set; get; }
+        public string EndFelxAfter { set; get; }
+        public bool IsOneWay { set; get; }
+        public bool IsTwoWay { set; get; }
+        public int? TravelersID { set; get; }
+        public string Travelers { set; get; }
+        public int? TravelersCode { set; get; }
+        public byte? AdultCount { set; get; }
+        public byte? ChildrenCount { set; get; }
+        public byte? StudentCount { set; get; }
+        public byte? InvantCount { set; get; }
+        public byte? LuggageCount { set; get; }
+        public string TransportWebsite { set; get; }
+        public string FromWebsite { set; get; }
+        public bool CarRental { set; get; }
+        public string CarRentCompany { set; get; }
+        public int? TotalPrice { set; get; }
+        public int? PricePerPerson { set; get; }
+        public int? CurrencyID { set; get; }
+        public string Currency { set; get; }
+        public string Fname { set; get; }
+        public string Lname { set; get; }
+        public string Email { set; get; }
+        public int? NationalityID { set; get; }
+        public string Nationality { set; get; }
+        public int? TimeToResearchID { set; get; }
+        public string TimeToResearch { set; get; }
+        public string AddInfo { set; get; }
+        public bool ReceiveNewsletters { set; get; }
+        public bool ReceiveCommercialInfo { set; get; }
+        public bool AgreeTerms { set; get; }
+        public DateTime CRTime { set; get; }
+        [XmlArray("StayPlaces")]
+        public List<DictionaryItem> Transports { set; get; }
+        [XmlArray("Transports")]
+        public List<DictionaryItem> StayPlaces { set; get; }
+        #endregion Properties
     }
 }

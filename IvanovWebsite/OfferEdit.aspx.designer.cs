@@ -13,24 +13,6 @@ namespace IvanovWebsite {
     public partial class OfferEdit {
         
         /// <summary>
-        /// SuccessPlaceHolder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder SuccessPlaceHolder;
-        
-        /// <summary>
-        /// FormPlaceHolder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder FormPlaceHolder;
-        
-        /// <summary>
         /// FromLocationTextBox control.
         /// </summary>
         /// <remarks>
@@ -47,15 +29,6 @@ namespace IvanovWebsite {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ToLocationTextBox;
-        
-        /// <summary>
-        /// LocationsDataSource control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource LocationsDataSource;
         
         /// <summary>
         /// HFDateFrom control.
@@ -148,6 +121,42 @@ namespace IvanovWebsite {
         protected global::System.Web.UI.WebControls.ObjectDataSource FelxDaysAfterDataSource;
         
         /// <summary>
+        /// AloneRadio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton AloneRadio;
+        
+        /// <summary>
+        /// CoupleRadio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton CoupleRadio;
+        
+        /// <summary>
+        /// FamilyRadio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton FamilyRadio;
+        
+        /// <summary>
+        /// PeopleGroupRadio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton PeopleGroupRadio;
+        
+        /// <summary>
         /// AdultsCountCombo control.
         /// </summary>
         /// <remarks>
@@ -155,6 +164,15 @@ namespace IvanovWebsite {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList AdultsCountCombo;
+        
+        /// <summary>
+        /// ChildrenCountCombo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ChildrenCountCombo;
         
         /// <summary>
         /// LuggageCountCombo control.
@@ -173,42 +191,6 @@ namespace IvanovWebsite {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList StudentsCountCombo;
-        
-        /// <summary>
-        /// AdultsCountCombo1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList AdultsCountCombo1;
-        
-        /// <summary>
-        /// ChildrenCountCombo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ChildrenCountCombo;
-        
-        /// <summary>
-        /// LuggageCountCombo1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList LuggageCountCombo1;
-        
-        /// <summary>
-        /// StudentsCountCombo1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList StudentsCountCombo1;
         
         /// <summary>
         /// InfantCountCombo control.
@@ -308,15 +290,6 @@ namespace IvanovWebsite {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox ApartmentCheckBox;
-        
-        /// <summary>
-        /// RefererWebsitePlaceHolder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder RefererWebsitePlaceHolder;
         
         /// <summary>
         /// RefererWebsiteTextBox control.

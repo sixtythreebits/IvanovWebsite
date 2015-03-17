@@ -4,113 +4,194 @@ using System.Linq;
 using Core;
 using Core.Utilities;
 using System.Text;
+using System.Xml.Linq;
 
 namespace IvanovWebsite
 {
     public partial class OfferEdit : System.Web.UI.Page
     {
-        string OfferType;
+        public Offer Item;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            InitStartUp();
-            CheckSession();
-        }
-
-        void CheckSession()
-        {
-            if (Session["Success"] != null)
-            {
-                Session.Remove("Success");
-                FormPlaceHolder.Visible = false;
-                FormScriptsPlaceHolder.Visible = false;
-                SuccessPlaceHolder.Visible = true;
-            }
+            InitStartUp();            
         }
 
         void InitStartUp()
         {
-            OfferType = Request.QueryString["OfferType"];
-
-            Master.PageTitle = OfferType == "check" ? "Провери оферта" : "Нова оферта";
-
-            if (!IsPostBack)
+            var OfferID = Request.QueryString["id"].ToInt();
+            Item = OfferRepository.GetSingleOffer(OfferID);
+            if (Item != null)
             {
-                HFDateFrom.Value =
-                HFDateTo.Value = DateTime.Now.ToString();
-            }
+                Master.PageTitle = Item.OfferTypeCode == 1 ? "Нова оферта" : "Провери оферта";
+                MaxPricePerPersonPlaceHolder.Visible = Item.OfferTypeCode == 1;
 
-            RefererWebsitePlaceHolder.Visible = OfferType == "check";
-            MaxPricePerPersonPlaceHolder.Visible = OfferType == "new";
-        }
+                if (!IsPostBack)
+                {
+                    FromLocationTextBox.Text = Item.LocationFrom;
+                    ToLocationTextBox.Text = Item.LocationTo;
+                    if (Item.StartDate.HasValue)
+                    {
+                        HFDateFrom.Value = Item.StartDate.Value.ToString("MMM dd, yyyy");
+                    }
+
+                    if (Item.EndDate.HasValue)
+                    {
+                        HFDateTo.Value = Item.EndDate.Value.ToString("MMM dd, yyyy");
+                    }
+
+                    IsOneWayRadio.Checked = Item.IsOneWay;
+                    IsTwoWayRadio.Checked = Item.IsTwoWay;
+
+                    FlexDaysStartBeforeCombo.DataBound += (object sender, EventArgs e) =>
+                    {
+                        var item = FlexDaysStartBeforeCombo.Items.FindByValue(Item.StartFelxBeforeID.ToString());
+                        if (item != null) { item.Selected = true; }
+                    };
+                    FlexDaysStartAfterCombo.DataBound += (object sender, EventArgs e) =>
+                    {
+                        var item = FlexDaysStartAfterCombo.Items.FindByValue(Item.StartFelxAfterID.ToString());
+                        if (item != null) { item.Selected = true; }
+                    };
+                    FlexDaysEndBeforeCombo.DataBound += (object sender, EventArgs e) =>
+                    {
+                        var item = FlexDaysEndBeforeCombo.Items.FindByValue(Item.EndFelxBeforeID.ToString());
+                        if (item != null) { item.Selected = true; }
+                    };
+                    FlexDaysEndAfterCombo.DataBound += (object sender, EventArgs e) =>
+                    {
+                        var item = FlexDaysEndAfterCombo.Items.FindByValue(Item.EndFelxAfterID.ToString());
+                        if (item != null) { item.Selected = true; }
+                    };
+
+
+                    switch (Item.TravelersCode)
+                    {
+                        case 1: { AloneRadio.Checked = true; break; }
+                        case 2: { CoupleRadio.Checked = true; break; }
+                        case 3: { FamilyRadio.Checked = true; break; }
+                        case 4: { PeopleGroupRadio.Checked = true; break; }
+                    }
+
+                    var CountComboItem = AdultsCountCombo.Items.FindByValue(Item.AdultCount.ToString());
+                    if (CountComboItem != null) { CountComboItem.Selected = true; }
+                    CountComboItem = ChildrenCountCombo.Items.FindByValue(Item.AdultCount.ToString());
+                    if (CountComboItem != null) { CountComboItem.Selected = true; }
+                    CountComboItem = LuggageCountCombo.Items.FindByValue(Item.AdultCount.ToString());
+                    if (CountComboItem != null) { CountComboItem.Selected = true; }
+                    CountComboItem = StudentsCountCombo.Items.FindByValue(Item.AdultCount.ToString());
+                    if (CountComboItem != null) { CountComboItem.Selected = true; }
+                    CountComboItem = InfantCountCombo.Items.FindByValue(Item.AdultCount.ToString());
+                    if (CountComboItem != null) { CountComboItem.Selected = true; }
+
+                    if (Item.Transports.Count > 0)
+                    {
+                        if (Item.Transports.Where(t => t.IntCode == 1).Count() > 0) { TransportPlaneCheckbox.Checked = true; }
+                        if (Item.Transports.Where(t => t.IntCode == 2).Count() > 0) { TransportTrainCheckbox.Checked = true; }
+                        if (Item.Transports.Where(t => t.IntCode == 3).Count() > 0) { TransportBusCheckbox.Checked = true; }
+                        if (Item.Transports.Where(t => t.IntCode == 4).Count() > 0) { TransportFerryCheckbox.Checked = true; }
+                    }
+
+                    TransportPriceRefererTextBox.Text = Item.TransportWebsite;
+
+                    if (Item.StayPlaces.Count > 0)
+                    {
+                        if (Item.StayPlaces.Where(t => t.IntCode == 1).Count() > 0) { CampingCheckBox.Checked = true; }
+                        if (Item.StayPlaces.Where(t => t.IntCode == 2).Count() > 0) { HostelCheckBox.Checked = true; }
+                        if (Item.StayPlaces.Where(t => t.IntCode == 3).Count() > 0) { Hotel23CheckBox.Checked = true; }
+                        if (Item.StayPlaces.Where(t => t.IntCode == 4).Count() > 0) { Hotel45CheckBox.Checked = true; }
+                        if (Item.StayPlaces.Where(t => t.IntCode == 5).Count() > 0) { ApartmentCheckBox.Checked = true; }
+                    }
+
+                    RefererWebsiteTextBox.Text = Item.FromWebsite;
+                    TransportPriceRefererTextBox.Text = Item.TransportWebsite;
+
+                    CarRentYesRadio.Checked = Item.CarRental;
+                    CarRentNoRadio.Checked = !CarRentYesRadio.Checked;
+                    CarRentCompanyTextBox.Text = Item.CarRentCompany;
+
+                    MaxPriceTextBox.Text = Item.TotalPrice.ToString();
+                    MaxPricePerPersonTextBox.Text = Item.PricePerPerson.ToString();
+
+                    FnameTextBox.Text = Item.Fname;
+                    LnameTextBox.Text = Item.Lname;
+                    EmailTextBox.Text = Item.Email;
+                    NationalityCombo.DataBound += (object sender, EventArgs e) =>
+                    {
+                        var item = NationalityCombo.Items.FindByValue(Item.NationalityID.ToString());
+                        if (item != null) { item.Selected = true; }
+                    };
+
+                    AddInfoTextBox.Text = Item.AddInfo;
+                    ReceiveNewslettersCheckBox.Checked = Item.ReceiveNewsletters;
+                    ReceiveCommercialInfoCheckbox.Checked = Item.ReceiveCommercialInfo;
+                }                
+            }
+            else
+            {
+                Item = new Offer();
+                Response.Redirect("~/");
+            }
+        }        
 
         protected void SaveButton_Click(object sender, EventArgs e)
         {
             if (DoValidate())
             {
                 var R = new OfferRepository();
-                var OfferTypeCode = OfferType == "check" ? 2 : 1;
                 var TravelersCode = Request.Form["PeopleGroup"].ToInt();
 
-                var AdultsCount = (TravelersCode == 1 || TravelersCode == 2) ? AdultsCountCombo.SelectedValue.ToByte() : ((TravelersCode == 3 || TravelersCode == 4) ? AdultsCountCombo1.SelectedValue.ToByte() : null);
-                var StudentsCount = (TravelersCode == 1 || TravelersCode == 2) ? StudentsCountCombo.SelectedValue.ToByte() : ((TravelersCode == 3 || TravelersCode == 4) ? StudentsCountCombo1.SelectedValue.ToByte() : null);
-                var LuggageCount = (TravelersCode == 1 || TravelersCode == 2) ? LuggageCountCombo.SelectedValue.ToByte() : ((TravelersCode == 3 || TravelersCode == 4) ? LuggageCountCombo1.SelectedValue.ToByte() : null);
-                var ChildrenCount = (TravelersCode == 3 || TravelersCode == 4) ? ChildrenCountCombo.SelectedValue.ToByte() : null;
-                var InvantCount = (TravelersCode == 3 || TravelersCode == 4) ? InfantCountCombo.SelectedValue.ToByte() : null;
+                var AdultsCount =   AdultsCountCombo.SelectedValue.ToByte();
+                var StudentsCount = StudentsCountCombo.SelectedValue.ToByte();
+                var LuggageCount =  LuggageCountCombo.SelectedValue.ToByte();
+                var ChildrenCount = ChildrenCountCombo.SelectedValue.ToByte();
+                var InvantCount = InfantCountCombo.SelectedValue.ToByte();
 
-
-
-                var OfferID = R.Save(
-                    OfferTypeCode: OfferTypeCode,
-                    //LocationFromID: FromLocationCombo.SelectedValue.ToInt(),
-                    //LocationToID: ToLocationCombo.SelectedValue.ToInt(),
-                    LocationFromID: null,
-                    LocationToID: null,
-                    LocationFrom: FromLocationTextBox.Text,
-                    LocationTo: ToLocationTextBox.Text,
-                    StartDate: HFDateFrom.Value.ToDateTime(),
-                    EndDate: IsOneWayRadio.Checked ? null : HFDateTo.Value.ToDateTime(),
-                    StartFelxBeforeID: FlexDaysStartBeforeCombo.SelectedValue.ToInt(),
-                    StartFelxAfterID: FlexDaysStartAfterCombo.SelectedValue.ToInt(),
-                    EndFelxBeforeID: IsOneWayRadio.Checked ? null : FlexDaysEndBeforeCombo.SelectedValue.ToInt(),
-                    EndFelxAfterID: IsOneWayRadio.Checked ? null : FlexDaysEndAfterCombo.SelectedValue.ToInt(),
-                    IsOneWay: IsOneWayRadio.Checked,
-                    IsTwoWay: IsTwoWayRadio.Checked,
-                    TravelersCode: TravelersCode,
-                    AdultCount: AdultsCount,
-                    ChildrenCount: ChildrenCount,
-                    StudentCount: StudentsCount,
-                    InvantCount: InvantCount,
-                    LuggageCount: LuggageCount,
-                    TransportCode: Request.Form["TransportGroup"].ToInt(),
-                    Transport: GetTransportString(),
-                    TransportWebsite: TransportPriceRefererTextBox.Text,
-                    StayPlaceCode: Request.Form["StayPlaceGroup"].ToInt(),
-                    StayPlace: GetStayPlaceString(),
-                    FromWebsite: RefererWebsiteTextBox.Text,
-                    CarRental: CarRentYesRadio.Checked,
-                    CarRentCompany: CarRentCompanyTextBox.Text,
-                    TotalPrice: MaxPriceTextBox.Text.ToInt(),
-                    PricePerPerson: MaxPricePerPersonTextBox.Text.ToInt(),
-                    CurrencyID: CurrenciesMaxPriceCombo.SelectedValue.ToInt(),
-                    Fname: FnameTextBox.Text,
-                    Lname: LnameTextBox.Text,
-                    Email: EmailTextBox.Text,
-                    NationalityID: NationalityCombo.SelectedValue.ToInt(),
-                    TimeToResearchID: ResearchTimeCombo.SelectedValue.ToInt(),
-                    AddInfo: AddInfoTextBox.Text,
-                    ReceiveNewsletters: ReceiveNewslettersCheckBox.Checked,
-                    ReceiveCommercialInfo: ReceiveCommercialInfoCheckbox.Checked,
-                    AgreeTerms: AgreeTermsOfUseCheckbox.Checked
-                );
-                if (R.IsError && OfferID > 0)
+                R.Update(
+                   OfferID:Item.ID,
+                   OfferTypeCode: Item.OfferTypeID,
+                   LocationFrom: FromLocationTextBox.Text,
+                   LocationTo: ToLocationTextBox.Text,
+                   StartDate: HFDateFrom.Value.ToDateTime(),
+                   EndDate: IsOneWayRadio.Checked ? null : HFDateTo.Value.ToDateTime(),
+                   StartFelxBeforeID: FlexDaysStartBeforeCombo.SelectedValue.ToInt(),
+                   StartFelxAfterID: FlexDaysStartAfterCombo.SelectedValue.ToInt(),
+                   EndFelxBeforeID: IsOneWayRadio.Checked ? null : FlexDaysEndBeforeCombo.SelectedValue.ToInt(),
+                   EndFelxAfterID: IsOneWayRadio.Checked ? null : FlexDaysEndAfterCombo.SelectedValue.ToInt(),
+                   IsOneWay: IsOneWayRadio.Checked,
+                   IsTwoWay: IsTwoWayRadio.Checked,
+                   TravelersCode: TravelersCode,
+                   AdultCount: AdultsCount,
+                   ChildrenCount: ChildrenCount,
+                   StudentCount: StudentsCount,
+                   InvantCount: InvantCount,
+                   LuggageCount: LuggageCount,
+                   Transport: GetTransportXml(),
+                   TransportWebsite: TransportPriceRefererTextBox.Text,
+                   StayPlace: GetStayPlaceXml(),
+                   FromWebsite: RefererWebsiteTextBox.Text,
+                   CarRental: CarRentYesRadio.Checked,
+                   CarRentCompany: CarRentCompanyTextBox.Text,
+                   TotalPrice: MaxPriceTextBox.Text.ToInt(),
+                   PricePerPerson: MaxPricePerPersonTextBox.Text.ToInt(),
+                   CurrencyID: CurrenciesMaxPriceCombo.SelectedValue.ToInt(),
+                   Fname: FnameTextBox.Text,
+                   Lname: LnameTextBox.Text,
+                   Email: EmailTextBox.Text,
+                   NationalityID: NationalityCombo.SelectedValue.ToInt(),
+                   TimeToResearchID: ResearchTimeCombo.SelectedValue.ToInt(),
+                   AddInfo: AddInfoTextBox.Text,
+                   ReceiveNewsletters: ReceiveNewslettersCheckBox.Checked,
+                   ReceiveCommercialInfo: ReceiveCommercialInfoCheckbox.Checked,
+                   AgreeTerms: AgreeTermsOfUseCheckbox.Checked
+               );
+                if (R.IsError)
                 {
                     ErrorPlaceHolder.Visible = true;
                 }
                 else
                 {
-                    //Session["Success"] = true;
-                    //Response.Redirect(string.Format("/offer/{0}/", OfferType));
-                    Response.Redirect(string.Format("/offer/{0}/", OfferID));
+                    Response.Redirect(string.Format("/offer/review/{0}/", Item.ID));
                 }
             }
         }
@@ -122,12 +203,12 @@ namespace IvanovWebsite
                 string.IsNullOrWhiteSpace(ToLocationTextBox.Text) ||
                 HFDateFrom.Value.ToDateTime() == null ||
                 (IsOneWayRadio.Checked == false && HFDateTo.Value.ToDateTime() == null) ||
-                Request.Form["PeopleGroup"].ToInt() == null ||                                
+                GetSelectedTravelerCode() == null ||
                 string.IsNullOrWhiteSpace(MaxPriceTextBox.Text) ||
                 string.IsNullOrWhiteSpace(FnameTextBox.Text) ||
                 string.IsNullOrWhiteSpace(LnameTextBox.Text) ||
                 string.IsNullOrWhiteSpace(EmailTextBox.Text) ||
-                NationalityCombo.SelectedIndex < 1                
+                NationalityCombo.SelectedIndex < 1
             )
             {
                 AllRequiredPlaceHolder.Visible = true;
@@ -142,61 +223,87 @@ namespace IvanovWebsite
             return true;
         }
 
-        string GetTransportString()
+        XElement GetTransportXml()
         {
-            var sb = new StringBuilder();
+            var x = new XElement("data");
+
             if (TransportPlaneCheckbox.Checked)
             {
-                sb.Append("Самолет,");
+                x.Add(new XElement("item", new XElement("id", 1)));
             }
 
             if (TransportTrainCheckbox.Checked)
             {
-                sb.Append("Влак,");
+                x.Add(new XElement("item", new XElement("id", 2)));
             }
 
             if (TransportBusCheckbox.Checked)
             {
-                sb.Append("Автобус,");
+                x.Add(new XElement("item", new XElement("id", 3)));
             }
 
             if (TransportFerryCheckbox.Checked)
             {
-                sb.Append("Ферибот");
+                x.Add(new XElement("item", new XElement("id", 4)));
             }
 
-            return sb.ToString().TrimEnd(',');
+            return x;
         }
 
-        string GetStayPlaceString()
+        XElement GetStayPlaceXml()
         {
-            var sb = new StringBuilder();
+            var x = new XElement("data");
+
             if (CampingCheckBox.Checked)
             {
-                sb.Append("Къмпинг,");
+                x.Add(new XElement("item", new XElement("id", 1)));
             }
 
             if (HostelCheckBox.Checked)
             {
-                sb.Append("Хостел,");
+                x.Add(new XElement("item", new XElement("id", 2)));
             }
 
             if (Hotel23CheckBox.Checked)
             {
-                sb.Append("Хотел 2-3,");
+                x.Add(new XElement("item", new XElement("id", 3)));
             }
 
             if (Hotel45CheckBox.Checked)
             {
-                sb.Append("Хотел 4-5");
+                x.Add(new XElement("item", new XElement("id", 4)));
             }
 
             if (ApartmentCheckBox.Checked)
             {
-                sb.Append("Студио / Апартамент");
+                x.Add(new XElement("item", new XElement("id", 5)));
             }
 
-            return sb.ToString().TrimEnd(',');
+            return x;
+        }
+
+        public int? GetSelectedTravelerCode()
+        {
+            if (AloneRadio.Checked)
+            {
+                return 1;
+            }
+            else if (CoupleRadio.Checked)
+            {
+                return 2;
+            }
+            else if (FamilyRadio.Checked)
+            {
+                return 3;
+            }
+            else if (PeopleGroupRadio.Checked)
+            {
+                return 4;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

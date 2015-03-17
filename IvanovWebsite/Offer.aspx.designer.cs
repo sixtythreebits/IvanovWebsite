@@ -10,7 +10,7 @@
 namespace IvanovWebsite {
     
     
-    public partial class Offer {
+    public partial class OfferPage {
         
         /// <summary>
         /// FromLocationLiteral control.
@@ -31,22 +31,40 @@ namespace IvanovWebsite {
         protected global::System.Web.UI.WebControls.Literal ToLocationLiteral;
         
         /// <summary>
-        /// DateFromLiteral control.
+        /// HFDateFrom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal DateFromLiteral;
+        protected global::System.Web.UI.WebControls.HiddenField HFDateFrom;
         
         /// <summary>
-        /// DateToLiteral control.
+        /// IsOneWayRadio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal DateToLiteral;
+        protected global::System.Web.UI.WebControls.RadioButton IsOneWayRadio;
+        
+        /// <summary>
+        /// HFDateTo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HFDateTo;
+        
+        /// <summary>
+        /// IsTwoWayRadio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton IsTwoWayRadio;
         
         /// <summary>
         /// AloneRadio control.
@@ -353,5 +371,26 @@ namespace IvanovWebsite {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox AgreeTermsOfUseCheckbox;
+        
+        /// <summary>
+        /// CancelButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton CancelButton;
+        
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new IvanovWebsite.Master Master {
+            get {
+                return ((IvanovWebsite.Master)(base.Master));
+            }
+        }
     }
 }

@@ -874,6 +874,10 @@ ul.col2 li:last-child,
 	color:#0b81ff;
     font-weight:bold;
 }
+
+.ui-datepicker-calendar td.ui-datepicker-current-day{
+	background-color:yellow;
+}
 /* /calendar */
 
 
@@ -959,9 +963,12 @@ ul.col2 li:last-child,
 	background:url(../images/icons/form/arrow.png);
 }
 
-.sl-toggle.single,
-.sl-toggle.family{
+.sl-toggle{
 	border-top:1px solid #bf015b;
+    padding:16px 0 20px 27px;
+}
+.sl-toggle > div{
+	width:360px;
 }
 .sl-toggle div > span{
 	display:inline-block;
@@ -985,15 +992,23 @@ ul.col2 li:last-child,
 	padding:0 0 0 3px;
 }
 
-.single,
-.family{
-	padding:16px 0 20px 27px;
+.sl-toggle[data-target=single] > div{
+    width:250px;
 }
-.single > div{
-	width:240px;
+.sl-toggle[data-target=single] .family{
+    display:none;
 }
-.family > div{
-	width:360px;
+.sl-toggle[data-target=single] .single{
+    display:inline-block;
+}
+.sl-toggle[data-target=family] > div{
+    width:360px;
+}
+.sl-toggle[data-target=family] .single{
+    display:none;
+}
+.sl-toggle[data-target=family] .family{
+    display:inline-block;
 }
 /* radio icon */
 

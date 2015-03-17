@@ -7,9 +7,9 @@ using Core.DB;
 
 namespace IvanovWebsite
 {
-    public partial class Offer : System.Web.UI.Page
+    public partial class OfferPage : System.Web.UI.Page
     {
-        public List_SubmitedOffersResult Item = new List_SubmitedOffersResult();
+        public Offer Item;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -18,27 +18,38 @@ namespace IvanovWebsite
 
         void InitStartUp()
         {
-            var OfferID = Request.QueryString["id"].ToInt();
-            OfferID = 4;
-            Item = OfferRepository.ListSubmitedOffers().Where(o => o.OfferID == OfferID).FirstOrDefault();
+            var OfferID = Request.QueryString["id"].ToInt();            
+            Item = OfferRepository.GetSingleOffer(OfferID);
             if (Item != null)
             {
+                Master.PageTitle = Item.OfferTypeCode == 1 ? "Нова оферта" : "Провери оферта";
+                MaxPricePerPersonPlaceHolder.Visible = Item.OfferTypeCode == 1;
+
                 FromLocationLiteral.Text = Item.LocationFrom;
                 ToLocationLiteral.Text = Item.LocationTo;
-                DateFromLiteral.Text = Item.StartDate.HasValue ? Item.StartDate.Value.ToString("yyyy.MM.dd") : null;
-                DateToLiteral.Text = Item.EndDate.HasValue ? Item.EndDate.Value.ToString("yyyy.MM.dd") : null;
 
-                DateFromLiteral.Text = string.IsNullOrWhiteSpace(Item.StartFelxBefore) ? DateFromLiteral.Text : string.Format("{0}&nbsp;&nbsp;  {1}", DateFromLiteral.Text, Item.StartFelxBefore);
-                DateFromLiteral.Text = string.IsNullOrWhiteSpace(Item.StartFelxAfter) ? DateFromLiteral.Text : string.Format("{0},  {1}", DateFromLiteral.Text, Item.StartFelxAfter);
+                if (Item.StartDate.HasValue)
+                {
+                    HFDateFrom.Value = Item.StartDate.Value.ToString("MMM dd, yyyy");
+                }
 
-                DateToLiteral.Text = string.IsNullOrWhiteSpace(Item.EndFelxBefore) ? DateToLiteral.Text : string.Format("{0}&nbsp;&nbsp;  {1}", DateToLiteral.Text, Item.StartFelxBefore);
-                DateToLiteral.Text = string.IsNullOrWhiteSpace(Item.EndFelxAfter) ? DateToLiteral.Text : string.Format("{0},  {1}", DateToLiteral.Text, Item.EndFelxAfter);
+                if (Item.EndDate.HasValue)
+                {
+                    HFDateTo.Value = Item.EndDate.Value.ToString("MMM dd, yyyy");
+                }
 
+                IsOneWayRadio.Checked = Item.IsOneWay;
+                IsTwoWayRadio.Checked = Item.IsTwoWay;
+              
+
+                switch (Item.TravelersCode)
+                {
+                    case 1: { AloneRadio.Checked = true; break; }
+                    case 2: { CoupleRadio.Checked = true; break; }
+                    case 3: { FamilyRadio.Checked = true; break; }
+                    case 4: { PeopleGroupRadio.Checked = true; break; }
+                }
                 
-                if (Item.Travelers =="Самостоятелно") { AloneRadio.Checked = true; }
-                if (Item.Travelers == "Двойка") { CoupleRadio.Checked = true; }
-                if (Item.Travelers == "Семейство") { FamilyRadio.Checked = true; }
-                if (Item.Travelers =="Група") { PeopleGroupRadio.Checked = true; }
 
                 AdultCountPlaceHolder.Visible = Item.AdultCount > 0;
                 InvanvtCountPlaceHolder.Visible = Item.InvantCount > 0;
@@ -46,23 +57,23 @@ namespace IvanovWebsite
                 StudentsCountPlaceHolder.Visible = Item.StudentCount > 0;
                 ChildrenCountPlaceHolder.Visible = Item.ChildrenCount > 0;
 
-                if (!string.IsNullOrWhiteSpace(Item.Transport))
+                if (Item.Transports.Count>0)
                 {
-                    if (Item.Transport.Contains("Самолет")) { TransportPlaneCheckbox.Checked = true; }
-                    if (Item.Transport.Contains("Влак")) { TransportTrainCheckbox.Checked = true; }
-                    if (Item.Transport.Contains("Автобус")) { TransportBusCheckbox.Checked = true; }
-                    if (Item.Transport.Contains("Ферибот")) { TransportFerryCheckbox.Checked = true; }
+                    if (Item.Transports.Where(t => t.IntCode == 1).Count() > 0) { TransportPlaneCheckbox.Checked = true; }
+                    if (Item.Transports.Where(t => t.IntCode == 2).Count() > 0) { TransportTrainCheckbox.Checked = true; }
+                    if (Item.Transports.Where(t => t.IntCode == 3).Count() > 0) { TransportBusCheckbox.Checked = true; }
+                    if (Item.Transports.Where(t => t.IntCode == 4).Count() > 0) { TransportFerryCheckbox.Checked = true; }
                 }
 
                 TransportPriceRefererTextBox.Text = Item.TransportWebsite;
 
-                if (!string.IsNullOrWhiteSpace(Item.StayPlace))
+                if (Item.StayPlaces.Count > 0)
                 {
-                    if (Item.StayPlace.Contains("Къмпинг")) { CampingCheckBox.Checked = true; }
-                    if (Item.StayPlace.Contains("Хостел")) { HostelCheckBox.Checked = true; }
-                    if (Item.StayPlace.Contains("Хотел 2-3")) { Hotel23CheckBox.Checked = true; }
-                    if (Item.StayPlace.Contains("Хотел 4-5")) { Hotel45CheckBox.Checked = true; }
-                    if (Item.StayPlace.Contains("Студио / Апартамент")) { ApartmentCheckBox.Checked = true; }
+                    if (Item.StayPlaces.Where(t => t.IntCode == 1).Count() > 0) { CampingCheckBox.Checked = true; }
+                    if (Item.StayPlaces.Where(t => t.IntCode == 2).Count() > 0) { HostelCheckBox.Checked = true; }
+                    if (Item.StayPlaces.Where(t => t.IntCode == 3).Count() > 0) { Hotel23CheckBox.Checked = true; }
+                    if (Item.StayPlaces.Where(t => t.IntCode == 4).Count() > 0) { Hotel45CheckBox.Checked = true; }
+                    if (Item.StayPlaces.Where(t => t.IntCode == 5).Count() > 0) { ApartmentCheckBox.Checked = true; }                    
                 }
 
                 RefererWebsiteTextBox.Text = Item.FromWebsite;
@@ -87,8 +98,16 @@ namespace IvanovWebsite
             }
             else
             {
-
+                Item = new Offer();
+                Response.Redirect("~/");
             }
+        }
+
+        protected void CancelButton_Click(object sender, EventArgs e)
+        {
+            var R = new OfferRepository();
+            R.DeleteOffer(Item.ID);
+            Response.Redirect("~/");
         }
     }
 }

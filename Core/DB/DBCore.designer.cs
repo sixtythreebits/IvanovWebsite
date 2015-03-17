@@ -144,8 +144,6 @@ namespace Core.DB
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SaveOffer")]
 		public int SaveOffer(
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="OfferTypeCode", DbType="Int")] System.Nullable<int> offerTypeCode, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LocationFromID", DbType="Int")] System.Nullable<int> locationFromID, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LocationToID", DbType="Int")] System.Nullable<int> locationToID, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LocationFrom", DbType="NVarChar(100)")] string locationFrom, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LocationTo", DbType="NVarChar(100)")] string locationTo, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="StartDate", DbType="Date")] System.Nullable<System.DateTime> startDate, 
@@ -162,11 +160,9 @@ namespace Core.DB
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="StudentCount", DbType="TinyInt")] System.Nullable<byte> studentCount, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvantCount", DbType="TinyInt")] System.Nullable<byte> invantCount, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LuggageCount", DbType="TinyInt")] System.Nullable<byte> luggageCount, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TransportCode", DbType="Int")] System.Nullable<int> transportCode, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Transport", DbType="NVarChar(500)")] string transport, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Transport", DbType="Xml")] System.Xml.Linq.XElement transport, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TransportWebsite", DbType="NVarChar(500)")] string transportWebsite, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="StayPlaceCode", DbType="Int")] System.Nullable<int> stayPlaceCode, 
-					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="StayPlace", DbType="NVarChar(500)")] string stayPlace, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="StayPlace", DbType="Xml")] System.Xml.Linq.XElement stayPlace, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="FromWebsite", DbType="NVarChar(500)")] string fromWebsite, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CarRental", DbType="Bit")] System.Nullable<bool> carRental, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CarRentCompany", DbType="NVarChar(100)")] string carRentCompany, 
@@ -184,9 +180,58 @@ namespace Core.DB
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AgreeTerms", DbType="Bit")] System.Nullable<bool> agreeTerms, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="OfferID", DbType="Int")] ref System.Nullable<int> offerID)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), offerTypeCode, locationFromID, locationToID, locationFrom, locationTo, startDate, endDate, startFelxBeforeID, startFelxAfterID, endFelxBeforeID, endFelxAfterID, isOneWay, isTwoWay, travelersCode, adultCount, childrenCount, studentCount, invantCount, luggageCount, transportCode, transport, transportWebsite, stayPlaceCode, stayPlace, fromWebsite, carRental, carRentCompany, totalPrice, pricePerPerson, currencyID, fname, lname, email, nationalityID, timeToResearchID, addInfo, receiveNewsletters, receiveCommercialInfo, agreeTerms, offerID);
-			offerID = ((System.Nullable<int>)(result.GetParameterValue(39)));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), offerTypeCode, locationFrom, locationTo, startDate, endDate, startFelxBeforeID, startFelxAfterID, endFelxBeforeID, endFelxAfterID, isOneWay, isTwoWay, travelersCode, adultCount, childrenCount, studentCount, invantCount, luggageCount, transport, transportWebsite, stayPlace, fromWebsite, carRental, carRentCompany, totalPrice, pricePerPerson, currencyID, fname, lname, email, nationalityID, timeToResearchID, addInfo, receiveNewsletters, receiveCommercialInfo, agreeTerms, offerID);
+			offerID = ((System.Nullable<int>)(result.GetParameterValue(35)));
 			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateOffer")]
+		public int UpdateOffer(
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="OfferID", DbType="Int")] System.Nullable<int> offerID, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="OfferTypeCode", DbType="Int")] System.Nullable<int> offerTypeCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LocationFrom", DbType="NVarChar(100)")] string locationFrom, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LocationTo", DbType="NVarChar(100)")] string locationTo, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="StartDate", DbType="Date")] System.Nullable<System.DateTime> startDate, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="EndDate", DbType="Date")] System.Nullable<System.DateTime> endDate, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="StartFelxBeforeID", DbType="Int")] System.Nullable<int> startFelxBeforeID, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="StartFelxAfterID", DbType="Int")] System.Nullable<int> startFelxAfterID, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="EndFelxBeforeID", DbType="Int")] System.Nullable<int> endFelxBeforeID, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="EndFelxAfterID", DbType="Int")] System.Nullable<int> endFelxAfterID, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="IsOneWay", DbType="Bit")] System.Nullable<bool> isOneWay, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="IsTwoWay", DbType="Bit")] System.Nullable<bool> isTwoWay, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TravelersCode", DbType="Int")] System.Nullable<int> travelersCode, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AdultCount", DbType="TinyInt")] System.Nullable<byte> adultCount, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ChildrenCount", DbType="TinyInt")] System.Nullable<byte> childrenCount, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="StudentCount", DbType="TinyInt")] System.Nullable<byte> studentCount, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvantCount", DbType="TinyInt")] System.Nullable<byte> invantCount, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="LuggageCount", DbType="TinyInt")] System.Nullable<byte> luggageCount, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Transport", DbType="Xml")] System.Xml.Linq.XElement transport, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TransportWebsite", DbType="NVarChar(500)")] string transportWebsite, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="StayPlace", DbType="Xml")] System.Xml.Linq.XElement stayPlace, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="FromWebsite", DbType="NVarChar(500)")] string fromWebsite, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CarRental", DbType="Bit")] System.Nullable<bool> carRental, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CarRentCompany", DbType="NVarChar(100)")] string carRentCompany, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalPrice", DbType="Int")] System.Nullable<int> totalPrice, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="PricePerPerson", DbType="Int")] System.Nullable<int> pricePerPerson, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="CurrencyID", DbType="Int")] System.Nullable<int> currencyID, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Fname", DbType="NVarChar(20)")] string fname, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Lname", DbType="NVarChar(20)")] string lname, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="VarChar(50)")] string email, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="NationalityID", DbType="Int")] System.Nullable<int> nationalityID, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TimeToResearchID", DbType="Int")] System.Nullable<int> timeToResearchID, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AddInfo", DbType="NVarChar(MAX)")] string addInfo, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ReceiveNewsletters", DbType="Bit")] System.Nullable<bool> receiveNewsletters, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="ReceiveCommercialInfo", DbType="Bit")] System.Nullable<bool> receiveCommercialInfo, 
+					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="AgreeTerms", DbType="Bit")] System.Nullable<bool> agreeTerms)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), offerID, offerTypeCode, locationFrom, locationTo, startDate, endDate, startFelxBeforeID, startFelxAfterID, endFelxBeforeID, endFelxAfterID, isOneWay, isTwoWay, travelersCode, adultCount, childrenCount, studentCount, invantCount, luggageCount, transport, transportWebsite, stayPlace, fromWebsite, carRental, carRentCompany, totalPrice, pricePerPerson, currencyID, fname, lname, email, nationalityID, timeToResearchID, addInfo, receiveNewsletters, receiveCommercialInfo, agreeTerms);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetSingleOffer", IsComposable=true)]
+		public System.Xml.Linq.XElement GetSingleOffer([global::System.Data.Linq.Mapping.ParameterAttribute(Name="OfferID", DbType="Int")] System.Nullable<int> offerID)
+		{
+			return ((System.Xml.Linq.XElement)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), offerID).ReturnValue));
 		}
 	}
 	

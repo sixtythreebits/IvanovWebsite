@@ -1,9 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Offer.aspx.cs" Inherits="IvanovWebsite.Offer" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Offer.aspx.cs" Inherits="IvanovWebsite.OfferPage" %>
+<%@ MasterType VirtualPath="~/Master.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<script src="/js/jquery-ui.min.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <section id="form-container" class="container form">        
-    <h1>Оферта</h1>
+    <h1><%=Master.PageTitle %></h1>
     	<fieldset>
         	<legend>НАЧАЛНА ДЕСТИНАЦИЯ</legend>
             
@@ -24,24 +26,51 @@
         	<legend>дати на пътуването</legend>
             
             <ul class="calendar col2 cl">
-            	<li>
-                	<label>Дата на тръгване</label>
+                <li>
+                    <label>Дата на тръгване</label>
                     <div class="cal" id="from">
-                        <asp:Literal ID="DateFromLiteral" runat="server"></asp:Literal>
-                    </div>                                                                                                        
+                    </div>
+                    <asp:HiddenField ID="HFDateFrom" runat="server" ClientIDMode="Static" />
+                    <label>Мобилност при заминаването</label>
+                    <span class="row col2">
+                        <span class="select">
+                            <span><%=Item.StartFelxBefore %></span>                            
+                        </span>
+                        <span class="select">
+                            <span><%=Item.StartFelxAfter %></span>
+                        </span>
+                    </span>
+                    <span class="radio">
+                        <label>
+                            <asp:RadioButton ID="IsOneWayRadio" runat="server" ClientIDMode="Static" GroupName="Ways" />
+                            <span>Однопосочен</span>
+                        </label>
+                    </span>
                 </li>
                 <li id="TwoWayLi">
-                	<label>Дата на връщане</label>
+                    <label>Дата на връщане</label>
                     <div class="cal" id="to">
-                        <asp:Literal ID="DateToLiteral" runat="server"></asp:Literal>
-                    </div>                    
+                    </div>
+                    <asp:HiddenField ID="HFDateTo" runat="server" ClientIDMode="Static" />
+                    <label>Мобилност при връщането</label>
+                    <span class="row col2">
+                        <span class="select">
+                            <span><%=Item.EndFelxBefore %></span>                            
+                        </span>
+                        <span class="select">
+                            <span><%=Item.EndFelxAfter %></span>                            
+                        </span>
+                    </span>
+                    
+                    <span class="radio">
+                        <label>
+                            <asp:RadioButton ID="IsTwoWayRadio" runat="server" ClientIDMode="Static" GroupName="Ways" />
+                            <span>Двупосочен</span>
+                        </label>
+                    </span>
                 </li>
-            </ul>
-
-            <strong>Двупосочен</strong>
-        </fieldset>
-        
-        
+            </ul>            
+        </fieldset>       
         <fieldset>
         	<legend>брой на пътуващите</legend>
             
@@ -323,8 +352,8 @@ For more information regarding our privacy policy, please click <a href="#">here
             </span>
         </fieldset>        
         <p>
-            <a href="/" class="btn magenta stop">Отказ</a>
-            <%--<a href="/offer/edit/<%=Item.OfferID %>/" class="btn blue arrow-l">Предишен стъпка</a>--%>
+            <asp:LinkButton ID="CancelButton" runat="server" Text="Отказ" CssClass="btn magenta stop" OnClick="CancelButton_Click"></asp:LinkButton>            
+            <a href="/offer/edit/<%=Item.ID %>/" class="btn blue arrow-l">Предишен стъпка</a>
             <a class="btn blue">Следваща стъпка</a>
         </p>
     </section>
@@ -333,6 +362,27 @@ For more information regarding our privacy policy, please click <a href="#">here
     <script>
         $(function () {
             $("span.row.checkbox.list input[type=checkbox]").attr("disabled", "disabled");
+
+            $("#from").datepicker({
+                dateFormat: 'M d, yy',
+                disabled: true,
+                onSelect: function (dateText) {                    
+                    $("#HFDateFrom").val(dateText);
+                }
+            });
+
+            $("#to").datepicker({
+                dateFormat: 'M d, yy',
+                disabled: true,
+                onSelect: function (dateText) {                    
+                    $("#HFDateTo").val(dateText);
+                }
+            });
+
+            $("#IsOneWayRadio,#IsTwoWayRadio").attr("disabled", "disabled");
+
+            $("#from").datepicker("setDate", $("#HFDateFrom").val());
+            $("#to").datepicker("setDate", $("#HFDateTo").val());
         });
     </script>
 </asp:Content>
