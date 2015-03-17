@@ -11,7 +11,6 @@ namespace IvanovWebsite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Write(System.Web.HttpRuntime.AppDomainAppPath);
         }
     }
 }

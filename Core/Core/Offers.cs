@@ -103,13 +103,24 @@ namespace Core
             }
         }
 
-        public static List<List_SubmitedOffersResult> ListSubmitedOffers()
+        public static List<Offer> ListSubmitedOffers()
         {
             try
             {
                 using (var db = ConnectionFactory.GetDBCoreDataContext())
                 {
-                    return db.List_SubmitedOffers().OrderByDescending(o => o.CRTime).ToList();
+                    return db.List_SubmitedOffers()
+                    .OrderByDescending(o => o.CRTime)
+                    .Select(o => new Offer
+                    {
+                        ID = o.OfferID,
+                        OfferType = o.OfferType,
+                        LocationFrom = o.LocationFrom,
+                        LocationTo = o.LocationTo,
+                        Fullname = o.Fullname,
+                        Manager = o.Manager,
+                        CRTime = o.CRTime
+                    }).ToList();
                 }
             }
             catch(Exception ex)
@@ -153,6 +164,22 @@ namespace Core
                 IsError = true;
                 string.Format("Update(OfferID = {0}, OfferTypeCode = {1}, LocationFrom = {2}, LocationTo = {3}, StartDate = {4}, EndDate = {5}, StartFelxBeforeID = {6}, StartFelxAfterID = {7}, EndFelxBeforeID = {8}, EndFelxAfterID = {9}, IsOneWay = {10}, IsTwoWay = {11}, TravelersCode = {12}, AdultCount = {13}, ChildrenCount = {14}, StudentCount = {15}, InvantCount = {16}, LuggageCount = {17}, Transport = {18}, TransportWebsite = {19}, StayPlace = {20}, FromWebsite = {21}, CarRental = {22}, CarRentCompany = {23}, TotalPrice = {24}, PricePerPerson = {25}, CurrencyID = {26}, Fname = {27}, Lname = {28}, Email = {29}, NationalityID = {30}, TimeToResearchID = {31}, AddInfo = {32}, ReceiveNewsletters = {33}, ReceiveCommercialInfo = {34}, AgreeTerms = {35}) - {36}", OfferID, OfferTypeCode, LocationFrom, LocationTo, StartDate, EndDate, StartFelxBeforeID, StartFelxAfterID, EndFelxBeforeID, EndFelxAfterID, IsOneWay, IsTwoWay, TravelersCode, AdultCount, ChildrenCount, StudentCount, InvantCount, LuggageCount, Transport, TransportWebsite, StayPlace, FromWebsite, CarRental, CarRentCompany, TotalPrice, PricePerPerson, CurrencyID, Fname, Lname, Email, NationalityID, TimeToResearchID, AddInfo, ReceiveNewsletters, ReceiveCommercialInfo, AgreeTerms, ex.Message);
             }            
+        }
+
+        public void UpdateOfferManager(int? OfferID, int? ManagerID)
+        {
+            try
+            {
+                using (var db = ConnectionFactory.GetDBCoreDataContext())
+                {
+                    db.UpdateOfferManager(OfferID, ManagerID);
+                }
+            }
+            catch (Exception ex)
+            {
+                IsError = true;
+                string.Format("UpdateOfferManager(OfferID = {0}, ManagerID = {1}) - {2}", OfferID, ManagerID, ex.Message);
+            }
         }
 
         public void TSP_LastOffer(byte? iud = null, int? ID = null, string Caption = null, string Location = null, string Picture = null, string ShortDesc = null, string PdfFile = null, int? UsersCount = null, bool? IsPublished = null)
@@ -223,6 +250,7 @@ namespace Core
         public int? PricePerPerson { set; get; }
         public int? CurrencyID { set; get; }
         public string Currency { set; get; }
+        public string Fullname { set; get; }
         public string Fname { set; get; }
         public string Lname { set; get; }
         public string Email { set; get; }
@@ -234,6 +262,7 @@ namespace Core
         public bool ReceiveNewsletters { set; get; }
         public bool ReceiveCommercialInfo { set; get; }
         public bool AgreeTerms { set; get; }
+        public string Manager { set; get; }
         public DateTime CRTime { set; get; }
         [XmlArray("StayPlaces")]
         public List<DictionaryItem> Transports { set; get; }

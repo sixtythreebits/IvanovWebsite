@@ -83,10 +83,13 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="admin\Admin.Master" />
+    <Content Include="admin\css\login.css" />
     <Content Include="admin\fonts\fontawesome-webfont.eot" />
     <Content Include="admin\fonts\fontawesome-webfont.ttf" />
     <Content Include="admin\fonts\fontawesome-webfont.woff" />
     <Content Include="admin\fonts\FontAwesome.otf" />
+    <Content Include="admin\Offer.aspx" />
+    <Content Include="admin\OfferPage.aspx" />
     <Content Include="admin\Offers.aspx" />
     <Content Include="admin\UserControls\SuccessErrorControl.ascx" />
     <Content Include="admin\Users.aspx" />
@@ -218,6 +221,7 @@
     <Content Include="images\icons\arrow-next.png" />
     <Content Include="images\icons\arrow-prev.png" />
     <Content Include="images\icons\arrow_b.png" />
+    <Content Include="images\icons\arrow_duble_l.png" />
     <Content Include="images\icons\arrow_duble_r.png" />
     <Content Include="images\icons\comments.png" />
     <Content Include="images\icons\fb.png" />
@@ -240,6 +244,7 @@
     <Content Include="images\icons\pin.png" />
     <Content Include="images\icons\pin_current.png" />
     <Content Include="images\icons\radio_checkbox.png" />
+    <Content Include="images\icons\stop.png" />
     <Content Include="images\icons\tw.png" />
     <Content Include="images\icons\user.png" />
     <Content Include="images\logo.png" />
@@ -372,6 +377,20 @@
     </Compile>
     <Compile Include="admin\login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Offer.aspx.cs">
+      <DependentUpon>Offer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Offer.aspx.designer.cs">
+      <DependentUpon>Offer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\OfferPage.aspx.cs">
+      <DependentUpon>OfferPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\OfferPage.aspx.designer.cs">
+      <DependentUpon>OfferPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\Offers.aspx.cs">
       <DependentUpon>Offers.aspx</DependentUpon>

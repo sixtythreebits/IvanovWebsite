@@ -3,9 +3,9 @@ using System;
 using System.Linq;
 using Core.Utilities;
 
-namespace IvanovWebsite
+namespace IvanovWebsite.admin
 {
-    public partial class OfferPage : System.Web.UI.Page
+    public partial class OfferPage1 : System.Web.UI.Page
     {
         public Offer Item;
 
@@ -16,11 +16,10 @@ namespace IvanovWebsite
 
         void InitStartUp()
         {
-            var OfferID = Request.QueryString["id"].ToInt();            
+            var OfferID = Request.QueryString["id"].ToInt();
             Item = OfferRepository.GetSingleOffer(OfferID);
             if (Item != null)
-            {
-                Master.PageTitle = Item.OfferTypeCode == 1 ? "Нова оферта" : "Провери оферта";
+            {                
                 MaxPricePerPersonPlaceHolder.Visible = Item.OfferTypeCode == 1;
 
                 FromLocationLiteral.Text = Item.LocationFrom;
@@ -38,7 +37,7 @@ namespace IvanovWebsite
 
                 IsOneWayRadio.Checked = Item.IsOneWay;
                 IsTwoWayRadio.Checked = Item.IsTwoWay;
-              
+
 
                 switch (Item.TravelersCode)
                 {
@@ -47,15 +46,15 @@ namespace IvanovWebsite
                     case 3: { FamilyRadio.Checked = true; break; }
                     case 4: { PeopleGroupRadio.Checked = true; break; }
                 }
-                
+
 
                 AdultCountPlaceHolder.Visible = Item.AdultCount > 0;
                 InvanvtCountPlaceHolder.Visible = Item.InvantCount > 0;
-                LuggageCountPlaceHolder.Visible= Item.LuggageCount > 0;
+                LuggageCountPlaceHolder.Visible = Item.LuggageCount > 0;
                 StudentsCountPlaceHolder.Visible = Item.StudentCount > 0;
                 ChildrenCountPlaceHolder.Visible = Item.ChildrenCount > 0;
 
-                if (Item.Transports.Count>0)
+                if (Item.Transports.Count > 0)
                 {
                     if (Item.Transports.Where(t => t.IntCode == 1).Count() > 0) { TransportPlaneCheckbox.Checked = true; }
                     if (Item.Transports.Where(t => t.IntCode == 2).Count() > 0) { TransportTrainCheckbox.Checked = true; }
@@ -71,7 +70,7 @@ namespace IvanovWebsite
                     if (Item.StayPlaces.Where(t => t.IntCode == 2).Count() > 0) { HostelCheckBox.Checked = true; }
                     if (Item.StayPlaces.Where(t => t.IntCode == 3).Count() > 0) { Hotel23CheckBox.Checked = true; }
                     if (Item.StayPlaces.Where(t => t.IntCode == 4).Count() > 0) { Hotel45CheckBox.Checked = true; }
-                    if (Item.StayPlaces.Where(t => t.IntCode == 5).Count() > 0) { ApartmentCheckBox.Checked = true; }                    
+                    if (Item.StayPlaces.Where(t => t.IntCode == 5).Count() > 0) { ApartmentCheckBox.Checked = true; }
                 }
 
                 RefererWebsiteTextBox.Text = Item.FromWebsite;
@@ -97,15 +96,8 @@ namespace IvanovWebsite
             else
             {
                 Item = new Offer();
-                Response.Redirect("~/");
+                //Response.Redirect("~/");
             }
-        }
-
-        protected void CancelButton_Click(object sender, EventArgs e)
-        {
-            var R = new OfferRepository();
-            R.DeleteOffer(Item.ID);
-            Response.Redirect("~/");
-        }
+        }        
     }
 }

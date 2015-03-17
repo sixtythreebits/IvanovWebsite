@@ -5,3 +5,56 @@ http://localhost:19133/Offer.aspx?id=7 - 17-Mar-15 12:08:06
 GetSingleOffer(ID = 7) - There is an error in XML document (1, 2).
 ------------------------------------
 
+
+
+------------------------------------
+http://localhost:19133/admin/offers.aspx - 17-Mar-15 16:24:25
+ListSubmitedOffers() - Invalid column name 'Transport'.
+Invalid column name 'StayPlace'.
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/admin/offers.aspx - 17-Mar-15 16:26:08
+ListSubmitedOffers() - Invalid column name 'Transport'.
+Invalid column name 'StayPlace'.
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/admin/offers.aspx - 17-Mar-15 16:28:52
+ListSubmitedOffers() - Invalid column name 'StartDate'.
+Invalid column name 'EndDate'.
+Invalid column name 'StartFelxBefore'.
+Invalid column name 'StartFelxAfter'.
+Invalid column name 'EndFelxBefore'.
+Invalid column name 'EndFelxAfter'.
+Invalid column name 'IsOneWay'.
+Invalid column name 'IsTwoWay'.
+Invalid column name 'Travelers'.
+Invalid column name 'AdultCount'.
+Invalid column name 'ChildrenCount'.
+Invalid column name 'StudentCount'.
+Invalid column name 'InvantCount'.
+Invalid column name 'LuggageCount'.
+Invalid column name 'Transport'.
+Invalid column name 'TransportWebsite'.
+Invalid column name 'StayPlace'.
+Invalid column name 'FromWebsite'.
+Invalid column name 'CarRental'.
+Invalid column name 'CarRentCompany'.
+Invalid column name 'TotalPrice'.
+Invalid column name 'PricePerPerson'.
+Invalid column name 'Currency'.
+Invalid column name 'Fname'.
+Invalid column name 'Lname'.
+Invalid column name 'Nationality'.
+Invalid column name 'TimeToResearch'.
+Invalid column name 'AddInfo'.
+Invalid column name 'ReceiveNewsletters'.
+Invalid column name 'ReceiveCommercialInfo'.
+Invalid column name 'AgreeTerms'.
+------------------------------------
+

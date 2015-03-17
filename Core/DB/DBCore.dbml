@@ -93,61 +93,6 @@
     <Parameter Name="OfferID" Parameter="offerID" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.List_LastOffers" Method="List_LastOffers" IsComposable="true">
-    <Parameter Name="IsPublished" Parameter="isPublished" Type="System.Boolean" DbType="Bit" />
-    <ElementType Name="List_LastOffersResult">
-      <Column Name="OfferID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Caption" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Location" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="ShortDesc" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="Picture" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="PdfFile" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="UsersCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="IsPublished" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="CRTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.List_SubmitedOffers" Method="List_SubmitedOffers" IsComposable="true">
-    <ElementType Name="List_SubmitedOffersResult">
-      <Column Name="OfferID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="OfferType" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="LocationFrom" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="LocationTo" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="StartDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="EndDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="StartFelxBefore" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="StartFelxAfter" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="EndFelxBefore" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="EndFelxAfter" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="IsOneWay" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="IsTwoWay" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="Travelers" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="AdultCount" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="ChildrenCount" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="StudentCount" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="InvantCount" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="LuggageCount" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Column Name="Transport" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="TransportWebsite" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="StayPlace" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="FromWebsite" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="CarRental" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="CarRentCompany" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="TotalPrice" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PricePerPerson" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Currency" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="Fname" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="Lname" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Nationality" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="TimeToResearch" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="AddInfo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ReceiveNewsletters" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="ReceiveCommercialInfo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="AgreeTerms" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="CRTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.SaveOffer" Method="SaveOffer">
     <Parameter Name="OfferTypeCode" Parameter="offerTypeCode" Type="System.Int32" DbType="Int" />
     <Parameter Name="LocationFrom" Parameter="locationFrom" Type="System.String" DbType="NVarChar(100)" />
@@ -229,5 +174,37 @@
   <Function Name="dbo.GetSingleOffer" Method="GetSingleOffer" IsComposable="true">
     <Parameter Name="OfferID" Parameter="offerID" Type="System.Int32" DbType="Int" />
     <Return Type="System.Xml.Linq.XElement" />
+  </Function>
+  <Function Name="dbo.List_LastOffers" Method="List_LastOffers" IsComposable="true">
+    <Parameter Name="IsPublished" Parameter="isPublished" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="List_LastOffersResult">
+      <Column Name="OfferID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Caption" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ShortDesc" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Picture" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PdfFile" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="UsersCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsPublished" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CRTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateOfferManager" Method="UpdateOfferManager">
+    <Parameter Name="OfferID" Parameter="offerID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ManagerID" Parameter="managerID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.List_SubmitedOffers" Method="List_SubmitedOffers" IsComposable="true">
+    <ElementType Name="List_SubmitedOffersResult">
+      <Column Name="OfferID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OfferTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OfferType" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="LocationFrom" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LocationTo" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Fullname" Type="System.String" DbType="NVarChar(41)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CRTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Manager" Type="System.String" DbType="NVarChar(41)" CanBeNull="true" />
+    </ElementType>
   </Function>
 </Database>
