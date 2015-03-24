@@ -13,6 +13,15 @@ namespace IvanovWebsite.admin {
     public partial class OfferPage {
         
         /// <summary>
+        /// ApplyButtonPlaceHolder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder ApplyButtonPlaceHolder;
+        
+        /// <summary>
         /// ApplyButton control.
         /// </summary>
         /// <remarks>
@@ -20,6 +29,24 @@ namespace IvanovWebsite.admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ApplyButton;
+        
+        /// <summary>
+        /// RemoveButtonPlaceHolder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder RemoveButtonPlaceHolder;
+        
+        /// <summary>
+        /// RemoveFromOfferButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button RemoveFromOfferButton;
         
         /// <summary>
         /// ManagerPlaceHolder control.
@@ -31,6 +58,15 @@ namespace IvanovWebsite.admin {
         protected global::System.Web.UI.WebControls.PlaceHolder ManagerPlaceHolder;
         
         /// <summary>
+        /// ExpiredPlaceHolder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder ExpiredPlaceHolder;
+        
+        /// <summary>
         /// NoManagerPlaceHolder control.
         /// </summary>
         /// <remarks>
@@ -38,6 +74,51 @@ namespace IvanovWebsite.admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder NoManagerPlaceHolder;
+        
+        /// <summary>
+        /// CommentsTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox CommentsTextBox;
+        
+        /// <summary>
+        /// AddCommentButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button AddCommentButton;
+        
+        /// <summary>
+        /// CommentsRepeater control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater CommentsRepeater;
+        
+        /// <summary>
+        /// CommentsTabActivePlaceHolder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder CommentsTabActivePlaceHolder;
+        
+        /// <summary>
+        /// SuccessErrorControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::IvanovWebsite.admin.UserControls.SuccessErrorControl SuccessErrorControl;
         
         /// <summary>
         /// Master property.

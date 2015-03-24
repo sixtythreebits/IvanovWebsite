@@ -23,6 +23,7 @@ namespace Core
                     {
                         var U = x.ToString().DeserializeTo<User>();
                         U.IsAuthenticated = true;
+                        U.IsAdmin = U.RoleCode == 1;
                         if (WriteToSession)
                         {
                             HttpContext.Current.Session["UserObject"] = U;
@@ -101,6 +102,7 @@ namespace Core
         public string Lname { set; get; }
         public string Fullname { set; get; }
         public bool IsActive { set; get; }
+        public bool IsAdmin { set; get; }
         public bool IsAuthenticated { set; get; }
         public DateTime? CRTime { set; get; }
     }

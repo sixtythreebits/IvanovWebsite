@@ -189,9 +189,23 @@
       <Column Name="CRTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.UpdateOfferManager" Method="UpdateOfferManager">
+  <Function Name="dbo.List_OfferComments" Method="List_OfferComments" IsComposable="true">
     <Parameter Name="OfferID" Parameter="offerID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="ManagerID" Parameter="managerID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="List_OfferCommentsResult">
+      <Column Name="CommentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Fullname" Type="System.String" DbType="NVarChar(41)" CanBeNull="true" />
+      <Column Name="OfferID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="CRTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.tsp_OfferComments" Method="tsp_OfferComments">
+    <Parameter Name="iud" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="CommentID" Parameter="commentID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="OfferID" Parameter="offerID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Comment" Parameter="comment" Type="System.String" DbType="NVarChar(1000)" />
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.List_SubmitedOffers" Method="List_SubmitedOffers" IsComposable="true">
@@ -204,7 +218,15 @@
       <Column Name="Fullname" Type="System.String" DbType="NVarChar(41)" CanBeNull="true" />
       <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="CRTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="Manager" Type="System.String" DbType="NVarChar(41)" CanBeNull="true" />
+      <Column Name="ExpDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ManagersString" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
     </ElementType>
+  </Function>
+  <Function Name="dbo.tsp_OfferManagers" Method="tsp_OfferManagers">
+    <Parameter Name="iud" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="RecordID" Parameter="recordID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="OfferID" Parameter="offerID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
   </Function>
 </Database>

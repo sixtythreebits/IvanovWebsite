@@ -83,6 +83,7 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="admin\Admin.Master" />
+    <Content Include="admin\css\comments.css" />
     <Content Include="admin\css\login.css" />
     <Content Include="admin\fonts\fontawesome-webfont.eot" />
     <Content Include="admin\fonts\fontawesome-webfont.ttf" />
@@ -513,6 +514,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="admin\img\" />
     <Folder Include="fonts\" />
   </ItemGroup>
   <ItemGroup>

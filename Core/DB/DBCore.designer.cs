@@ -228,10 +228,17 @@ namespace Core.DB
 			return this.CreateMethodCallQuery<List_LastOffersResult>(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), isPublished);
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateOfferManager")]
-		public int UpdateOfferManager([global::System.Data.Linq.Mapping.ParameterAttribute(Name="OfferID", DbType="Int")] System.Nullable<int> offerID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ManagerID", DbType="Int")] System.Nullable<int> managerID)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.List_OfferComments", IsComposable=true)]
+		public IQueryable<List_OfferCommentsResult> List_OfferComments([global::System.Data.Linq.Mapping.ParameterAttribute(Name="OfferID", DbType="Int")] System.Nullable<int> offerID)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), offerID, managerID);
+			return this.CreateMethodCallQuery<List_OfferCommentsResult>(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), offerID);
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.tsp_OfferComments")]
+		public int tsp_OfferComments([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="TinyInt")] System.Nullable<byte> iud, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CommentID", DbType="Int")] ref System.Nullable<int> commentID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="Int")] System.Nullable<int> userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="OfferID", DbType="Int")] System.Nullable<int> offerID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Comment", DbType="NVarChar(1000)")] string comment)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iud, commentID, userID, offerID, comment);
+			commentID = ((System.Nullable<int>)(result.GetParameterValue(1)));
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -239,6 +246,14 @@ namespace Core.DB
 		public IQueryable<List_SubmitedOffersResult> List_SubmitedOffers()
 		{
 			return this.CreateMethodCallQuery<List_SubmitedOffersResult>(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.tsp_OfferManagers")]
+		public int tsp_OfferManagers([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="TinyInt")] System.Nullable<byte> iud, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RecordID", DbType="Int")] ref System.Nullable<int> recordID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="OfferID", DbType="Int")] System.Nullable<int> offerID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="Int")] System.Nullable<int> userID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iud, recordID, offerID, userID);
+			recordID = ((System.Nullable<int>)(result.GetParameterValue(1)));
+			return ((int)(result.ReturnValue));
 		}
 	}
 	
@@ -904,6 +919,122 @@ namespace Core.DB
 		}
 	}
 	
+	public partial class List_OfferCommentsResult
+	{
+		
+		private int _CommentID;
+		
+		private int _UserID;
+		
+		private string _Fullname;
+		
+		private int _OfferID;
+		
+		private string _Comment;
+		
+		private System.DateTime _CRTime;
+		
+		public List_OfferCommentsResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CommentID", DbType="Int NOT NULL")]
+		public int CommentID
+		{
+			get
+			{
+				return this._CommentID;
+			}
+			set
+			{
+				if ((this._CommentID != value))
+				{
+					this._CommentID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int NOT NULL")]
+		public int UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					this._UserID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fullname", DbType="NVarChar(41)")]
+		public string Fullname
+		{
+			get
+			{
+				return this._Fullname;
+			}
+			set
+			{
+				if ((this._Fullname != value))
+				{
+					this._Fullname = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OfferID", DbType="Int NOT NULL")]
+		public int OfferID
+		{
+			get
+			{
+				return this._OfferID;
+			}
+			set
+			{
+				if ((this._OfferID != value))
+				{
+					this._OfferID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Comment", DbType="NVarChar(1000)")]
+		public string Comment
+		{
+			get
+			{
+				return this._Comment;
+			}
+			set
+			{
+				if ((this._Comment != value))
+				{
+					this._Comment = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CRTime", DbType="DateTime NOT NULL")]
+		public System.DateTime CRTime
+		{
+			get
+			{
+				return this._CRTime;
+			}
+			set
+			{
+				if ((this._CRTime != value))
+				{
+					this._CRTime = value;
+				}
+			}
+		}
+	}
+	
 	public partial class List_SubmitedOffersResult
 	{
 		
@@ -923,7 +1054,9 @@ namespace Core.DB
 		
 		private System.DateTime _CRTime;
 		
-		private string _Manager;
+		private System.Nullable<System.DateTime> _ExpDate;
+		
+		private string _ManagersString;
 		
 		public List_SubmitedOffersResult()
 		{
@@ -1057,18 +1190,34 @@ namespace Core.DB
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Manager", DbType="NVarChar(41)")]
-		public string Manager
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExpDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ExpDate
 		{
 			get
 			{
-				return this._Manager;
+				return this._ExpDate;
 			}
 			set
 			{
-				if ((this._Manager != value))
+				if ((this._ExpDate != value))
 				{
-					this._Manager = value;
+					this._ExpDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ManagersString", DbType="VarChar(MAX)")]
+		public string ManagersString
+		{
+			get
+			{
+				return this._ManagersString;
+			}
+			set
+			{
+				if ((this._ManagersString != value))
+				{
+					this._ManagersString = value;
 				}
 			}
 		}

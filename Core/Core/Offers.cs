@@ -74,6 +74,30 @@ namespace Core
             }
         }
 
+        public static List<OfferComment> ListOfferComments(int? OfferID = null)
+        {
+            try
+            {
+                using (var db = ConnectionFactory.GetDBCoreDataContext())
+                {
+                    return db.List_OfferComments(OfferID)
+                    .OrderByDescending(c => c.CRTime)
+                    .Select(c => new OfferComment
+                    {
+                        ID = c.CommentID,
+                        Fullname = c.Fullname,
+                        Comment = c.Comment,
+                        CRTime = c.CRTime
+                    }).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                string.Format("ListOfferComments(OfferID = {0}) - {1}", OfferID, ex.Message).LogString();
+                return null;
+            }
+        }
+
         public static List<LastOffer> ListLastOffers(bool? IsPublished = null)
         {
             try
@@ -118,7 +142,8 @@ namespace Core
                         LocationFrom = o.LocationFrom,
                         LocationTo = o.LocationTo,
                         Fullname = o.Fullname,
-                        Manager = o.Manager,
+                        ManagersString = o.ManagersString,
+                        ExpDate = o.ExpDate,
                         CRTime = o.CRTime
                     }).ToList();
                 }
@@ -166,13 +191,13 @@ namespace Core
             }            
         }
 
-        public void UpdateOfferManager(int? OfferID, int? ManagerID)
+        public void TSP_OfferManagers(byte? iud = null, int? ID = null,int? OfferID = null, int? ManagerID = null)
         {
             try
             {
                 using (var db = ConnectionFactory.GetDBCoreDataContext())
                 {
-                    db.UpdateOfferManager(OfferID, ManagerID);
+                    db.tsp_OfferManagers(iud, ref ID, OfferID, ManagerID);
                 }
             }
             catch (Exception ex)
@@ -197,6 +222,22 @@ namespace Core
                 string.Format("TSP_LastOffer(iud = {0}, ID = {1}, Caption = {2}, Location = {3}, Picture = {4}, ShortDesc = {5}, PdfFile = {6}, UsersCount = {7}, IsPublished = {8}) - {9}", iud, ID, Caption, Location, Picture, ShortDesc, PdfFile, UsersCount, IsPublished, ex.Message).LogString();
             }
         }
+
+        public void TSP_OfferComments(byte? iud = null, int? ID = null, string Comment = null, int? UserID = null, int? OfferID = null)
+        {
+            try
+            {
+                using (var db = ConnectionFactory.GetDBCoreDataContext())
+                {
+                    db.tsp_OfferComments(iud, ref ID, UserID, OfferID, Comment);
+                }
+            }
+            catch (Exception ex)
+            {
+                IsError = true;
+                string.Format("TSP_OfferComments(iud = {0}, ID = {1}, Comment = {2}, UserID = {3}, OfferID = {4}) - {5}", iud, ID, Comment, UserID, OfferID, ex.Message).LogString();
+            }
+        }
     }
 
     [XmlRoot("Offer")]
@@ -218,6 +259,7 @@ namespace Core
         #region Properties
         public int ID { set; get; }
         public int? OfferTypeID { set; get; }
+        public DateTime? ExpDate { set; get; }
         public int? OfferTypeCode { set; get; }
         public string OfferType { set; get; }
         public string LocationFrom{ set; get; }
@@ -262,12 +304,28 @@ namespace Core
         public bool ReceiveNewsletters { set; get; }
         public bool ReceiveCommercialInfo { set; get; }
         public bool AgreeTerms { set; get; }
-        public string Manager { set; get; }
+        public string ManagersString { set; get; }
+        [XmlArray("OfferManagers")]
+        public List<OfferManager> OfferManagers { set; get; }
         public DateTime CRTime { set; get; }
         [XmlArray("StayPlaces")]
         public List<DictionaryItem> Transports { set; get; }
         [XmlArray("Transports")]
         public List<DictionaryItem> StayPlaces { set; get; }
         #endregion Properties
+    }
+
+    public class OfferComment
+    {
+        public int? ID { set; get; }
+        public string Fullname { set; get; }
+        public string Comment { set; get; }
+        public DateTime? CRTime { set; get; }
+    }
+
+    public class OfferManager
+    {
+        public int? ID { set; get; }
+        public string Fullname { set; get; }
     }
 }
