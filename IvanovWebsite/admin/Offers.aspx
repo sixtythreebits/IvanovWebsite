@@ -20,7 +20,7 @@
             </dx:GridViewDataTextColumn>
             <dx:GridViewDataTextColumn FieldName="ManagersString" Caption="Manager" Width="300px">
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataDateColumn FieldName="ExpDate" Caption="Exp Created" Width="150px">
+            <dx:GridViewDataDateColumn FieldName="ExpDate" Caption="Exp Date" Width="150px">
                 <PropertiesDateEdit DisplayFormatString="MMM dd, yyyy - HH:mm"></PropertiesDateEdit>
             </dx:GridViewDataDateColumn>
             <dx:GridViewDataDateColumn FieldName="CRTime" Caption="Date Created" Width="150px">

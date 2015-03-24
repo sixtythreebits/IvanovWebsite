@@ -16,7 +16,7 @@ namespace IvanovWebsite.admin
         {
             if (e.DataColumn.FieldName == "ExpDate" && e.CellValue as DateTime? < DateTime.Now)
             {
-                e.Cell.BackColor = Color.Red;
+                e.Cell.BackColor = Color.Coral;
             }
         }
     }
