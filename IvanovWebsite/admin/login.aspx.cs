@@ -15,7 +15,15 @@ namespace Admin
             var U = UsersRepository.AuthenticateUser(UsernameTextBox.Text, PasswordTextBox.Text);
             if (U != null && U.IsAuthenticated)
             {
-                Response.Redirect("Default.aspx");
+                var ReturnUrl = Request.QueryString["ReturnUrl"];
+                if (string.IsNullOrWhiteSpace(ReturnUrl))
+                {
+                    Response.Redirect("Default.aspx");
+                }
+                else
+                {
+                    Response.Redirect(ReturnUrl);
+                }
             }
             else
             {

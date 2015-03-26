@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System.Configuration;
+using System.Web;
 
 namespace Core.Utilities
 {
@@ -17,6 +18,11 @@ namespace Core.Utilities
         public static string UploadFileHttpPath
         {
             get { return "/uploads/"; }
+        }
+
+        public static string WebsiteHttpFullPath
+        {
+            get { return ConfigurationManager.AppSettings["WebsiteHttpFullPath"]; }
         }
     }
 }

@@ -354,7 +354,7 @@ For more information regarding our privacy policy, please click <a href="#">here
         <p>
             <asp:LinkButton ID="CancelButton" runat="server" Text="Отказ" CssClass="btn magenta stop" OnClick="CancelButton_Click"></asp:LinkButton>            
             <a href="/offer/edit/<%=Item.ID %>/" class="btn blue arrow-l">Предишен стъпка</a>
-            <a class="btn blue">Следваща стъпка</a>
+            <asp:LinkButton ID="PayButton" runat="server" CssClass="btn blue" Text="Следваща стъпка" OnClick="PayButton_Click"></asp:LinkButton>            
         </p>
     </section>
 </asp:Content>

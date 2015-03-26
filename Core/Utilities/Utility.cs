@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Net;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Xml.Serialization;
@@ -17,7 +18,16 @@ namespace Core.Utilities
 
     public class Utility
     {
-        
+        public static void ConvertPageFromUrlToPdf(string Url)
+        {
+            var html = new WebClient().DownloadString(Url);
+
+            var pdfBytes = (new NReco.PdfGenerator.HtmlToPdfConverter()).GeneratePdf(html);
+
+            System.IO.File.WriteAllBytes(AppDomain.CurrentDomain.BaseDirectory + "file.pdf", pdfBytes);
+
+            
+        }
     }
 
     public static class StringExtensions

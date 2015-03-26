@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using Core.Utilities;
+using System.Threading.Tasks;
 
 namespace IvanovWebsite
 {
@@ -105,6 +106,17 @@ namespace IvanovWebsite
         {
             var R = new OfferRepository();
             R.DeleteOffer(Item.ID);
+            Response.Redirect("~/");
+        }
+
+        protected void PayButton_Click(object sender, EventArgs e)
+        {
+            Task.Factory.StartNew(() =>
+            {
+                var M = new Mail();
+                M.Send("mike@63bits.com", "New Website Offer", string.Format("You have new offer from website, please <a href=\"{0}admin/login.aspx?ReturnUrl={0}admin/Offer.aspx?id={1}\">CLICK HERE</a> link below to view details", AppSettings.WebsiteHttpFullPath, Item.ID));
+                M.Send("info@bezposoka.bg", "New Website Offer", string.Format("You have new offer from website, please <a href=\"{0}admin/login.aspx?ReturnUrl={0}admin/Offer.aspx?id={1}\">CLICK HERE</a> link below to view details", AppSettings.WebsiteHttpFullPath, Item.ID));
+            });
             Response.Redirect("~/");
         }
     }

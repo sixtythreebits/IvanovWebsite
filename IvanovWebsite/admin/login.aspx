@@ -6,8 +6,7 @@
     <meta charset="utf-8">
     <title>Admin Login</title>    
     <link href="/admin/css/bootstrap.min.css" rel="stylesheet" />
-      <link href="/admin/css/sb-admin-2.css" rel="stylesheet" />
-        
+      <link href="/admin/css/sb-admin-2.css" rel="stylesheet" />        
   </head>
   <body>
     <form id="form1" runat="server">

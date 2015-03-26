@@ -49,7 +49,7 @@ namespace IvanovWebsite
 
 
                 var OfferID = R.Save(
-                    OfferTypeCode: OfferTypeCode,                    
+                    OfferTypeCode: OfferTypeCode,
                     LocationFrom: FromLocationTextBox.Text,
                     LocationTo: ToLocationTextBox.Text,
                     StartDate: HFDateFrom.Value.ToDateTime(),
@@ -65,9 +65,9 @@ namespace IvanovWebsite
                     ChildrenCount: ChildrenCount,
                     StudentCount: StudentsCount,
                     InvantCount: InvantCount,
-                    LuggageCount: LuggageCount,                    
+                    LuggageCount: LuggageCount,
                     Transport: GetTransportXml(),
-                    TransportWebsite: TransportPriceRefererTextBox.Text,                    
+                    TransportWebsite: TransportPriceRefererTextBox.Text,
                     StayPlace: GetStayPlaceXml(),
                     FromWebsite: RefererWebsiteTextBox.Text,
                     CarRental: CarRentYesRadio.Checked,
@@ -85,7 +85,7 @@ namespace IvanovWebsite
                     ReceiveCommercialInfo: ReceiveCommercialInfoCheckbox.Checked,
                     AgreeTerms: AgreeTermsOfUseCheckbox.Checked
                 );
-                if (R.IsError && OfferID>0)
+                if (R.IsError && OfferID > 0)
                 {
                     ErrorPlaceHolder.Visible = true;
                 }
