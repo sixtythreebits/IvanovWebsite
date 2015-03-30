@@ -20,7 +20,7 @@
         <legend>КРАЙНА ДЕСТИНАЦИЯ</legend>
             
         <span class="row size1 align-middle">
-            <label>От къде искате да тръгнете?</label>
+            <label>До къде искате да тръгнете?</label>
             <asp:TextBox ID="ToLocationTextBox" runat="server" ClientIDMode="Static" MaxLength="50"></asp:TextBox>
         </span>
     </fieldset>
@@ -47,7 +47,7 @@
                 <span class="radio">
                     <label>
                         <asp:RadioButton ID="IsOneWayRadio" runat="server" ClientIDMode="Static" GroupName="Ways" />
-                        <span>Однопосочен</span>
+                        <span>Еднопосочен</span>
                     </label>
                 </span>
             </li>
@@ -265,10 +265,12 @@
                 <b>Ферибот</b>
             </label>
         </span>
+        <asp:PlaceHolder ID="TransportPricePlaceHolder" runat="server">
         <span class="row size1 align-middle">
             <label>От къде е получена цената?</label>
             <asp:TextBox ID="TransportPriceRefererTextBox" runat="server" MaxLength="100"></asp:TextBox>                
         </span>
+        </asp:PlaceHolder>
     </fieldset>
         
     <fieldset>
@@ -350,15 +352,7 @@
                         <asp:DropDownList ID="CurrenciesMaxPriceCombo" runat="server" DataSourceID="CurrenciesDataSource" DataTextField="Caption" DataValueField="ID" ClientIDMode="Static"></asp:DropDownList>
                     </span>
                 </span>
-            </span>
-            <asp:PlaceHolder ID="MaxPricePerPersonPlaceHolder" runat="server">
-            <span>
-                <label>Максимална сума на човек</label>
-                <span class="price">
-                    <asp:TextBox ID="MaxPricePerPersonTextBox" runat="server" ClientIDMode="Static"></asp:TextBox>                        
-                </span>
-            </span>
-            </asp:PlaceHolder>
+            </span>            
         </span>
     </fieldset>
     <asp:ObjectDataSource ID="CurrenciesDataSource" runat="server" TypeName="Core.DictionaryRepository" SelectMethod="ListDictionary" CacheDuration="3600">
@@ -580,14 +574,17 @@ For more information regarding our privacy policy, please click <a href="#">here
 </asp:PlaceHolder>
 
 <asp:PlaceHolder ID="ErrorPlaceHolder" runat="server" ViewStateMode="Disabled" Visible="false">
-<script>alert("Oooop something went wrong");</script>
+<script>alert("<%=Core.Properties.Resources.Abort%>");</script>
 </asp:PlaceHolder>
 
 <asp:PlaceHolder ID="AgreeToTermsPlaceHolder" runat="server" ViewStateMode="Disabled" Visible="false">
-<script>alert("You must agree to terms of use");</script>
+<script>alert("<%=Core.Properties.Resources.InformationAgreeToTerms%>");</script>
 </asp:PlaceHolder>
 
 <asp:PlaceHolder ID="AllRequiredPlaceHolder" runat="server" ViewStateMode="Disabled" Visible="false">
-<script>alert("All fields are required, please make sure that you've provided all neccessary information.");</script>
+<script>alert("<%=Core.Properties.Resources.InformationAllFieldsAreRequired%>");</script>
+</asp:PlaceHolder>
+<asp:PlaceHolder ID="EnvalidEmailPlaceHolder" runat="server" ViewStateMode="Disabled" Visible="false">
+<script>alert("<%=Core.Properties.Resources.InformationInvalidEmailAddress%>");</script>
 </asp:PlaceHolder>
 </asp:Content>

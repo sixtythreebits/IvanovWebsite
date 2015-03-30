@@ -308,9 +308,9 @@ namespace Core
         [XmlArray("OfferManagers")]
         public List<OfferManager> OfferManagers { set; get; }
         public DateTime CRTime { set; get; }
-        [XmlArray("StayPlaces")]
-        public List<DictionaryItem> Transports { set; get; }
         [XmlArray("Transports")]
+        public List<DictionaryItem> Transports { set; get; }
+        [XmlArray("StayPlaces")]
         public List<DictionaryItem> StayPlaces { set; get; }
         #endregion Properties
     }

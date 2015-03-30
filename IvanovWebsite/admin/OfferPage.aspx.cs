@@ -19,8 +19,9 @@ namespace IvanovWebsite.admin
             var OfferID = Request.QueryString["id"].ToInt();
             Item = OfferRepository.GetSingleOffer(OfferID);
             if (Item != null)
-            {                
-                MaxPricePerPersonPlaceHolder.Visible = Item.OfferTypeCode == 1;
+            {
+
+                TransportPricePlaceHolder.Visible = Item.OfferTypeCode == 2;
 
                 FromLocationLiteral.Text = Item.LocationFrom;
                 ToLocationLiteral.Text = Item.LocationTo;
@@ -81,7 +82,6 @@ namespace IvanovWebsite.admin
                 CarRentCompanyTextBox.Text = Item.CarRentCompany;
 
                 MaxPriceTextBox.Text = Item.TotalPrice.ToString();
-                MaxPricePerPersonTextBox.Text = Item.PricePerPerson.ToString();
 
                 FnameTextBox.Text = Item.Fname;
                 LnameTextBox.Text = Item.Lname;

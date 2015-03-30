@@ -779,7 +779,7 @@ ul.col2 li,
 }
 ul.col2 li:last-child,
 .row.col2 > span:last-child{
-	float:right;
+	/*float:right;*/
 }
 
 .row.col2.align-middle{
@@ -871,12 +871,12 @@ ul.col2 li:last-child,
 	text-decoration:none;
 }
 .ui-datepicker-calendar td a.ui-state-active{
-	color:#0b81ff;
+	color:#fff;
     font-weight:bold;
 }
 
 .ui-datepicker-calendar td.ui-datepicker-current-day{
-	background-color:yellow;
+	background-color:purple;
 }
 /* /calendar */
 
@@ -1154,6 +1154,10 @@ h1{
 }
 .static p{
     margin:20px 0;
+    text-align:justify;
+}
+.static p.center {
+    text-align:center;
 }
 .static a{
     color:#0f83ff;

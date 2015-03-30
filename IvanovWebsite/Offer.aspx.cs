@@ -22,7 +22,8 @@ namespace IvanovWebsite
             if (Item != null)
             {
                 Master.PageTitle = Item.OfferTypeCode == 1 ? "Нова оферта" : "Провери оферта";
-                MaxPricePerPersonPlaceHolder.Visible = Item.OfferTypeCode == 1;
+
+                TransportPricePlaceHolder.Visible = Item.OfferTypeCode == 2;
 
                 FromLocationLiteral.Text = Item.LocationFrom;
                 ToLocationLiteral.Text = Item.LocationTo;
@@ -83,7 +84,6 @@ namespace IvanovWebsite
                 CarRentCompanyTextBox.Text = Item.CarRentCompany;
 
                 MaxPriceTextBox.Text = Item.TotalPrice.ToString();
-                MaxPricePerPersonTextBox.Text = Item.PricePerPerson.ToString();
 
                 FnameTextBox.Text = Item.Fname;
                 LnameTextBox.Text = Item.Lname;

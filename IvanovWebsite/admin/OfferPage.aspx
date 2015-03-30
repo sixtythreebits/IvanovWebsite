@@ -25,7 +25,7 @@
         <fieldset>
         	<legend>КРАЙНА ДЕСТИНАЦИЯ</legend>            
             <span class="row size1 align-middle">
-                <label>От къде искате да тръгнете?</label>
+                <label>До къде искате да тръгнете?</label>
                 <span><asp:Literal ID="ToLocationLiteral" runat="server"></asp:Literal></span>
             </span>
         </fieldset>        
@@ -50,7 +50,7 @@
                     <span class="radio">
                         <label>
                             <asp:RadioButton ID="IsOneWayRadio" runat="server" ClientIDMode="Static" GroupName="Ways" />
-                            <span>Однопосочен</span>
+                            <span>Еднопосочен</span>
                         </label>
                     </span>
                 </li>
@@ -118,7 +118,7 @@
                 <asp:PlaceHolder ID="InvanvtCountPlaceHolder" runat="server">
                 <span>
                     <span class="select">
-                        <span><%=Item.InvantCount %></span> 
+                        <span><%=Item.ChildrenCount %></span> 
                     </span>
                     <label>Деца до 12г</label>
                 </span>
@@ -142,7 +142,7 @@
                 <asp:PlaceHolder ID="ChildrenCountPlaceHolder" runat="server">
                 <span>
                     <span class="select">
-                        <span><%=Item.ChildrenCount %></span>   
+                        <span><%=Item.InvantCount %></span>   
                     </span>
                     <label>Бебета до 2г</label>
                 </span>
@@ -185,10 +185,12 @@
                     <b>Ферибот</b>
                 </label>
             </span>
+            <asp:PlaceHolder ID="TransportPricePlaceHolder" runat="server">
             <span class="row size1 align-middle">
                 <label>От къде е получена цената?</label>
                 <asp:TextBox ID="TransportPriceRefererTextBox" Enabled="false" runat="server" MaxLength="100"></asp:TextBox>                
             </span>
+            </asp:PlaceHolder>
         </fieldset>
         
         <fieldset>
@@ -269,15 +271,7 @@
                             <span><%=Item.Currency%></span>                            
                         </span>
                     </span>
-                </span>
-                <asp:PlaceHolder ID="MaxPricePerPersonPlaceHolder" runat="server">
-                <span>
-                    <label>Максимална сума на човек</label>
-                    <span class="price">
-                        <asp:TextBox ID="MaxPricePerPersonTextBox" Enabled="false" runat="server" ClientIDMode="Static"></asp:TextBox>                        
-                    </span>
-                </span>
-                </asp:PlaceHolder>
+                </span>                
             </span>
         </fieldset>
         <asp:ObjectDataSource ID="CurrenciesDataSource" runat="server" TypeName="Core.DictionaryRepository" SelectMethod="ListDictionary" CacheDuration="3600">

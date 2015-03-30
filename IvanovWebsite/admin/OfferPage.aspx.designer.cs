@@ -193,6 +193,15 @@ namespace IvanovWebsite.admin {
         protected global::System.Web.UI.WebControls.CheckBox TransportFerryCheckbox;
         
         /// <summary>
+        /// TransportPricePlaceHolder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder TransportPricePlaceHolder;
+        
+        /// <summary>
         /// TransportPriceRefererTextBox control.
         /// </summary>
         /// <remarks>
@@ -290,24 +299,6 @@ namespace IvanovWebsite.admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox MaxPriceTextBox;
-        
-        /// <summary>
-        /// MaxPricePerPersonPlaceHolder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder MaxPricePerPersonPlaceHolder;
-        
-        /// <summary>
-        /// MaxPricePerPersonTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox MaxPricePerPersonTextBox;
         
         /// <summary>
         /// CurrenciesDataSource control.

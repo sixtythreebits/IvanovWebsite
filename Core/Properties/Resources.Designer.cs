@@ -70,11 +70,47 @@ namespace Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You must agree to terms of use.
+        /// </summary>
+        public static string InformationAgreeToTerms {
+            get {
+                return ResourceManager.GetString("InformationAgreeToTerms", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All fields are required, please make sure that you&apos;ve provided all neccessary information.
+        /// </summary>
+        public static string InformationAllFieldsAreRequired {
+            get {
+                return ResourceManager.GetString("InformationAllFieldsAreRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email address you&apos;ve provided is invalid.
+        /// </summary>
+        public static string InformationInvalidEmailAddress {
+            get {
+                return ResourceManager.GetString("InformationInvalidEmailAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid username or password.
         /// </summary>
         public static string InformationLoginFail {
             get {
                 return ResourceManager.GetString("InformationLoginFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$.
+        /// </summary>
+        public static string RegexEmail {
+            get {
+                return ResourceManager.GetString("RegexEmail", resourceCulture);
             }
         }
     }

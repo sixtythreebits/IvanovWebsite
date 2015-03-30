@@ -5,6 +5,8 @@ using Core;
 using Core.Utilities;
 using System.Text;
 using System.Xml.Linq;
+using System.Text.RegularExpressions;
+using Core.Properties;
 
 namespace IvanovWebsite
 {
@@ -25,11 +27,11 @@ namespace IvanovWebsite
             if (!IsPostBack)
             {
                 HFDateFrom.Value =
-                HFDateTo.Value = DateTime.Now.ToString();
+                HFDateTo.Value = DateTime.Now.Date.ToString("MMM dd, yyyy");
             }
 
-            RefererWebsitePlaceHolder.Visible = OfferType == "check";
-            MaxPricePerPersonPlaceHolder.Visible = OfferType == "new";
+            TransportPricePlaceHolder.Visible = 
+            RefererWebsitePlaceHolder.Visible = OfferType == "check";                                    
         }
 
         protected void SaveButton_Click(object sender, EventArgs e)
@@ -73,7 +75,7 @@ namespace IvanovWebsite
                     CarRental: CarRentYesRadio.Checked,
                     CarRentCompany: CarRentCompanyTextBox.Text,
                     TotalPrice: MaxPriceTextBox.Text.ToInt(),
-                    PricePerPerson: MaxPricePerPersonTextBox.Text.ToInt(),
+                    PricePerPerson: null,
                     CurrencyID: CurrenciesMaxPriceCombo.SelectedValue.ToInt(),
                     Fname: FnameTextBox.Text,
                     Lname: LnameTextBox.Text,
@@ -105,7 +107,8 @@ namespace IvanovWebsite
                 string.IsNullOrWhiteSpace(ToLocationTextBox.Text) ||
                 HFDateFrom.Value.ToDateTime() == null ||
                 (IsOneWayRadio.Checked == false && HFDateTo.Value.ToDateTime() == null) ||
-                GetSelectedTravelerCode() == null ||                                
+                GetSelectedTravelerCode() == null ||
+                (TransportPricePlaceHolder.Visible && string.IsNullOrWhiteSpace(TransportPriceRefererTextBox.Text)) ||
                 string.IsNullOrWhiteSpace(MaxPriceTextBox.Text) ||
                 string.IsNullOrWhiteSpace(FnameTextBox.Text) ||
                 string.IsNullOrWhiteSpace(LnameTextBox.Text) ||
@@ -114,6 +117,11 @@ namespace IvanovWebsite
             )
             {
                 AllRequiredPlaceHolder.Visible = true;
+                return false;
+            }
+            else if (!Regex.IsMatch(EmailTextBox.Text, Resources.RegexEmail))
+            {
+                EnvalidEmailPlaceHolder.Visible = true;
                 return false;
             }
             else if (!AgreeTermsOfUseCheckbox.Checked)

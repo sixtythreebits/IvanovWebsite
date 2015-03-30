@@ -120,7 +120,19 @@
   <data name="Abort" xml:space="preserve">
     <value>It seems that there is an error,  sorry for inconvenience</value>
   </data>
+  <data name="InformationAgreeToTerms" xml:space="preserve">
+    <value>You must agree to terms of use</value>
+  </data>
+  <data name="InformationAllFieldsAreRequired" xml:space="preserve">
+    <value>All fields are required, please make sure that you've provided all neccessary information</value>
+  </data>
+  <data name="InformationInvalidEmailAddress" xml:space="preserve">
+    <value>Email address you've provided is invalid</value>
+  </data>
   <data name="InformationLoginFail" xml:space="preserve">
     <value>Invalid username or password</value>
+  </data>
+  <data name="RegexEmail" xml:space="preserve">
+    <value>^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$</value>
   </data>
 </root>

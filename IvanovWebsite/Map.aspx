@@ -59,14 +59,15 @@
             
         map = new google.maps.Map(document.getElementById("map"), {
             zoom: 4,
-            center: MapCenter
+            center: MapCenter,
+            scrollwheel: false
         });         
         var Markers = JSON.parse($("#HFMarkers").val());
         $(Markers).each(function(index,item){
                 
             var Marker = new google.maps.Marker({
                 position: new google.maps.LatLng(item.lat,item.lng),
-                map: map
+                map: map                
             });
             
             google.maps.event.addListener(Marker, "click", function (event) {

@@ -5,6 +5,8 @@ using Core;
 using Core.Utilities;
 using System.Text;
 using System.Xml.Linq;
+using System.Text.RegularExpressions;
+using Core.Properties;
 
 namespace IvanovWebsite
 {
@@ -24,7 +26,8 @@ namespace IvanovWebsite
             if (Item != null)
             {
                 Master.PageTitle = Item.OfferTypeCode == 1 ? "Нова оферта" : "Провери оферта";
-                MaxPricePerPersonPlaceHolder.Visible = Item.OfferTypeCode == 1;
+
+                TransportPricePlaceHolder.Visible = Item.OfferTypeCode == 2;                
 
                 if (!IsPostBack)
                 {
@@ -75,13 +78,13 @@ namespace IvanovWebsite
 
                     var CountComboItem = AdultsCountCombo.Items.FindByValue(Item.AdultCount.ToString());
                     if (CountComboItem != null) { CountComboItem.Selected = true; }
-                    CountComboItem = ChildrenCountCombo.Items.FindByValue(Item.AdultCount.ToString());
+                    CountComboItem = ChildrenCountCombo.Items.FindByValue(Item.ChildrenCount.ToString());
                     if (CountComboItem != null) { CountComboItem.Selected = true; }
-                    CountComboItem = LuggageCountCombo.Items.FindByValue(Item.AdultCount.ToString());
+                    CountComboItem = LuggageCountCombo.Items.FindByValue(Item.LuggageCount.ToString());
                     if (CountComboItem != null) { CountComboItem.Selected = true; }
-                    CountComboItem = StudentsCountCombo.Items.FindByValue(Item.AdultCount.ToString());
+                    CountComboItem = StudentsCountCombo.Items.FindByValue(Item.StudentCount.ToString());
                     if (CountComboItem != null) { CountComboItem.Selected = true; }
-                    CountComboItem = InfantCountCombo.Items.FindByValue(Item.AdultCount.ToString());
+                    CountComboItem = InfantCountCombo.Items.FindByValue(Item.InvantCount.ToString());
                     if (CountComboItem != null) { CountComboItem.Selected = true; }
 
                     if (Item.Transports.Count > 0)
@@ -110,8 +113,7 @@ namespace IvanovWebsite
                     CarRentNoRadio.Checked = !CarRentYesRadio.Checked;
                     CarRentCompanyTextBox.Text = Item.CarRentCompany;
 
-                    MaxPriceTextBox.Text = Item.TotalPrice.ToString();
-                    MaxPricePerPersonTextBox.Text = Item.PricePerPerson.ToString();
+                    MaxPriceTextBox.Text = Item.TotalPrice.ToString();                    
 
                     FnameTextBox.Text = Item.Fname;
                     LnameTextBox.Text = Item.Lname;
@@ -173,7 +175,7 @@ namespace IvanovWebsite
                    CarRental: CarRentYesRadio.Checked,
                    CarRentCompany: CarRentCompanyTextBox.Text,
                    TotalPrice: MaxPriceTextBox.Text.ToInt(),
-                   PricePerPerson: MaxPricePerPersonTextBox.Text.ToInt(),
+                   PricePerPerson: null,
                    CurrencyID: CurrenciesMaxPriceCombo.SelectedValue.ToInt(),
                    Fname: FnameTextBox.Text,
                    Lname: LnameTextBox.Text,
@@ -212,6 +214,11 @@ namespace IvanovWebsite
             )
             {
                 AllRequiredPlaceHolder.Visible = true;
+                return false;
+            }
+            else if (!Regex.IsMatch(EmailTextBox.Text, Resources.RegexEmail))
+            {
+                EnvalidEmailPlaceHolder.Visible = true;
                 return false;
             }
             else if (!AgreeTermsOfUseCheckbox.Checked)
