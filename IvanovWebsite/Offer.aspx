@@ -18,7 +18,7 @@
         <fieldset>
         	<legend>КРАЙНА ДЕСТИНАЦИЯ</legend>            
             <span class="row size1 align-middle">
-                <label>До къде искате да тръгнете?</label>
+                <label>До къде отивате?</label>
                 <span><asp:Literal ID="ToLocationLiteral" runat="server"></asp:Literal></span>
             </span>
         </fieldset>        
@@ -222,11 +222,12 @@
                     </label>
                 </span>
             </span>
-            
+            <asp:PlaceHolder ID="RefererWebsitePlaceHolder" runat="server">
             <span class="row size1 align-middle">
                 <label>От къде е получена цената?</label>
                 <asp:TextBox ID="RefererWebsiteTextBox" Enabled="false" runat="server" MaxLength="100"></asp:TextBox>                
             </span>            
+            </asp:PlaceHolder>
         </fieldset>
         
         <fieldset>
@@ -257,7 +258,7 @@
             
             <span class="row col2">         
             	<span>
-                    <label>Максималка планирана сума</label>
+                    <label>Стойност на получената оферта</label>
                     <span class="price">
                         <asp:TextBox ID="MaxPriceTextBox" runat="server" Enabled="false" ClientIDMode="Static"></asp:TextBox>
                         <span class="select">
@@ -291,7 +292,7 @@
             <span class="row col2 align-middle">
             	<span>
                 	<label>Ел.поща</label>
-                    <asp:TextBox ID="EmailTextBox" runat="server" MaxLength="20" ClientIDMode="Static" Enabled="false"></asp:TextBox>
+                    <asp:TextBox ID="EmailTextBox" runat="server" MaxLength="100" ClientIDMode="Static" Enabled="false"></asp:TextBox>
                 </span>          	
                 <span>
                     <label>Националност</label>
@@ -377,6 +378,19 @@ For more information regarding our privacy policy, please click <a href="#">here
 
             $("#from").datepicker("setDate", $("#HFDateFrom").val());
             $("#to").datepicker("setDate", $("#HFDateTo").val());
+
+            if ($("#IsOneWayRadio").is(":checked")) {
+                InitOneWay();
+            }
         });
+
+        function InitOneWay() {
+            $("#TwoWayLi #to").datepicker("option", "disabled", true);
+            $("#TwoWayLi select").attr("disabled", "disabled");
+            $("#TwoWayLi #to").addClass("disabled");
+            $("#TwoWayLi .row.col2").addClass("disabled");
+        }
+
+        
     </script>
 </asp:Content>

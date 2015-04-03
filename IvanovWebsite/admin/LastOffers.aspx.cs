@@ -34,21 +34,34 @@ namespace IvanovWebsite.admin
             string PdfFile = null;
             int UsersCount;
 
+            var ID = HFID.Value.ToInt();
+            var iud = (byte)(ID.HasValue ? 1 : 0);
+            var CurrentItem = OfferRepository.GetSingleLastOffer(ID);
+
             int.TryParse(UsersCountTextBox.Text, out UsersCount);
 
             if (PictureUploader.HasFile)
             {
+                if (CurrentItem != null && !string.IsNullOrWhiteSpace(CurrentItem.Picture))
+                {
+                    File.Delete(AppSettings.UploadFilePhysicalPath + CurrentItem.Picture);
+                }
                 Picture = PictureUploader.FileName.ToAZ09Dash(true);
             }
 
             if (PdfUploader.HasFile)
             {
+                if (CurrentItem != null && !string.IsNullOrWhiteSpace(CurrentItem.PdfFile))
+                {
+                    File.Delete(AppSettings.UploadFilePhysicalPath + CurrentItem.PdfFile);
+                }
                 PdfFile = PdfUploader.FileName.ToAZ09Dash(true);
             }
 
             var R = new OfferRepository();
             R.TSP_LastOffer(
-                iud: 0,
+                iud: iud,
+                ID: ID,
                 Caption: CaptionTextBox.Text,
                 Location: LocationTextBox.Text,
                 ShortDesc: ShortDescriptionTextBox.Text,

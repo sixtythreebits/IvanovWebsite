@@ -22,6 +22,15 @@ namespace IvanovWebsite.admin {
         protected global::DevExpress.Web.ASPxGridView LastOffersGrid;
         
         /// <summary>
+        /// EditButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.GridViewCommandColumnCustomButton EditButton;
+        
+        /// <summary>
         /// LastOffersDataSource control.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,15 @@ namespace IvanovWebsite.admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxPopupControl NewOfferPopup;
+        
+        /// <summary>
+        /// HFID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HFID;
         
         /// <summary>
         /// CaptionTextBox control.

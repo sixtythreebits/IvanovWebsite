@@ -23,7 +23,8 @@ namespace IvanovWebsite
             {
                 Master.PageTitle = Item.OfferTypeCode == 1 ? "Нова оферта" : "Провери оферта";
 
-                TransportPricePlaceHolder.Visible = Item.OfferTypeCode == 2;
+                TransportPricePlaceHolder.Visible =
+                RefererWebsitePlaceHolder.Visible = Item.OfferTypeCode == 2;
 
                 FromLocationLiteral.Text = Item.LocationFrom;
                 ToLocationLiteral.Text = Item.LocationTo;

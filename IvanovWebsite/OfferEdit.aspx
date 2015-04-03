@@ -20,7 +20,7 @@
         <legend>КРАЙНА ДЕСТИНАЦИЯ</legend>
             
         <span class="row size1 align-middle">
-            <label>До къде искате да тръгнете?</label>
+            <label>До къде отивате?</label>
             <asp:TextBox ID="ToLocationTextBox" runat="server" ClientIDMode="Static" MaxLength="50"></asp:TextBox>
         </span>
     </fieldset>
@@ -344,7 +344,7 @@
             
         <span class="row col2">         
             <span>
-                <label>Максималка планирана сума</label>
+                <label>Стойност на получената оферта</label>
                 <span class="price">
                     <asp:TextBox ID="MaxPriceTextBox" runat="server" ClientIDMode="Static"></asp:TextBox>
                     <span class="select">
@@ -379,7 +379,7 @@
         <span class="row col2 align-middle">
             <span>
                 <label>Ел.поща</label>
-                <asp:TextBox ID="EmailTextBox" runat="server" MaxLength="20" ClientIDMode="Static"></asp:TextBox>
+                <asp:TextBox ID="EmailTextBox" runat="server" MaxLength="100" ClientIDMode="Static"></asp:TextBox>
             </span>          	
             <span>
                 <label>Националност</label>

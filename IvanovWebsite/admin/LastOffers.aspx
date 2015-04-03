@@ -1,8 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/Admin.Master" AutoEventWireup="true" CodeBehind="LastOffers.aspx.cs" Inherits="IvanovWebsite.admin.LastOffers" Theme="DevEx"%>
 <%@ MasterType VirtualPath="~/admin/Admin.Master" %>
 <%@ Register Assembly="DevExpress.Web.v14.2, Version=14.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
-
-
 <%@ Register src="UserControls/SuccessErrorControl.ascx" tagname="SuccessErrorControl" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -12,6 +10,7 @@
 </div>
 <div class="row">
     <dx:ASPxGridView ID="LastOffersGrid" runat="server" AutoGenerateColumns="False" DataSourceID="LastOffersDataSource" KeyFieldName="ID" Width="100%" OnRowDeleting="LastOffersGrid_RowDeleting" >
+        <ClientSideEvents CustomButtonClick="function(s,e){ OnEditButtonClick(s,e) }" />
         <Columns>            
             <dx:GridViewDataTextColumn FieldName="Picture" Caption="Picture" Width="150px">
                 <DataItemTemplate>
@@ -46,7 +45,12 @@
                 <PropertiesDateEdit DisplayFormatString="MMM dd, yyyy HH:mm"></PropertiesDateEdit>
                 <EditItemTemplate></EditItemTemplate>
             </dx:GridViewDataDateColumn>
-            <dx:GridViewCommandColumn ShowEditButton="true" Width="60px"></dx:GridViewCommandColumn>
+            <%--<dx:GridViewCommandColumn ShowEditButton="true" Width="60px"></dx:GridViewCommandColumn>--%>
+            <dx:GridViewCommandColumn Width="60px">
+                <CustomButtons>
+                    <dx:GridViewCommandColumnCustomButton ID="EditButton" Text="Edit"></dx:GridViewCommandColumnCustomButton>
+                </CustomButtons>
+            </dx:GridViewCommandColumn>
             <dx:GridViewCommandColumn ShowDeleteButton="true" Width="60px"></dx:GridViewCommandColumn>
             <dx:GridViewDataColumn>
                 <EditItemTemplate></EditItemTemplate>
@@ -88,22 +92,23 @@
         MinHeight="450px">
         <ContentCollection>
         <dx:PopupControlContentControl runat="server">
+            <asp:HiddenField ID="HFID" runat="server" ClientIDMode="Static" />
             <div class="col-lg-12">
                 <div class="form-group">
                     <label>Caption</label>
-                    <asp:TextBox ID="CaptionTextBox" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="CaptionTextBox" runat="server" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
                 </div>
                 <div class="form-group">
                     <label>Location</label>
-                    <asp:TextBox ID="LocationTextBox" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="LocationTextBox" runat="server" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
                 </div>
                 <div class="form-group">
                     <label>User Count</label>
-                    <asp:TextBox ID="UsersCountTextBox" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="UsersCountTextBox" runat="server" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
                 </div>
                 <div class="form-group">
                     <label>Short Text</label>
-                    <asp:TextBox ID="ShortDescriptionTextBox" runat="server" TextMode="MultiLine" Rows="3" CssClass="form-control"></asp:TextBox>                    
+                    <asp:TextBox ID="ShortDescriptionTextBox" runat="server" TextMode="MultiLine" Rows="3" ClientIDMode="Static" CssClass="form-control"></asp:TextBox>                    
                 </div>                
                 <div class="form-group">
                     <label>Upload Picture (320 x 223)</label>
@@ -132,10 +137,35 @@
 <script>
     $(function () {
         $(".create-new").click(function () {
+            $("#HFID").val('');
+            $("#CaptionTextBox").val('');
+            $("#LocationTextBox").val('');
+            $("#UsersCountTextBox").val('');
+            $("#ShortDescriptionTextBox").val('');
+            $("#IsPublishedCheckBox").removeAttr("checked");
             NewOfferPopup.Show();
             return false;
-        });
+        });        
     });
+    function OnEditButtonClick(s,e) {        
+        s.GetRowValues(e.visibleIndex, "ID;Caption;Location;UsersCount;ShortDesc;IsPublished", OnGetRowValues)
+    }
+
+    function OnGetRowValues(res)
+    {
+        $("#HFID").val(res[0]);
+        $("#CaptionTextBox").val(res[1]);
+        $("#LocationTextBox").val(res[2]);
+        $("#UsersCountTextBox").val(res[3]);
+        $("#ShortDescriptionTextBox").val(res[4]);
+        if (res[5] == "true") {
+            $("#IsPublishedCheckBox").attr("checked", "checked");
+        }
+        else {
+            $("#IsPublishedCheckBox").removeAttr("checked");
+        }
+        NewOfferPopup.Show();        
+    }
 </script>
 <uc1:SuccessErrorControl ID="SuccessErrorControl1" runat="server" />
 </asp:Content>

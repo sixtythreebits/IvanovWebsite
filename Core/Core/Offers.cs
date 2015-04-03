@@ -142,6 +142,7 @@ namespace Core
                         LocationFrom = o.LocationFrom,
                         LocationTo = o.LocationTo,
                         Fullname = o.Fullname,
+                        Email = o.Email,
                         ManagersString = o.ManagersString,
                         ExpDate = o.ExpDate,
                         CRTime = o.CRTime

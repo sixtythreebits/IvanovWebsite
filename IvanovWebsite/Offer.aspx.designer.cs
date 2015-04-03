@@ -247,6 +247,15 @@ namespace IvanovWebsite {
         protected global::System.Web.UI.WebControls.CheckBox ApartmentCheckBox;
         
         /// <summary>
+        /// RefererWebsitePlaceHolder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder RefererWebsitePlaceHolder;
+        
+        /// <summary>
         /// RefererWebsiteTextBox control.
         /// </summary>
         /// <remarks>

@@ -256,6 +256,15 @@ namespace IvanovWebsite.admin {
         protected global::System.Web.UI.WebControls.CheckBox ApartmentCheckBox;
         
         /// <summary>
+        /// RefererWebsitePlaceHolder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder RefererWebsitePlaceHolder;
+        
+        /// <summary>
         /// RefererWebsiteTextBox control.
         /// </summary>
         /// <remarks>
@@ -308,6 +317,15 @@ namespace IvanovWebsite.admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ObjectDataSource CurrenciesDataSource;
+        
+        /// <summary>
+        /// UserPersonalInfoPlaceHolder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder UserPersonalInfoPlaceHolder;
         
         /// <summary>
         /// FnameTextBox control.

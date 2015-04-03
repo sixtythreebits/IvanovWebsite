@@ -5,3 +5,19 @@ http://localhost:19133/admin/Offer.aspx?id=9 - 24-Mar-15 14:41:15
 GetSingleOffer(ID = 9) - Invalid column name 'ManagerID'.
 ------------------------------------
 
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 03-Apr-15 18:48:11
+ListLastOffers(IsPublished = True) - Cannot open database "IvanovWebsite" requested by the login. The login failed.
+Login failed for user 'sa'.
+------------------------------------
+
+
+
+------------------------------------
+http://localhost:19133/default.aspx - 03-Apr-15 18:48:34
+ListLastOffers(IsPublished = True) - Cannot open database "IvanovWebsite" requested by the login. The login failed.
+Login failed for user 'sa'.
+------------------------------------
+

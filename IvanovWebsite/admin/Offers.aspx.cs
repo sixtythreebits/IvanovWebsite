@@ -9,6 +9,7 @@ namespace IvanovWebsite.admin
         protected void Page_Load(object sender, EventArgs e)
         {
             Master.PageTitle = "Client Submited Offers";
+            OffersGrid.Columns["Email"].Visible = Master.UserObject.IsAdmin;
             OffersGrid.Columns[OffersGrid.Columns.Count - 2].Visible = Master.UserObject.IsAdmin;
         }
 

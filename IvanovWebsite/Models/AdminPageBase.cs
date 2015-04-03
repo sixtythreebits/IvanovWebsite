@@ -23,5 +23,10 @@ namespace IvanovWebsite.Models
                 Response.Redirect("~/");
             }
         }
+
+        public bool IsUserAdmin()
+        {
+            return UserObject != null && UserObject.RoleCode == 1;
+        }
     }
 }

@@ -18,10 +18,14 @@ namespace IvanovWebsite.admin
         {
             var OfferID = Request.QueryString["id"].ToInt();
             Item = OfferRepository.GetSingleOffer(OfferID);
+
+            var U = UsersRepository.GetFromSession();
+
             if (Item != null)
             {
 
-                TransportPricePlaceHolder.Visible = Item.OfferTypeCode == 2;
+                TransportPricePlaceHolder.Visible =
+                RefererWebsitePlaceHolder.Visible = Item.OfferTypeCode == 2;
 
                 FromLocationLiteral.Text = Item.LocationFrom;
                 ToLocationLiteral.Text = Item.LocationTo;
@@ -86,6 +90,8 @@ namespace IvanovWebsite.admin
                 FnameTextBox.Text = Item.Fname;
                 LnameTextBox.Text = Item.Lname;
                 EmailTextBox.Text = Item.Email;
+                UserPersonalInfoPlaceHolder.Visible = U.IsAdmin;
+
 
                 AddInfoTextBox.Text = Item.AddInfo;
 
