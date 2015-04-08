@@ -6,6 +6,7 @@ using System.Net;
 using System.Xml.Linq;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Text;
 
 namespace IvanovWebsite
 {
@@ -46,6 +47,7 @@ namespace IvanovWebsite
                 Response.Clear();
                 using (var client = new WebClient())
                 {
+                    client.Encoding = Encoding.UTF8;
                     string reply = client.DownloadString("http://feeds.feedburner.com/Bezposoka");
                     
                     var x = XElement.Parse(reply);
