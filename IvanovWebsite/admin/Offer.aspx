@@ -69,15 +69,15 @@
         </div>
         
         <ul class="commentList">
-            <asp:Repeater ID="CommentsRepeater" runat="server" ItemType="Core.OfferComment">
+            <asp:Repeater ID="CommentsRepeater" runat="server">
                 <ItemTemplate>
                     <li>
                         <div class="commenterImage">
                           <img src="/admin/img/default_profile.jpg" />
                         </div>
                         <div class="commentText">
-                            <p class=""><%#Item.Comment %></p> 
-                            <strong class="sub-text"><%#Item.Fullname %></strong>
+                            <p class=""><%#Eval("Comment") %></p> 
+                            <strong class="sub-text"><%#Eval("Fullname") %></strong>
                             <span class="date sub-text">on <%#Eval("CRTime","{0:MMM dd, yyyy - HH:mm}") %></span>
 
                         </div>

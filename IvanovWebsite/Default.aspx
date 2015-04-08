@@ -145,18 +145,18 @@
 <section class="container">
     <h3>Последни Оферти</h3>
     <ul class="items col3">
-        <asp:Repeater ID="OffersRepeater" runat="server" ViewStateMode="Disabled" ItemType="Core.LastOffer">
+        <asp:Repeater ID="OffersRepeater" runat="server" ViewStateMode="Disabled">
             <ItemTemplate>
                 <li>
                     <a href="#">
                         <span class="img">
-                            <img src="<%#AppSettings.UploadFileHttpPath+Item.Picture %>" alt="picture" />
+                            <img src="<%#AppSettings.UploadFileHttpPath+Eval("Picture") %>" alt="picture" />
                             <span><b>Виж офертата</b></span>
                         </span>
                         <span class="text">
-                            <strong><%# Item.Caption %></strong>
-                            <span><%#Item.Location %></span>
-                            <i class="users"><%# Item.UsersCount %></i>
+                            <strong><%# Eval("Caption") %></strong>
+                            <span><%#Eval("Location") %></span>
+                            <i class="users"><%# Eval("UsersCount") %></i>
                         </span>
                     </a>
                 </li>
@@ -206,16 +206,16 @@
 <section class="container">
     <h3>Последни Дестинации</h3>
     <ul class="items col3">
-        <asp:Repeater ID="LastDestinationsRepeater" runat="server" ViewStateMode="Disabled" ItemType="Core.Destination">
+        <asp:Repeater ID="LastDestinationsRepeater" runat="server" ViewStateMode="Disabled">
             <ItemTemplate>
             <li>
-                <a href="/map/<%#Item.ID %>/">
+                <a href="/map/<%#Eval("ID") %>/">
                     <span class="img">
-                        <img src="<%#AppSettings.UploadFileHttpPath+Item.Picture %>" alt="picture" />
+                        <img src="<%#AppSettings.UploadFileHttpPath+Eval("Picture") %>" alt="picture" />
                         <span><b>Виж подробности</b></span>
                     </span>
                     <span class="text">
-                        <strong><%# Item.Caption %></strong>                        
+                        <strong><%# Eval("Caption") %></strong>                        
                     </span>
                 </a>
             </li>

@@ -1,10 +1,14 @@
 ﻿using Core.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+
 
 namespace IvanovWebsite
 {
@@ -12,7 +16,7 @@ namespace IvanovWebsite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Write(AppDomain.CurrentDomain.BaseDirectory);
+            
         }
     }
 }

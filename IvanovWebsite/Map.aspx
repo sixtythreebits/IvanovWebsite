@@ -10,15 +10,15 @@
 <asp:HiddenField ID="HFCurrentMarker" runat="server" ClientIDMode="Static" />
 <asp:HiddenField ID="HFMarkers" runat="server" ClientIDMode="Static" />
 <section class="item-container">
-    <asp:Repeater ID="ItemsRepeater" runat="server" ViewStateMode="Disabled" ItemType="Core.Destination">
+    <asp:Repeater ID="ItemsRepeater" runat="server" ViewStateMode="Disabled">
         <ItemTemplate>
             <div class="item cl">
                 <figure>
-                    <img src="/uploads/<%#Item.Picture %>" alt="" />
+                    <img src="/uploads/<%#Eval("Picture") %>" alt="" />
                 </figure>
                 <article>
-                    <h1><%#Item.Caption %></h1>
-                    <p><%#Item.ShortDesc %></p>
+                    <h1><%#Eval("Caption") %></h1>
+                    <p><%#Eval("ShortDesc") %></p>
                     <%--<a href="#" class="more">READ MORE</a>--%>
                 </article>
             </div>

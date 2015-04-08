@@ -17,17 +17,7 @@ namespace Core.Utilities
     }
 
     public class Utility
-    {
-        public static void ConvertPageFromUrlToPdf(string Url)
-        {
-            var html = new WebClient().DownloadString(Url);
-
-            var pdfBytes = (new NReco.PdfGenerator.HtmlToPdfConverter()).GeneratePdf(html);
-
-            System.IO.File.WriteAllBytes(AppDomain.CurrentDomain.BaseDirectory + "file.pdf", pdfBytes);
-
-            
-        }
+    {        
     }
 
     public static class StringExtensions
