@@ -230,7 +230,7 @@
         <li>
             <a href="#" target="_blank">
                 <span class="img">
-                    <img src="/images/0/img1.jpg" alt="" />
+                    <span class="src"></span>
                     <span><b>Прочети</b></span>
                 </span>
                 <span class="text">
@@ -277,7 +277,7 @@
                 $(JSON.parse(res)).each(function (index,item) {                    
                     var li = Template.clone();
                     li.find("a").attr("href", item.Url);
-                    li.find("img").attr("src", item.Picture);
+                    li.find(".src").css({'background-image': 'url('+item.Picture+')' });
                     li.find("strong").text(item.Caption);
                     li.find(".text span").text(item.Date);
                     li.find(".comments").text(item.CommentsCount);                    

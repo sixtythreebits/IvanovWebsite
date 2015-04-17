@@ -21,3 +21,10 @@ ListLastOffers(IsPublished = True) - Cannot open database "IvanovWebsite" reques
 Login failed for user 'sa'.
 ------------------------------------
 
+
+
+------------------------------------
+http://localhost:19133/Default.aspx - 4/17/2015 2:57:54 PM
+ListLastOffers(IsPublished = True) - The entry 'DBConnectionString' has already been added. (C:\inetpub\wwwroot\IvanovWebsite\IvanovWebsite\web.config line 19)
+------------------------------------
+

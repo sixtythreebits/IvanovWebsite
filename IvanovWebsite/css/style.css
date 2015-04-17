@@ -503,6 +503,24 @@ footer .bottom{
 .items a:hover .img span{
 	display:block;
 }
+
+.blog-container .items .img > .src{
+    position:relative;
+    z-index:0;
+
+    display:block;
+    width:320px;
+	height:223px;
+    border:0;
+    outline:none;
+
+    background-position:center center;
+	background-repeat:no-repeat;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
 /* ---------- /items ---------- */
 
 
