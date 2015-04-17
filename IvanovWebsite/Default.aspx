@@ -150,7 +150,7 @@
                 <li>
                     <a href="#">
                         <span class="img">
-                            <img src="<%#AppSettings.UploadFileHttpPath+Eval("Picture") %>" alt="picture" />
+                            <img src="<%#AppSettings.UploadFileHttpPath+Eval("Picture") %>?width=320&height=223&scale=both&mode=crop" alt="picture" />
                             <span><b>Виж офертата</b></span>
                         </span>
                         <span class="text">
@@ -211,7 +211,7 @@
             <li>
                 <a href="/map/<%#Eval("ID") %>/">
                     <span class="img">
-                        <img src="<%#AppSettings.UploadFileHttpPath+Eval("Picture") %>" alt="picture" />
+                        <img src="<%#AppSettings.UploadFileHttpPath+Eval("Picture") %>?width=320&height=223&scale=both&mode=crop" alt="picture" />
                         <span><b>Виж подробности</b></span>
                     </span>
                     <span class="text">
