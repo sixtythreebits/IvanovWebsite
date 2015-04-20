@@ -391,6 +391,24 @@ namespace IvanovWebsite {
         protected global::System.Web.UI.WebControls.LinkButton PayButton;
         
         /// <summary>
+        /// NewOfferPayPlaceHolder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder NewOfferPayPlaceHolder;
+        
+        /// <summary>
+        /// CheckOfferPayPlaceHolder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder CheckOfferPayPlaceHolder;
+        
+        /// <summary>
         /// Master property.
         /// </summary>
         /// <remarks>

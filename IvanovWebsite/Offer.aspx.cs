@@ -9,6 +9,7 @@ namespace IvanovWebsite
     public partial class OfferPage : System.Web.UI.Page
     {
         public Offer Item;
+        public int? OfferID;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -17,7 +18,7 @@ namespace IvanovWebsite
 
         void InitStartUp()
         {
-            var OfferID = Request.QueryString["id"].ToInt();            
+            OfferID = Request.QueryString["id"].ToInt();            
             Item = OfferRepository.GetSingleOffer(OfferID);
             if (Item != null)
             {
@@ -115,10 +116,18 @@ namespace IvanovWebsite
             Task.Factory.StartNew(() =>
             {
                 var M = new Mail();
-                M.Send("mike@63bits.com", "New Website Offer", string.Format("You have new offer from website, please <a href=\"{0}admin/login.aspx?ReturnUrl={0}admin/Offer.aspx?id={1}\">CLICK HERE</a> link below to view details", AppSettings.WebsiteHttpFullPath, Item.ID));
+                //M.Send("mike@63bits.com", "New Website Offer", string.Format("You have new offer from website, please <a href=\"{0}admin/login.aspx?ReturnUrl={0}admin/Offer.aspx?id={1}\">CLICK HERE</a> link below to view details", AppSettings.WebsiteHttpFullPath, Item.ID));
                 M.Send("info@bezposoka.bg", "New Website Offer", string.Format("You have new offer from website, please <a href=\"{0}admin/login.aspx?ReturnUrl={0}admin/Offer.aspx?id={1}\">CLICK HERE</a> link below to view details", AppSettings.WebsiteHttpFullPath, Item.ID));
             });
-            Response.Redirect("~/");
+            //Response.Redirect("~/");
+            if (Item.OfferTypeCode == 1)
+            {
+                NewOfferPayPlaceHolder.Visible = true;
+            }
+            else
+            {
+                CheckOfferPayPlaceHolder.Visible = true;
+            }
         }
     }
 }

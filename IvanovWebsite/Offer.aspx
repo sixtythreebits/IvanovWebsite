@@ -349,11 +349,19 @@ For more information regarding our privacy policy, please click <a href="#">here
         <p>
             <asp:LinkButton ID="CancelButton" runat="server" Text="Отказ" CssClass="btn magenta stop" OnClick="CancelButton_Click"></asp:LinkButton>            
             <a href="/offer/edit/<%=Item.ID %>/" class="btn blue arrow-l">Предишен стъпка</a>
-            <asp:LinkButton ID="PayButton" runat="server" CssClass="btn blue" Text="Следваща стъпка" OnClick="PayButton_Click"></asp:LinkButton>            
-        </p>
+            <asp:LinkButton ID="PayButton" runat="server" CssClass="btn blue" Text="Плащане" OnClick="PayButton_Click"></asp:LinkButton>                        
+        </p>            
     </section>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptsPlaceHolder" runat="server">
+    <asp:PlaceHolder ID="NewOfferPayPlaceHolder" runat="server" ViewStateMode="Disabled" Visible="false">
+                <form id="NewOfferForm" method="post" action="https://www.epay.bg/v3main/paylogin"> <input type="hidden" name="MIN" value="6336525289" /> <input type="hidden" name="TOTAL" value="25.00" /> <input type="hidden" name="DESCR" value="Изготвяне на нова оферта - OfferID: <%=OfferID  %>" /> <input type="hidden" name="URL_OK" value="https://www.epay.bg/v3main/front?p=thanks" /> <input type="hidden" name="URL_CANCEL" value="https://www.epay.bg/v3main/front?p=cancel" /> <input type="hidden" name="ENCODING" value="utf8" />   <input type="hidden" name="CHECKSUM" value="d0a545f93b30b310cbea1824f4ebb014d5532ce5" /></form>
+                <script>$(function () { $("#NewOfferForm").submit(); });</script> 
+            </asp:PlaceHolder>
+            <asp:PlaceHolder ID="CheckOfferPayPlaceHolder" runat="server" ViewStateMode="Disabled" Visible="false">
+                <form id="CheckOfferForm" method="post" action="https://www.epay.bg/v3main/paylogin"> <input type="hidden" name="MIN" value="6336525289" /> <input type="hidden" name="TOTAL" value="5.00" /> <input type="hidden" name="DESCR" value="Проверка на оферта - OfferID: <%=OfferID  %>" /> <input type="hidden" name="URL_OK" value="https://www.epay.bg/v3main/front?p=thanks" /> <input type="hidden" name="URL_CANCEL" value="https://www.epay.bg/v3main/front?p=cancel"> <input type="hidden" name="ENCODING" value="utf8" />   <input type="hidden" name="CHECKSUM" value="d0a545f93b30b310cbea1824f4ebb014d5532ce5" /></form> 
+                <script>$(function () { $("#CheckOfferForm").submit(); });</script>
+            </asp:PlaceHolder>
     <script>
         $(function () {
             $("span.row.checkbox.list input[type=checkbox]").attr("disabled", "disabled");
