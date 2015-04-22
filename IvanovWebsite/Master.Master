@@ -64,7 +64,7 @@
         </ul>
         
         <div class="bottom">
-        	© 2015 Bezposoka. Всички права запазени.
+        	© 2015 Bezposoka. Всички права запазени. Developed by <a style="text-decoration:none; color:#25D968" target="_blank" href="http://63bits.com/en/">63BITS</a>
         </div>
     </footer>
     <asp:PlaceHolder ID="ScrollPlaceHolder" runat="server" ViewStateMode="Disabled">

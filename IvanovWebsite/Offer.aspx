@@ -201,7 +201,6 @@
                     </label>
                     <label>
                         <asp:CheckBox ID="HostelCheckBox" runat="server" />
-                        <input type="radio" name="StayPlaceGroup" value="2" />
                         <span><img src="/images/icons/form/hostel.png" alt="" /></span>
                         <b>Хостел</b>
                     </label>

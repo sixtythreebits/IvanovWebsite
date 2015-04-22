@@ -300,8 +300,7 @@
                     <b>Къмпинг</b>
                 </label>
                 <label>
-                    <asp:CheckBox ID="HostelCheckBox" runat="server" />
-                    <input type="radio" name="StayPlaceGroup" value="2" />
+                    <asp:CheckBox ID="HostelCheckBox" runat="server" />                    
                     <span><img src="/images/icons/form/hostel.png" alt="" /></span>
                     <b>Хостел</b>
                 </label>
@@ -491,7 +490,7 @@ For more information regarding our privacy policy, please click <a href="#">here
             $(this).parent().children("span").text(Text);            
         });
 
-        $(".radio-icon label").on("click", function () {
+        $(".radio-icon label").on("click", function () {            
             var checked = $(this).children().prop('checked');
             if (checked) {
                 $(this).closest('fieldset').find('.clear input').removeAttr('checked');
