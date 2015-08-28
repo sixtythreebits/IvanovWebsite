@@ -1,0 +1,3 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SuccessErrorControl.ascx.cs" Inherits="IvanovWebsite.admin.UserControls.SuccessErrorControl" %>
+<asp:PlaceHolder ID="SuccessPlaceHolder" runat="server" ViewStateMode="Disabled" Visible="false"><script>alert(Success);</script></asp:PlaceHolder>
+<asp:PlaceHolder ID="ErrorPlaceHolder" runat="server" ViewStateMode="Disabled" Visible="false"><script>alert(Abort);</script></asp:PlaceHolder>

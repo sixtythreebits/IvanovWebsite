@@ -8,22 +8,17 @@ namespace Core.Utilities
 {
     public class Mail
     {
-        #region Properties
-        string _SMTP = "bezposoka.bg";
-        string _Username = "info@bezposoka.bg";
-        string _Password = "bez@posoka";
-        int _Port = 26;
-        bool _EnableSSL = false;
+        #region Properties        
         public bool IsError { set; get; }
         #endregion Properties
 
         #region Methods
         public void Send(string To, string Subject, string Body, string ReplyTo = null)
         {
-            try
+            try 
             {
                 MailMessage message = new MailMessage();
-                message.From = new MailAddress(_Username);
+                message.From = new MailAddress(AppSettings.EmailSmtpUsername);
                 message.To.Add(To);
                 message.Subject = Subject;
                 message.Body = Body;
@@ -36,11 +31,11 @@ namespace Core.Utilities
                     message.ReplyToList.Add(ReplyTo);
                 }
 
-                var client = new SmtpClient(_SMTP, _Port)
+                var client = new SmtpClient(AppSettings.EmailSmtp, AppSettings.EmailSmtpPort)
                 {
-                    Credentials = new NetworkCredential(_Username, _Password),
-                    EnableSsl = _EnableSSL,
-                    Port = _Port,
+                    Credentials = new NetworkCredential(AppSettings.EmailSmtpUsername, AppSettings.EmailSmtpPassword),
+                    EnableSsl = AppSettings.EmailSmtpEnableSsl,
+                    Port = AppSettings.EmailSmtpPort,
                     Timeout = 10
                 };
                 client.Send(message);

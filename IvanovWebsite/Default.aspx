@@ -2,6 +2,8 @@
 <%@ MasterType VirtualPath="~/Master.Master" %>
 <%@ Import Namespace="Core.Utilities" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="/plugins/fancybox/jquery.fancybox.css" rel="stylesheet" />
+    <script src="/plugins/fancybox/jquery.fancybox.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
@@ -148,7 +150,7 @@
         <asp:Repeater ID="OffersRepeater" runat="server" ViewStateMode="Disabled">
             <ItemTemplate>
                 <li>
-                    <a href="#">
+                    <a href="<%#AppSettings.UploadFileHttpPath+Eval("Picture") %>">
                         <span class="img">
                             <img src="<%#AppSettings.UploadFileHttpPath+Eval("Picture") %>?width=320&height=223&scale=both&mode=crop" alt="picture" />
                             <span><b>Виж офертата</b></span>
@@ -258,6 +260,23 @@
 
             $('.tabs .tab').removeClass('show');
             current.addClass('show');
+
+            return false;
+        });
+
+        $(".items.col3 li > a").click(function () {
+            $.fancybox.open({
+                href: $(this).attr("href"),
+                padding: 0,
+                type: 'image',
+                openEffect: 'elastic',
+                closeEffect: 'fadeOut',
+                helpers: {
+                    overlay: {
+                        locked: false
+                    }
+                }
+            });
 
             return false;
         });
